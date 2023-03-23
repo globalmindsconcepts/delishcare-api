@@ -114,7 +114,7 @@
 								<div class="header-row">
 									<div class="header-logo">
 										<a href="index.html">
-											<img alt="Porto" width="300" height="auto" data-sticky-width="200" data-sticky-height="auto" src="img/delish1.png">
+											<img alt="Porto" width="300" height="auto" data-sticky-width="200" data-sticky-height="auto" src="img/Delish1.png">
 										</a>
 									</div>
 								</div>
