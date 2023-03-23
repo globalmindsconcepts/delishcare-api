@@ -113,7 +113,7 @@
 							<div class="header-column">
 								<div class="header-row">
 									<div class="header-logo">
-										<a href="index.html">
+										<a href="#">
 											<img alt="Porto" width="300" height="auto" data-sticky-width="200" data-sticky-height="auto" src="img/Delish1.png">
 										</a>
 									</div>
@@ -126,10 +126,10 @@
 											<nav class="collapse">
 												<ul class="nav nav-pills" id="mainNav">
 													<li class="dropdown">
-													    <a class="dropdown-item active" href="index.html">Home</a>
+													    <a class="dropdown-item active" href="#">Home</a>
 													</li>													
 													<li class="dropdown dropdown-mega">
-													    <a class="dropdown-item" href="elements.html">About Us</a>
+													    <a class="dropdown-item" href="#">About Us</a>
 													</li>													
 													<li class="dropdown">	
 													    <a class="dropdown-item " href="#">Products</a>														
@@ -918,7 +918,7 @@
 					<div class="container py-2">						
 						<div class="row py-4">							
 							<div class="col-lg-2 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">								
-								<a href="index.html" class="logo pr-0 pr-lg-3">									
+								<a href="#" class="logo pr-0 pr-lg-3">									
 								    <img alt="Porto Website Template" src="img/footer-img-white.png" class="opacity-5" height="33">								
 								</a>							
 							</div>															
@@ -930,15 +930,15 @@
 									<ul>										
 										<li>
 											<i class="fas fa-angle-right"></i>
-											<a href="page-faq.html" class="ml-1 text-decoration-none"> Policy</a>
+											<a href="#" class="ml-1 text-decoration-none"> Policy</a>
 										</li>										
 										<li>
 											<i class="fas fa-angle-right"></i>
-											<a href="sitemap.html" class="ml-1 text-decoration-none"> Terms</a>
+											<a href="#" class="ml-1 text-decoration-none"> Terms</a>
 										</li>
 										<li>
 											<i class="fas fa-angle-right"></i>
-											<a href="sitemap.html" class="ml-1 text-decoration-none"> Home</a>
+											<a href="#" class="ml-1 text-decoration-none"> Home</a>
 										</li>										
 									</ul>								
 								</nav>							
@@ -1029,6 +1029,4 @@
 		<script src="master/analytics/analytics.js"></script>
 
 	</body>
-
-<!-- Mirrored from portotheme.com/html/porto/7.5.0/index-classic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jul 2019 17:34:38 GMT -->
 </html>
