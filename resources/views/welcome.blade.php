@@ -8,9 +8,9 @@
 
 		<title>Delishcare</title>	
 
-		<meta name="keywords" content="HTML5 Template" />
-		<meta name="description" content="Porto - Responsive HTML5 Template">
-		<meta name="author" content="okler.net">
+		<meta name="keywords" content="Delishcare" />
+		<meta name="description" content="Delish care">
+		<meta name="author" content="Delischare">
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
