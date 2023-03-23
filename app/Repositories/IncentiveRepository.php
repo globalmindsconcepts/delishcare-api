@@ -21,9 +21,14 @@ class IncentiveRepository{
         return $this->table->leftJoin('ranks', 'incentives.rank_id', '=', 'ranks.id')->paginate(20);
     }
 
+    public function get($id)
+    {
+        return $this->table->leftJoin('ranks','ranks.id','=','incentives.rank_id')->where('ranks.id', $id)->get()->first();
+    }
+
     public function create(array $data)
     {
-       return $this->model->save($data);
+        return (new Incentive($data))->save(); //$this->model->save($data);
     }
 
     public function update(int $id, array $data)

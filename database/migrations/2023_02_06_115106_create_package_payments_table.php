@@ -15,7 +15,7 @@ class CreatePackagePaymentsTable extends Migration
     {
         Schema::create('package_payments', function (Blueprint $table) {
             $table->id();
-            $table->string('user_uuid')->references('uuid')->on('users');
+            $table->string('user_uuid')->unique()->references('uuid')->on('users');
             $table->double('amount');
             $table->double('point_value')->nullable();
             $table->enum('status', ['approved', 'processing', 'declined'])->default('processing');

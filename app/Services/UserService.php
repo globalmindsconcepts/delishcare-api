@@ -10,17 +10,20 @@ use App\Mail\UserConfirmationEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Repositories\ReferralRepository;
 use Illuminate\Support\Facades\DB;
+use App\Repositories\PackageRepository;
 
 class UserService{
 
     private $service;
     private $userRepository;
     private $referralRepository;
+    private $packageRepo;
 
     function __construct()
     {
         $this->userRepository = new UserRepository();
         $this->referralRepository = new ReferralRepository;
+        $this->packageRepo = new PackageRepository;
     }
 
     public function all(bool $count=false)
@@ -55,11 +58,16 @@ class UserService{
             
             $data['uuid'] = $this->generateUUID();
             $data['password'] = bcrypt($data['password']);
-            $verifyCode = Str::random(5);
+            $verifyCode = Str::random(10);
             $data['verification_code'] = $verifyCode;
             $referer = $this->userRepository->getUser($data['referrer']);
-            info('ref',[$referer]);
+            if(!$referer){
+                return ["success"=>false,"message"=>"Referrer not found","status"=>400];
+            }
             $placement = array_key_exists('placer',$data) ? $this->userRepository->getUser($data['placer'])['uuid'] : null;
+            if(array_key_exists('placer',$data) && is_null($placement)){
+                return ["success"=>false,"message"=>"Placer not found","status"=>400];
+            }
 
             DB::transaction(function () use ($data,$referer,$placement) {
                 $this->userRepository->create($data);
@@ -162,6 +170,20 @@ class UserService{
         }
         return ["success"=>true,
         "message"=>"user updated sucessfully","status"=>200];
+    }
+
+    public function uplineDetails(string $uuid)
+    {
+        try {
+           $ref = $this->referralRepository->get($uuid);
+           $data = $this->userRepository->getUser($ref->referrer_uuid);
+           $package = $this->packageRepo->get($data['package_id']);
+           $data['package'] = $package->name; 
+           return ['data'=>$data,'status'=>200];
+        } catch (Exception $e) {
+            Log::error("Error fetching upline details",[$e]);
+            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+        }
     }
 
     protected function generateUUID()

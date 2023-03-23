@@ -29,7 +29,7 @@ class RankRepository{
 
     public function create(array $data)
     {
-       return $this->model->save($data);
+       return (new Rank($data))->save(); //$this->model->save($data);
     }
 
     public function update($id, array $data)

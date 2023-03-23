@@ -39,8 +39,10 @@ Route::group(['prefix'=>'users','middleware'=>['auth:sanctum'], 'namespace'=>'Ap
     Route::get('{user_uuid}/profile','ProfileController@show');
     Route::post('{user_uuid}/create-profile','ProfileController@store');
     Route::post('{user_uuid}/update-profile','ProfileController@update');
-    Route::get('{user_uuid}/update-bank','ProfileController@updateBank');
-    //Route::post('{user_uuid}/initiate-payment','AuthController@login');
+    Route::put('{user_uuid}/update','UserController@update');
+    Route::put('{user_uuid}/update-bank-details','ProfileController@updateBankDetails');
+    Route::get('{uuid}/total-pv','UserController@totalPointValues');
+    Route::get('{uuid}/upline-details','UserController@uplineDetails');
 });
 
 Route::group(['prefix'=>'bonuses','middleware'=>['auth:sanctum'], 'namespace'=>'App\Http\Controllers'], function() {
@@ -55,33 +57,43 @@ Route::group(['prefix'=>'bonuses','middleware'=>['auth:sanctum'], 'namespace'=>'
     Route::get('{user_uuid}/global-profit','WalletController@globalProfit');
 });
 
-Route::group(['prefix'=>'incentives','middleware'=>['auth:sanctum'], 'namespace'=>'App\Http\Controllers'], function() {
+Route::group(['prefix' => 'incentives', 'middleware' => ['auth:sanctum'], 'namespace' => 'App\Http\Controllers'], function () {
     Route::post('create','IncentiveController@store');
-    Route::post('update','IncentiveController@update');
+    Route::post('{id}/update','IncentiveController@update');
     Route::get('{id}','IncentiveController@show');
     Route::delete('{id}','IncentiveController@delete');
     Route::get('all','IncentiveController@index');
 });
 
-Route::group(['prefix'=>'packages','middleware'=>['auth:sanctum'], 'namespace'=>'App\Http\Controllers'], function() {
-    Route::post('create','PackageController@create');
-    Route::put('update','PackageController@update');
+Route::group(['prefix' => 'incentive-claims', 'middleware' => ['auth:sanctum'], 'namespace' => 'App\Http\Controllers'], function () { 
+    Route::get('all','IncentiveClaimController@all');
+    Route::post('create','IncentiveClaimController@create');
+    Route::put('{id}/approve','IncentiveClaimController@approve');
+    Route::put('{id}/decline','IncentiveClaimController@decline');
+    Route::get('{uuid}/claims','IncentiveClaimController@claimedIncentives');//not tested
+});
+
+Route::group(['prefix'=>'packages', 'namespace'=>'App\Http\Controllers'], function() {
+    Route::post('create','PackageController@store')->middleware(['admin.auth','auth:sanctum']);
+    Route::put('{id}/update','PackageController@update')->middleware(['admin.auth','auth:sanctum']);
+    Route::get('all','PackageController@index');//->middleware(['admin.auth','auth:sanctum']);
     Route::get('{id}','PackageController@show');
-    Route::delete('{id}','PackageController@destroy');
-    Route::get('all','PackageController@index');
+    Route::delete('{id}','PackageController@destroy')->middleware(['admin.auth','auth:sanctum']);
 });
 
 Route::group(['prefix'=>'ranks','middleware'=>['auth:sanctum'], 'namespace'=>'App\Http\Controllers'], function() {
-    Route::post('create','RankController@create');
-    Route::put('update','RankController@update');
+    Route::get('all','PackageController@index')->middleware('admin.auth');
+    Route::post('create','RankController@store')->middleware('admin.auth');
+    Route::put('{id}/update','RankController@update')->middleware('admin.auth');
     Route::get('{id}','RankController@show');
-    Route::delete('{id}','RankController@destroy');
-    Route::get('all','PackageController@all');
+    Route::delete('{id}','RankController@destroy')->middleware('admin.auth');
 });
 
 Route::group(['prefix'=>'settings','middleware'=>['auth:sanctum'], 'namespace'=>'App\Http\Controllers'], function() {
     Route::put('update','SettingController@update');
     Route::put('/update-referral-bonus/{id}','SettingController@updateReferralBonusSetting');
+    Route::get('/{column}','SettingController@show');
+    Route::get('all','SettingController@getSettings');
 });
 
 Route::group(['prefix'=>'payments','middleware'=>['auth:sanctum'], 'namespace'=>'App\Http\Controllers'], function() {
@@ -89,20 +101,39 @@ Route::group(['prefix'=>'payments','middleware'=>['auth:sanctum'], 'namespace'=>
     Route::post('verify','PaymentController@verifyPackagePayment');
 });
 
-Route::group(['middleware' => ['auth:sanctum', 'admin.auth'], 'namespace' => 'App\Http\Controllers'], function () {
+Route::group(['middleware' => ['auth:sanctum'], 'namespace' => 'App\Http\Controllers'], function () {
     Route::group(['prefix' => 'product-services'], function () {
-        Route::get('all', 'ProductServiceController@all');
-        Route::post('create', 'ProductServiceController@store');
-        Route::put('{id}/update', 'ProductServiceController@update');
+        Route::get('all', 'ProductServiceController@index');
+        Route::post('create', 'ProductServiceController@store')->middleware('admin.auth');
+        Route::put('{id}/update', 'ProductServiceController@update')->middleware('admin.auth');
         Route::get('{id}', 'ProductServiceController@show');
-        Route::delete('{id}', 'ProductServiceController@destroy');
+        Route::delete('{id}', 'ProductServiceController@destroy')->middleware('admin.auth');
     });
 
     Route::group(['prefix' => 'service-providers'], function () {
-        Route::get('all', 'ServiceProviderController@all');
-        Route::post('create', 'ServiceProviderController@store');
-        Route::put('{id}/update', 'ServiceProviderController@update');
+        Route::get('all', 'ServiceProviderController@index');
+        Route::post('create', 'ServiceProviderController@store')->middleware('admin.auth');
+        Route::put('{id}/update', 'ServiceProviderController@update')->middleware('admin.auth');
         Route::get('{id}', 'ServiceProviderController@show');
-        Route::delete('{id}', 'ServiceProviderController@destroy');
+        Route::delete('{id}', 'ServiceProviderController@destroy')->middleware('admin.auth');
     });
+
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('all', 'ProductController@index');
+        Route::post('create', 'ProductController@store')->middleware('admin.auth');
+        Route::put('{id}/update', 'ProductController@update')->middleware('admin.auth');
+        Route::get('{id}', 'ProductController@show');
+        Route::delete('{id}', 'ProductController@destroy')->middleware('admin.auth');
+    });
+});
+
+Route::group(['prefix'=>'withdrawals','middleware'=>['auth:sanctum'], 'namespace'=>'App\Http\Controllers'], function() {
+    Route::post('{uuid}/initiate','WithdrawalController@initiate');
+    Route::get('balance-check','WithdrawalController@providerBalanceCheck');
+    Route::get('{uuid}/history','WithdrawalController@history');
+    Route::get('all','WithdrawalController@all');
+    Route::get('{uuid}/user-history','WithdrawalController@userHistory');
+    Route::get('total','WithdrawalController@total');
+    Route::get('{uuid}/user-total','WithdrawalController@userTotal');
+    Route::get('{id}/details','WithdrawalController@details');
 });

@@ -46,4 +46,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Package::class);
     }
+
+    public function packagePayment()
+    {
+        return $this->hasOne(PackagePayment::class,'user_uuid','uuid');
+    }
 }

@@ -22,12 +22,18 @@ class IncentiveClaimRepository{
 
     public function create(array $data)
     {
-       return $this->model->save($data);
+        return (new IncentiveClaim($data))->save(); //$this->model->save($data);
     }
 
     public function update(int $id, array $data)
     {
         return $this->table->where('id', '=', $id)->update($data);
+    }
+
+    public function claimedIncentives(string $user_uuid)
+    {
+        return $this->table->leftJoin('incentives','incentives.id','=','incentive_claims.incentive_id')
+        ->leftJoin('ranks','ranks.id','=','incentives.rank_id')->where('incentive_claims.user_uuid', '=', $user_uuid)->get(['ranks.points','incentives.incentive','incentive_claims.created_at']);
     }
 
 }

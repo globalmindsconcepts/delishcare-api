@@ -336,4 +336,9 @@ class GenealogyServiceTest extends TestCase
         //$this->assertDatabaseHas('referral_bonuses', ['user_uuid' => $user2->uuid,'generation'=>'generation_2']);
         $this->assertDatabaseHas('referral_bonuses', ['user_uuid' => $user0->uuid,'generation'=>'generation_5']);
     }
+
+    public function test_network_structure()
+    {
+        
+    }
 }

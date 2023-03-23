@@ -30,6 +30,9 @@ class RegistrationRequest extends FormRequest
             'email'=>'bail|required|string|unique:users,email',
             'password'=>'bail|required|string',
             'referrer'=>'bail|required|exists:users,username',
+            'package_id'=>'bail|required|exists:packages,id',
+            'phone'=>'bail|required|string',
+            'placer'=>'bail|nullable|string'
         ];
     }
 }

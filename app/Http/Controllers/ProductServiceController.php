@@ -26,11 +26,12 @@ class ProductServiceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function create()
+    public function show(Request $request, Int $id)
     {
-        //
+        $data = $this->service->get($id);
+        return response()->json($data, $data['status']);
     }
 
     /**

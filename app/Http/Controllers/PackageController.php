@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Services\PackageService;
 use Illuminate\Http\Request;
+use App\Http\Requests\PackageCreateRequest;
+use App\Http\Requests\PackageUpdateRequest;
 
 class PackageController extends Controller
 {
@@ -41,7 +43,7 @@ class PackageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(PackageCreateRequest $request)
     {
         $data = $this->service->create($request->all());
         return response()->json($data, $data['status']);
@@ -54,9 +56,15 @@ class PackageController extends Controller
      * @param  \App\Models\Package  $package
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Int $id)
+    public function update(PackageUpdateRequest $request, Int $id)
     {
         $data = $this->service->update($id, $request->all());
+        return response()->json($data, $data['status']);
+    }
+
+    public function show(Int $id)
+    {
+        $data = $this->service->get($id);
         return response()->json($data, $data['status']);
     }
 

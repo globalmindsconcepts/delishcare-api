@@ -17,7 +17,6 @@ class CreateProductServicesTable extends Migration
             $table->id();
             $table->string('service');
             $table->integer('default_provider_id')->references('id')->on('service_providers');
-            //$table->boolean('has_monthly_fee')->default(false);
             $table->timestamps();
         });
     }

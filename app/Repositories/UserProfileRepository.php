@@ -19,12 +19,27 @@ class UserProfileRepository{
 
     public function create(array $data)
     {
-       return $this->model->save($data);
+       return (new UserProfile($data))->save(); //$this->model->save($data);
     }
 
     public function update(string $uuid, array $data)
     {
-        return $this->table->where('user_uuid', $uuid)->update($data);
+        if($this->table->where('user_uuid', $uuid)->exists()){
+            return $this->table->where('user_uuid', $uuid)->update($data);
+        }
+        return $this->create($data+['user_uuid'=>$uuid]);
+        
+    }
+
+    public function get(string $user_uuid)
+    {
+        return $this->table->where('user_uuid',$user_uuid)->first();
+    }
+
+    public function updateBankDetails(string $uuid, array $data)
+    {
+
+        return $this->table->where('user_uuid', $uuid)->updatesert($data);
     }
 
 }

@@ -42,10 +42,10 @@ class PaystackPaymentService{
             return $this->mockInitiatePaymentResponse($data['reference']);
         }
 
-        $data['amount'] = $data['converted_amount'] * 100;
+        $data['amount'] = $data['amount'] * 100;
         $data['email'] = auth()->user()->email;
-        $data['currency'] = $data['charge_currency'];
-        $data['description'] = '80Leaves wallet funding';
+        $data['currency'] = 'NGN';
+        $data['description'] = 'Bfree payment'; //deslishcare package
         //$data['reference'] = 
         //info([$data]);
         

@@ -14,8 +14,8 @@ class RankFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>'',
-            'points'=>'',
+            'name'=>$this->faker->randomElement(['master','premium']),
+            'points'=>$this->faker->randomNumber(),
             'is_global_profit_eligible'=>false,
             'description'=>''
         ];

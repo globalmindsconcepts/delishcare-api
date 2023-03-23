@@ -211,7 +211,7 @@ Class GenealogyService {
             }
         }
         
-        if(!is_null($this->checkIfRefHasAParent($ref_id)) ){
+        if(!is_null($this->checkIfRefHasAParent($ref_id))){
             $grandparent_id = $this->checkIfRefHasAParent($ref_id);
             $parent_id = $ref_id;
             $grandchild_id = $child_id;

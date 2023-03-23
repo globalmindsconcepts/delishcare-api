@@ -46,7 +46,7 @@ class PaymentService{
             $fundData['fee'] = 0;
             $fundData['currency'] = 'NGN';
             $fundData['source_reference'] = '';
-            $fundData['processor'] = $data['processor'] ?? '';
+            $fundData['processor'] = $data['processor'] ?? 'paystack';
 
             $this->transactionRepository->create($fundData);
 

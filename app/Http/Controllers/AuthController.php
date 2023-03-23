@@ -11,7 +11,7 @@ use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\EmailConfirmationRequest;
 use App\Http\Requests\PasswordResetRequest;
 use App\Mail\PasswordResetEmail;
-use Exception;
+use \Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -31,20 +31,20 @@ class AuthController extends Controller
     {
         try{
             //dd($request->all());
-            $credentials = $request->only('email', 'password');
+            $credentials = $request->only('username', 'password');
             if (!Auth::attempt($credentials)) {
                 return response()->json(["message"=>"Invalid login credentials"],400);
-                //return $this->errorResponse('Invalid login credentials');
             }
             $user = $request->user();
             $token = $user->createToken('authToken');//->plainTextToken;
-            if ($request->remember_me){
-                //$token->expires_at = Carbon::now()->addWeeks(1);
-                //$token->save();
-            }
+            if ($request->remember_me){}
+
+            $payment = $user->packagePayment()->first();
+            
             $resource = [
                 'access_token' => $token->plainTextToken,
                 'email_verified_at'=> $user->email_verified_at,
+                'payment'=>$payment
                 //'token_type' => 'Bearer',
                 //'user'=>$user->load('level')
                 // 'expires_at' => Carbon::parse(
@@ -52,7 +52,7 @@ class AuthController extends Controller
                 // )->toDateTimeString()
             ];
             return response()->json(["message"=>"Logged in successfully",'data'=>$resource],200);
-        }catch(\Exception $e){
+        }catch(Exception $e){
             Log::error("Error while loggingin",[$e]);
             return response()->json(["message"=>"An internal error occured"],500);
         }
@@ -82,7 +82,7 @@ class AuthController extends Controller
 
     public function register(RegistrationRequest $request)
     {
-        $res = $this->userService->create($request->only('first_name',
+        $res = $this->userService->create($request->only('first_name','package_id',
         'last_name','email','phone','password','username','referrer','placer'));
         return response()->json($res,$res['status']);
     }
@@ -109,8 +109,8 @@ class AuthController extends Controller
         try {
             $email = $request->email;
             $service = $this->userService;
-            if($service->userExists($email)){
-                $service->resendEmailConfirmationCode($email);
+            if($user = $service->userExists($email)){
+                $service->resendEmailConfirmationCode($user->email);
                 return response()->json(["message"=>"Verification code resent successfully"]);
             }
             return response()->json(["message"=>"Email does not exists"],400);

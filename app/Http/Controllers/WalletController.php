@@ -99,7 +99,7 @@ class WalletController extends Controller
     public function globalProfit(string $user_uuid)
     {
         try {
-            $data = $this->service->computeUserGlobalProfitShare($user_uuid,1,true)->last()->profit;
+            $data = $this->service->computeUserGlobalProfitShare($user_uuid,1,true)->sum('profit');//->last()->profit;
             return response()->json(['bonus'=>$data,'success'=>true], 200);
         } catch (\Exception $e) {
             Log::error("global profit error", [$e]);

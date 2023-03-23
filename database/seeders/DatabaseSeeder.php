@@ -13,6 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        (new AdminTableSeeder)->run();
+        (new PackageTableSeeder)->run();
+        (new RankTableSeeder)->run();
+        (new SettingsTableSeeder)->run();
+        (new IncentiveTableSeeder)->run();
+        (new ServiceProviderTableSeeder)->run();
+        (new ProductServiceTableSeeder)->run();
+        (new ProductTableSeeder)->run();
     }
 }

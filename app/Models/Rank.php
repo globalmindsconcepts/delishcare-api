@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Rank extends Model
 {
     use HasFactory;
+
+    public $guarded = [];
 }

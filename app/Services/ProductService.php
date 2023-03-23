@@ -15,9 +15,10 @@ class ProductService{
     {
         try {
             $data = $this->productServiceRepo->table
-            ->leftJoin('service_provider', 'service_providers.id', '=', 'product_services.default_provider_id')->paginate(20);
+            ->leftJoin('service_providers', 'service_providers.id', '=', 'product_services.default_provider_id')->paginate(20);
             return ['data' => $data, 'status' => 200];
         } catch (Exception $e) {
+            Log::error("all services", [$e]);
             $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
             return ['message' => $message, 'status' => 500];
         }
@@ -41,6 +42,7 @@ class ProductService{
             $this->productServiceRepo->update($id, $data);
             return ['message' => 'Product service updated succesfully', 'status' => 200];
         } catch (Exception $e) {
+            Log::error("update service", [$e]);
             $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
             return ['message' => $message, 'status' => 500];
         }
@@ -52,6 +54,19 @@ class ProductService{
             $this->productServiceRepo->table->delete($id);
             return ['message' => 'Product service deleted succesfully', 'status' => 200];
         } catch (Exception $e) {
+            Log::error("delete service", [$e]);
+            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
+            return ['message' => $message, 'status' => 500];
+        }
+    }
+
+    public function get(Int $id)
+    {
+        try {
+            $data = $this->productServiceRepo->getServiceById($id);
+            return ['data' => $data, 'status' => 200];
+        } catch (Exception $e) {
+            Log::error("get service", [$e]);
             $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
             return ['message' => $message, 'status' => 500];
         }

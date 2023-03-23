@@ -14,11 +14,11 @@ class PackageFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>'',
-            'vip'=>'',
-            'point_value'=>'',
-            'value'=>2,
-            'registration_value'=>1000,
+            'name'=>$this->faker->randomElement(['basic','premium']),
+            'vip'=>$this->faker->randomElement(['vip1','vip6']),
+            'point_value'=>60,
+            'value'=>3500 * 60,
+            'registration_value'=>50000,
             'profit_pool_eligible'=>false,
             'description'=>''
         ];

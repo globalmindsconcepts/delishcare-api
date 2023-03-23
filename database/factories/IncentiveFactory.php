@@ -15,9 +15,10 @@ class IncentiveFactory extends Factory
     {
         return [
             'rank_id'=>'',
-            'points'=>'',
+            //'points'=>'',
             'worth'=>'',
-            'incentive'=>''
+            'incentive'=>'',
+            'file_path'=>null
         ];
     }
 }

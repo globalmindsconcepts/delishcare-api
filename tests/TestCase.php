@@ -31,7 +31,7 @@ abstract class TestCase extends BaseTestCase
         return $user;
     }
 
-    public function createPackage($data)
+    public function createPackage($data=null)
     {
         return \App\Models\Package::factory()->create($data);
     }
@@ -108,5 +108,30 @@ abstract class TestCase extends BaseTestCase
     public function createPlacementBonus($data=null)
     {
         return \App\Models\PlacementBonus::factory()->create($data);
+    }
+    
+    public function createIncentive($data=null)
+    {
+        return \App\Models\Incentive::factory()->create($data);
+    }
+
+    public function createIncentiveClaim($data=null)
+    {
+        return \App\Models\IncentiveClaim::factory()->create($data);
+    }
+
+    public function createUserProfile($data=null)
+    {
+        return \App\Models\UserProfile::factory()->create($data);
+    }
+
+    public function createProduct($data=null,$create=true)
+    {
+        return $create==true ? \App\Models\Product::factory()->create($data) : \App\Models\Product::factory()->make($data)->toArray();
+    }
+
+    public function createWithdrawal($data=null,$create=true)
+    {
+        return $create==true ? \App\Models\Withdrawal::factory()->create($data) : \App\Models\Withdrawal::factory()->make($data)->toArray();
     }
 }

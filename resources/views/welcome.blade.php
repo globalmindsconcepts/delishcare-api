@@ -1,132 +1,1034 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
+	
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Basic -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">	
 
-        <title>Laravel</title>
+		<title>Delishcare</title>	
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+		<meta name="keywords" content="HTML5 Template" />
+		<meta name="description" content="Porto - Responsive HTML5 Template">
+		<meta name="author" content="okler.net">
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+		<!-- Web Fonts  -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400" rel="stylesheet" type="text/css">
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
+		<!-- Vendor CSS -->
+		<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">		
+		<link rel="stylesheet" href="vendor/fontawesome-free/css/all.min.css">		
+		<link rel="stylesheet" href="vendor/animate/animate.min.css">		
+		<link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.min.css">		
+		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.min.css">		
+		<link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.min.css">		
+		<link rel="stylesheet" href="vendor/magnific-popup/magnific-popup.min.css">
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
+		<!-- Theme CSS -->
+		<link rel="stylesheet" href="css/theme.css">
+		<link rel="stylesheet" href="css/theme-elements.css">
+		<link rel="stylesheet" href="css/theme-blog.css">
+		<link rel="stylesheet" href="css/theme-shop.css">
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
+		<!-- Current Page CSS -->
+		<link rel="stylesheet" href="vendor/rs-plugin/css/settings.css">
+		<link rel="stylesheet" href="vendor/rs-plugin/css/layers.css">
+		<link rel="stylesheet" href="vendor/rs-plugin/css/navigation.css">
+		<link rel="stylesheet" href="vendor/circle-flip-slideshow/css/component.css">
+		
+		<!-- Demo CSS -->
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
+		<!-- Skin CSS -->
+		<link rel="stylesheet" href="css/skins/default.css">		
+		<script src="master/style-switcher/style.switcher.localstorage.js"></script> 
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
+		<!-- Theme Custom CSS -->
+		<link rel="stylesheet" href="css/custom.css">
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
+		<!-- Head Libs -->
+		<script src="vendor/modernizr/modernizr.min.js"></script>
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
+	</head>
+	<body class="loading-overlay-showing" data-plugin-page-transition data-loading-overlay data-plugin-options="{'hideDelay': 500}">
+		<div class="loading-overlay">
+			<div class="bounce-loader">
+				<div class="bounce1"></div>
+				<div class="bounce2"></div>
+				<div class="bounce3"></div>
+			</div>
+		</div>
+		
+		<div class="body">
+ 			<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 120, 'stickyHeaderContainerHeight': 70}">
+				<div class="header-body border-top-0">
+					<div class="header-top header-top-borders">
+						<div class="container h-100">
+							<div class="header-row h-100">
+								<div class="header-column justify-content-start">
+									<div class="header-row">
+										<nav class="header-nav-top">
+											<ul class="nav nav-pills">
+												<li class="nav-item  py-2 d-none d-sm-inline-flex">
+													<span class="pl-0"><i class="far fa-dot-circle text-4" style="top: 1px;color:#2A840B"></i>No.18, Adeniyi Jones Estate, Ikoyi,Lagos.</span>
+												</li>
+												<li class="nav-item border-left py-2">
+													<a href="tel:123-456-7890"><i class="fab fa-whatsapp text-4" style="top: 0;color:#2A840B"></i> +234(0)8035688969</a>
+												</li>
+												<li class="nav-item nav-item-borders border-right border-left py-2 ">
+													<a href="mailto:mail@domain.com"><i class="far fa-envelope text-4" style="top: 1px;color:#2A840B"></i> Support@delishcare.com</a>
+												</li>
+											</ul>
+										</nav>
+									</div>
+								</div>
+								<div class="header-column justify-content-end">
+									<div class="header-row">
+										<nav class="header-nav-top">
+											<div class="header-column justify-content-end">
+												<div class="header-row">
+													<ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean">
+														<li class="social-icons-facebook"><a href="" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+														<li class="social-icons-twitter"><a href="" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+														<li class="social-icons-youtube"><a href="" target="_blank" title="youtube"><i class="fab fa-youtube"></i></a></li>
+														<li class="social-icons-instagram"><a href="" target="_blank" title="instagram"><i class="fab fa-instagram"></i></a></li>
+													</ul>
+												</div>
+											</div>
+										</nav>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="header-container header-container-height-sm container">
+						<div class="header-row">
+							<div class="header-column">
+								<div class="header-row">
+									<div class="header-logo">
+										<a href="index.html">
+											<img alt="Porto" width="300" height="auto" data-sticky-width="200" data-sticky-height="auto" src="img/delish1.png">
+										</a>
+									</div>
+								</div>
+							</div>
+							<div class="header-column justify-content-end">
+								<div class="header-row">
+									<div class="header-nav header-nav-line header-nav-top-line header-nav-top-line-with-border order-2 order-lg-1">
+										<div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1">
+											<nav class="collapse">
+												<ul class="nav nav-pills" id="mainNav">
+													<li class="dropdown">
+													    <a class="dropdown-item active" href="index.html">Home</a>
+													</li>													
+													<li class="dropdown dropdown-mega">
+													    <a class="dropdown-item" href="elements.html">About Us</a>
+													</li>													
+													<li class="dropdown">	
+													    <a class="dropdown-item " href="#">Products</a>														
+													</li>													
+													<li class="dropdown">														
+													    <a class="dropdown-item" href="#">Benefits</a>														
+													</li>													
+													<li class="dropdown">														
+													    <a class="dropdown-item" href="#">Why Us</a>														
+													</li>													
+													<li class="dropdown">														
+													    <a class="dropdown-item" href="#">Login</a>														
+													</li>													
+													<li class="dropdown">														
+													    <a class="dropdown-item" href="#">Register</a>														
+													</li>
+												</ul>
+											</nav>
+										</div>
+										<button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav" style="background:#2A840B">
+											<i class="fas fa-bars"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</header>
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
+			<div role="main" class="main">
+				<div class="slider-container rev_slider_wrapper" style="height: 670px;">
+					<div id="revolutionSlider" class="slider rev_slider" data-version="5.4.8" data-plugin-revolution-slider data-plugin-options="{'delay': 9000, 'gridwidth': 1170, 'gridheight': 670, 'disableProgressBar': 'on', 'responsiveLevels': [4096,1200,992,500], 'parallax': { 'type': 'scroll', 'origo': 'enterpoint', 'speed': 1000, 'levels': [2,3,4,5,6,7,8,9,12,50], 'disable_onmobile': 'on' }, 'navigation' : {'arrows': { 'enable': true }, 'bullets': {'enable': true, 'style': 'bullets-style-1', 'h_align': 'center', 'v_align': 'bottom', 'space': 7, 'v_offset': 70, 'h_offset': 0}}}">
+						<ul>
+							<li class="slide-overlay slide-overlay-success" data-transition="fade">
+								<img src="img/slides/slide-bg-2.jpg"  
+									alt=""
+									data-bgposition="center center" 
+									data-bgfit="cover" 
+									data-bgrepeat="no-repeat" 
+									class="rev-slidebg">
+								
+								<div class="tp-caption tp-resizeme rs-parallaxlevel-7"
+								    data-frames='[{"delay":2500,"speed":1500,"frame":"0","from":"opacity:0;x:-50%;y:-50%;","to":"opacity:1;x:0;y:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+								    data-type="image" 
+								    data-x="-500"
+								    data-y="-700"
+								    data-width="['auto']"
+								    data-height="['auto']"
+								    data-basealign="slide"><img src="img/slides/slide-parallax-porto-symbol.png" alt=""></div>
+				
+								<div class="tp-caption"
+									data-x="center" data-hoffset="['-150','-150','-150','-240']"
+									data-y="center" data-voffset="['-50','-50','-50','-75']"
+									data-start="1000"
+									data-transform_in="x:[-300%];opacity:0;s:500;"
+									data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>
+				
+								<div class="tp-caption text-color-light font-weight-normal"
+									data-x="center"
+									data-y="center" data-voffset="['-50','-50','-50','-75']"
+									data-start="700"
+									data-fontsize="['22','22','22','40']"
+									data-lineheight="['25','25','25','45']"
+									data-transform_in="y:[-50%];opacity:0;s:500;">JOIN THE MOVEMENT</div>
+				
+								<div class="tp-caption d-none d-md-block"
+									data-frames='[{"delay":2400,"speed":500,"frame":"0","from":"opacity:0;x:10%;","to":"opacity:1;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['80','80','80','135']"
+									data-y="center" data-voffset="['-33','-33','-33','-55']"><img src="img/slides/slide-white-line.png" alt=""></div>
+				
+								<div class="tp-caption"
+									data-x="center" data-hoffset="['150','150','150','240']"
+									data-y="center" data-voffset="['-50','-50','-50','-75']"
+									data-start="1000"
+									data-transform_in="x:[300%];opacity:0;s:500;"
+									data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>
+				
+								<div class="tp-caption font-weight-extra-bold text-color-light negative-ls-2"
+									data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center"
+									data-y="center"
+									data-fontsize="['50','50','50','90']"
+									data-lineheight="['55','55','55','95']">DELISHCARE</div>
+				
+								<div class="tp-caption font-weight-light"
+									data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+									data-x="center"
+									data-y="center" data-voffset="['40','40','40','80']"
+									data-fontsize="['18','18','18','50']"
+									data-lineheight="['20','20','20','55']"
+									style="color: #b5b5b5;">Be part of the solution. Partner with us!</div>
+								
+							</li>
+							<li class="slide-overlay slide-overlay-success" data-transition="fade">
+								<img src="img/slides/slide-bg-2.jpg"  
+									alt=""
+									data-bgposition="center center" 
+									data-bgfit="cover" 
+									data-bgrepeat="no-repeat" 
+									class="rev-slidebg">
+				
+								<div class="tp-caption"
+									data-x="center" data-hoffset="['-170','-170','-170','-350']"
+									data-y="center" data-voffset="['-50','-50','-50','-75']"
+									data-start="1000"
+									data-transform_in="x:[-300%];opacity:0;s:500;"
+									data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>
+				
+								<div class="tp-caption text-color-light font-weight-normal"
+									data-x="center"
+									data-y="center" data-voffset="['-50','-50','-50','-75']"
+									data-start="700"
+									data-fontsize="['16','16','16','40']"
+									data-lineheight="['25','25','25','45']"
+									data-transform_in="y:[-50%];opacity:0;s:500;">TRANSFORMING LIVES GLOBALLY</div>
+				
+								<div class="tp-caption"
+									data-x="center" data-hoffset="['170','170','170','350']"
+									data-y="center" data-voffset="['-50','-50','-50','-75']"
+									data-start="1000"
+									data-transform_in="x:[300%];opacity:0;s:500;"
+									data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>
+				
+								<div class="tp-caption font-weight-extra-bold text-color-light negative-ls-1"
+									data-frames='[{"delay":1000,"speed":2000,"frame":"0","from":"sX:1.5;opacity:0;fb:20px;","to":"o:1;fb:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center"
+									data-y="center"
+									data-fontsize="['50','50','50','90']"
+									data-lineheight="['55','55','55','95']">DELISHCARE</div>
+				
+								<div class="tp-caption font-weight-light ws-normal text-center"
+									data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2000,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+									data-x="center"
+									data-y="center" data-voffset="['60','60','60','105']"
+									data-width="['530','530','530','1100']"
+									data-fontsize="['18','18','18','40']"
+									data-lineheight="['26','26','26','45']"
+									style="color: #b5b5b5;">Trusted by over <strong class="text-color-light">4,000</strong> satisfied partners, and still growing. Experience the huge success of DelishCare in the world's largest MarketPlace!</div>
+								
+							</li>
+							<li class="slide-overlay slide-overlay-success py-2 d-none d-sm-inline-flex" data-transition="fade">
+								<img src="img/slides/slide-bg-6.jpg"  
+									alt=""
+									data-bgposition="center center" 
+									data-bgfit="cover" 
+									data-bgrepeat="no-repeat" 
+									class="rev-slidebg">
+				
+								<div class="tp-caption"
+									data-x="center" data-hoffset="['-205','-205','-205','-320']"
+									data-y="center" data-voffset="['-80','-80','-80','-130']"
+									data-start="1000"
+									data-transform_in="x:[-300%];opacity:0;s:500;"
+									data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>
+				
+								<div class="tp-caption text-color-light font-weight-normal"
+									data-x="center"
+									data-y="center" data-voffset="['-80','-80','-80','-130']"
+									data-start="700"
+									data-fontsize="['16','16','16','40']"
+									data-lineheight="['25','25','25','45']"
+									data-transform_in="y:[-50%];opacity:0;s:500;">DISCOVER A HEALTHIER AND PROSPEROUS LIFE</div>
+				
+								<div class="tp-caption"
+									data-x="center" data-hoffset="['205','205','205','320']"
+									data-y="center" data-voffset="['-80','-80','-80','-130']"
+									data-start="1000"
+									data-transform_in="x:[300%];opacity:0;s:500;"
+									data-transform_idle="opacity:0.2;s:500;"><img src="img/slides/slide-title-border.png" alt=""></div>
+
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":1300,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['-300','-300','-300','-355']"
+									data-y="center" 
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">D</div>
+				
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":1500,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['-240','-240','-240','-240']"
+									data-y="center"
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">E</div>
+				
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":1700,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['-185','-185','-185','-240']"
+									data-y="center"
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">L</div>
+				
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":1900,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['-145','-145','-145','-215']"
+									data-y="center"
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">I</div>
+				
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":2100,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['-100','-100','-100','-250']"
+									data-y="center"
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">S</div>
+									
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":2300,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['-30','-30','-30','-270']"
+									data-y="center"
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">H</div>
+									
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":2500,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['45','45','45','280']"
+									data-y="center"
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">C</div>
+									
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":2700,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['125','125','125','290']"
+									data-y="center"
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">A</div>
+									
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":2900,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['200','200','200','300']"
+									data-y="center"
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">R</div>
+									
+								<div class="tp-caption font-weight-extra-bold text-color-light"
+									data-frames='[{"delay":3100,"speed":1000,"frame":"0","from":"opacity:0;x:-50%;","to":"opacity:0.7;x:0;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+									data-x="center" data-hoffset="['260','260','260','300']"
+									data-y="center"
+									data-fontsize="['145','145','145','250']"
+									data-lineheight="['150','150','150','260']">E</div>
+
+								<div class="tp-caption font-weight-light text-color-light"
+									data-frames='[{"from":"opacity:0;","speed":300,"to":"o:1;","delay":2300,"split":"chars","splitdelay":0.05,"ease":"Power2.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[100%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"}]'
+									data-x="center"
+									data-y="center" data-voffset="['85','85','85','140']"
+									data-fontsize="['18','18','18','40']"
+									data-lineheight="['26','26','26','45']"> our sustainable solutions make it possible!</div>
+								
+							</li>
+						</ul>
+					</div>
+				</div>
+
+
+				<div class="container mt-5" style="padding-bottom:40px">				
+					<div class="row text-center pt-3">
+						<div class="col-md-10 mx-md-auto">
+							<h1 class="word-rotator slide font-weight-bold text-8 text-dark mb-3 appear-animation"  data-appear-animation="fadeInUpShorter">
+								<span>DelishCare is </span>
+								<span class="word-rotator-words bg-dark">
+									<b class="is-visible">incredibly</b>
+									<b>extremely</b>
+								</span>
+                                 passionate about you...</h1>
+							<p class="lead appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
+								DelishCare is the perfect choice for anyone looking to embrace a healthier and more sustainable lifestyle without sacrificing flavor or convenience.
+							</p>
+						</div>
+					</div>
+				</div>
+ 
+				<section class="section bg-white section-height-3 border-0 pt-0 pt-md-5 m-0 mt-5" >
+					<div class="container">
+						<div class="row">
+							<div class="container">
+								<div class="row align-items-center justify-content-center pb-4 pb-lg-0">
+									<div class="col-lg-6 order-2 order-lg-1 pr-5 pt-4 pt-lg-0 mt-md-5 mt-lg-0 appear-animation" data-appear-animation="fadeInRightShorter" >
+										  <h2 class="font-weight-normal text-6 text-dark mb-3"><strong class="font-weight-extra-bold">Who</strong> We Are</h2>
+										  <p class="lead" style="font-size:15px">DELISHCARE is an innovative and forward-thinking global health, food, and wealth creation company that provides sustainable solutions to the world's most pressing health, food, and economic challenges. Founded in 2020, DELISH seeks to empower individuals and communities to live healthier, more prosperous lives. </p>
+										  <p class="lead" style="font-size:15px">Through a range of initiatives, DELISH works to improve health outcomes, promote environmental stewardship, and create economic opportunity for individuals, communities, and businesses. At the heart of DELISH is a commitment to creating a sustainable food system that is equitable, healthy, and affordable for everyone.</p>
+										  <p class="lead" style="font-size:15px">DELISH also supports the development of food hubs and other initiatives to increase access to nutritious food and create economic opportunities for local farmers and food businesses. DELISH is committed to a healthier and wealthier future for everyone. From providing access to nutritious, affordable, and locally-sourced food and beverages, to creating economic opportunities and promoting environmental stewardship.</p>
+									</div>
+									<div class="col-9 col-lg-6 order-1 order-lg-2 scale-6 pb-5 pb-lg-0 mt-0 mt-md-4 mb-5 mb-lg-0" >
+										<img class="img-fluid appear-animation ml-3" src="img/desktop-device-2.png" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="300" data-plugin-options="{'accY': -400}" alt="">
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+							</div>
+					</div>
+				</section>
+				
+				<section id="services" class="section section-height-3  border-0 m-0 " style="background-color:#2A840B" >
+					<div class="container my-3">
+						<div class="row mb-5">
+							<div class="col text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+								<h2 class="font-weight-bold text-color-light mb-2">Our CORE BELIEFS</h2>
+								<p class="text-color-light opacity-7">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT</p>
+							</div>
+						</div>
+						<div class="row mb-lg-4">
+							<div class="col-lg-4 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="300">
+								<div class="feature-box feature-box-style-2">
+									<div class="feature-box-icon">
+										<img alt="" class="" src="img/impact.png" height="50px" Width="50px">
+									</div>
+									<div class="feature-box-info">
+										<h4 class="font-weight-bold text-color-light text-4 mb-2">We aspire to have a positive impact</h4>
+										<p class="text-color-light opacity-7 text-left">on the communities we serve and on the world around us, guided by our corporate mission of Inspiring Healthy Living and by carefully eliminating every hazard in your favorite foods.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter">
+								<div class="feature-box feature-box-style-2">
+									<div class="feature-box-icon">
+										<img alt="" class="" src="img/community.png" height="50px" Width="50px">
+									</div>
+									<div class="feature-box-info">
+										<h4 class="font-weight-bold text-color-light text-4 mb-2">We create COMMUNITIES</h4>
+										<p class="text-color-light opacity-7">We work together as one big family, support one another, and give back to the society.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="300">
+								<div class="feature-box feature-box-style-2">
+									<div class="feature-box-icon">
+										<img alt="" class="" src="img/quality.png" height="40px" Width="auto">
+									</div>
+									<div class="feature-box-info">
+										<h4 class="font-weight-bold text-color-light text-4 mb-2">We don't compromise QUALITY</h4>
+										<p class="text-color-light opacity-7">We settle for nothing less than the very best in our products & in our business practices.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-4 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="300">
+								<div class="feature-box feature-box-style-2">
+									<div class="feature-box-icon">
+										<img alt="" class="" src="img/shake.png" height="auto" Width="50px">
+									</div>
+									<div class="feature-box-info">
+										<h4 class="font-weight-bold text-color-light text-4 mb-2">We are AUTHENTIC</h4>
+										<p class="text-color-light opacity-7">Intentional fostering trust in our relationships. We believe that peace is one of the best forms of wealth.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 appear-animation" data-appear-animation="fadeInUpShorter">
+								<div class="feature-box feature-box-style-2">
+									<div class="feature-box-icon">
+										<img alt="" class="" src="img/hand.png" height="40px" Width="auto">
+									</div>
+									<div class="feature-box-info">
+										<h4 class="font-weight-bold text-color-light text-4 mb-2">We value SIMPLICITY hard work & dedication</h4>
+										<p class="text-color-light opacity-7">We make everything from plant-based nutrition to earning extra income as simple as possible.</p>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-4 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="300">
+								<div class="feature-box feature-box-style-2">
+									<div class="feature-box-icon">
+										<img alt="" class="" src="img/longevity.png" height="40px" Width="auto">
+									</div>
+									<div class="feature-box-info">
+										<h4 class="font-weight-bold text-color-light text-4 mb-2">We focus on LONGEVITY</h4>
+										<p class="text-color-light opacity-7">We think long-term. We are innovative in our approach. We think ahead in order to provide you with new innovative products of extra ordinary values.The impact of our business on people’s lives and health is Paramount.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				
+				
+				<div id="projects" class="container">
+					<div class="row justify-content-center pt-5 mt-5">
+						<div class="col-lg-9 text-center">
+							<div class="appear-animation" data-appear-animation="fadeInUpShorter">
+								<h2 class=" font-weight-normal text-6 text-dark mb-2" >Our <strong class="font-weight-extra-bold">Products</strong></h2>
+							</div>
+							<p class="pb-3 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Our products are designed to provide unparalleled quality and exceptional value to our customers, ensuring their complete satisfaction with every purchase. From innovative technologies to stylish designs, we are committed to delivering the best possible experience for our customers.</p>
+						</div>
+					</div>
+					<div class="row pb-5 mb-5">
+						<div class="col">
+							
+							<div class="appear-animation popup-gallery-ajax" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+								<div class="owl-carousel owl-theme mb-0" data-plugin-options="{'items': 4, 'margin': 35, 'loop': false}">
+				
+
+									<div class="portfolio-item">
+										<a href="" data-toggle="modal" data-target="#largeModal">
+											<span class="thumb-info thumb-info-lighten">
+												<span class="thumb-info-wrapper">
+													<img src="img/projects/slide 1.png" class="img-fluid border-radius-0" alt="">
+													<span class="thumb-info-title">
+														<span class="thumb-info-inner">Delish Power Choco</span>
+														<span class="thumb-info-type">Deliscare</span>
+													</span>
+													<span class="thumb-info-action">
+														<span class="thumb-info-action-icon bg-dark opacity-8" ><i class="fas fa-plus"></i></span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+
+									<div class="portfolio-item">
+										<a href="" data-toggle="modal" data-target="#largeModal">
+											<span class="thumb-info thumb-info-lighten">
+												<span class="thumb-info-wrapper">
+													<img src="img/projects/slide 2.png" class="img-fluid border-radius-0" alt="">
+													<span class="thumb-info-title">
+														<span class="thumb-info-inner">Delish Choco Bar</span>
+														<span class="thumb-info-type" >Deliscare</span>
+													</span>
+													<span class="thumb-info-action">
+														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+
+									<div class="portfolio-item">
+										<a href="" data-toggle="modal" data-target="#largeModal">
+											<span class="thumb-info thumb-info-lighten">
+												<span class="thumb-info-wrapper">
+													<img src="img/projects/slide 3.png" class="img-fluid border-radius-0" alt="">
+													<span class="thumb-info-title">
+														<span class="thumb-info-inner">Oma Liquid Pepper</span>
+														<span class="thumb-info-type">Deliscare</span>
+													</span>
+													<span class="thumb-info-action">
+														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+
+									<div class="portfolio-item">
+										<a href="" data-toggle="modal" data-target="#largeModal">
+											<span class="thumb-info thumb-info-lighten">
+												<span class="thumb-info-wrapper">
+													<img src="img/projects/slide 4.png" class="img-fluid border-radius-0" alt="">
+													<span class="thumb-info-title">
+														<span class="thumb-info-inner">Delish Jian Choco</span>
+														<span class="thumb-info-type">Deliscare</span>
+													</span>
+													<span class="thumb-info-action">
+														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+									<div class="portfolio-item">
+										<a href="" data-toggle="modal" data-target="#largeModal">
+											<span class="thumb-info thumb-info-lighten">
+												<span class="thumb-info-wrapper">
+													<img src="img/projects/slide 1.png" class="img-fluid border-radius-0" alt="">
+													<span class="thumb-info-title">
+														<span class="thumb-info-inner">Delish Power Choco</span>
+														<span class="thumb-info-type">Deliscare</span>
+													</span>
+													<span class="thumb-info-action">
+														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+
+									<div class="portfolio-item">
+										<a href="" data-toggle="modal" data-target="#largeModal">
+											<span class="thumb-info thumb-info-lighten">
+												<span class="thumb-info-wrapper">
+													<img src="img/projects/slide 2.png" class="img-fluid border-radius-0" alt="">
+													<span class="thumb-info-title">
+														<span class="thumb-info-inner">Delish Choco Bar</span>
+														<span class="thumb-info-type">Deliscare</span>
+													</span>
+													<span class="thumb-info-action">
+														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+
+									<div class="portfolio-item">
+										<a href="" data-toggle="modal" data-target="#largeModal">
+											<span class="thumb-info thumb-info-lighten">
+												<span class="thumb-info-wrapper">
+													<img src="img/projects/slide 3.png" class="img-fluid border-radius-0" alt="">
+													<span class="thumb-info-title">
+														<span class="thumb-info-inner">Oma Liquid Pepper</span>
+														<span class="thumb-info-type">Deliscare</span>
+													</span>
+													<span class="thumb-info-action">
+														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+
+									<div class="portfolio-item">
+										<a href="" data-toggle="modal" data-target="#largeModal">
+											<span class="thumb-info thumb-info-lighten">
+												<span class="thumb-info-wrapper">
+													<img src="img/projects/slide 4.png" class="img-fluid border-radius-0" alt="">
+													<span class="thumb-info-title">
+														<span class="thumb-info-inner">Delish Jian Choco</span>
+														<span class="thumb-info-type">Deliscare</span>
+													</span>
+													<span class="thumb-info-action">
+														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+
+				
+								</div>
+							</div>
+				
+						</div>
+					</div>
+				</div>
+
+				<section class="section border-0 py-0 m-0 appear-animation" data-appear-animation="fadeIn">
+					<div class="container">
+						<div class="row align-items-center justify-content-center justify-content-lg-between pb-5 pb-lg-0">
+							<div class="col-lg-5 order-2 order-lg-1 pt-4 pt-lg-0 pb-5 pb-lg-0 mt-5 mt-lg-0 mt-3 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="200" style="padding-top:30px">
+								<h2 class=" font-weight-normal text-6 text-dark mb-2">Something About <strong class="font-weight-extra-bold"> Delishcare Products..</strong></h2>
+								<p class="lead font-weight-light text-4">Delishcare products offer both health benefits and delicious taste that are hard to beat. Our products are made with high-quality ingredients that are carefully selected to provide maximum nutritional value without compromising on taste. Our products are a great addition to any healthy diet.</p>
+								<p class="lead font-weight-light text-4">We believe that partnering with Delishcare on the distribution of these products is a smart choice for businesses and consumers alike. Our commitment to quality, taste, and health ensures that our products are always in demand, and we are constantly expanding our product line to offer even more options for our customers. By partnering with Delishcare, businesses can offer their customers the best in healthy, delicious products while also enjoying the benefits of a strong and growing brand. With more products coming soon, there has never been a better time to join the Delishcare family.</p>
+							</div>
+							<div class="col-9 offset-lg-1 col-lg-5 order-1 order-lg-2 scale-2">
+								<img class="img-fluid" src="img/show2.jpg" alt="" height="1000px" width="auto"> 
+							</div>
+						</div>
+					</div>
+				</section>
+																
+				<section class="section section-primary border-0 mb-0 appear-animation" data-appear-animation="fadeIn" data-plugin-options="{'accY': -150}">
+					<div class="container">
+						<div class="row counters counters-sm pb-4 pt-3">
+							<div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
+								<div class="counter">
+									<i class="icons icon-user text-color-light"></i>
+									<strong class="text-color-light font-weight-extra-bold" data-to="9800" data-append="+">0</strong>
+									<label class="text-4 mt-1 text-color-light">Happy Clients</label>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3 mb-5 mb-lg-0">
+								<div class="counter">
+									<i class="icons icon-badge text-color-light"></i>
+									<strong class="text-color-light font-weight-extra-bold" data-to="6">0</strong>
+									<label class="text-4 mt-1 text-color-light">Years In Business</label>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3 mb-5 mb-sm-0">
+								<div class="counter">
+									<i class="icons icon-graph text-color-light"></i>
+									<strong class="text-color-light font-weight-extra-bold" data-to="178">0</strong>
+									<label class="text-4 mt-1 text-color-light">High Score</label>
+								</div>
+							</div>
+							<div class="col-sm-6 col-lg-3">
+								<div class="counter">
+									<i class="icons icon-people text-color-light"></i>
+									<strong class="text-color-light font-weight-extra-bold" data-to="4378">0</strong>
+									<label class="text-4 mt-1 text-color-light">Partners</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="container mb-5 pb-2">											
+					<div class="row text-center pt-4">
+						<div class="col">
+							<h2 class="word-rotator slide font-weight-bold text-8 text-dark mb-2">
+								<span class="font-weight-extra-bold">WHY JOIN US  </span>
+							</h2>
+							<p class="lead" style="font-size:15px" align="center">
+								We aspire to have a positive impact on the communities we serve And on the world around us,<br> guided by our corporate mission/Vision of Inspiring Healthy Living and by carefully eliminating every hazard in your favorite foods.
+							</p>
+						</div>
+					</div>	
+					<div class="row align-items-center pt-4 appear-animation" data-appear-animation="fadeInLeftShorter">
+						<div class="col-md-6 pl-md-5">
+                            <img src="img/long.png" class="img-fluid" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="300" style="height:1300px;width:auto"  >
+						</div>
+						<div class="col-md-6 mb-4 mb-md-0">
+							<div class="col">
+								<div class="process process-vertical py-4">
+									<div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+										<div class="process-step-circle">
+											<strong class="process-step-circle-content">1</strong>
+										</div>
+										<div class="process-step-content">
+											<h4 class="mb-1 text-4 font-weight-bold">Low Start-Up Costs</h4>
+											<p class="mb-0">Joining DELISHCARE is very affordable and requires a minimal financial investment. You will not need to invest in expensive inventory, as DELISHCARE only requires a minimal start-up fee.
+</p>
+										</div>
+									</div>
+									<div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
+										<div class="process-step-circle">
+											<strong class="process-step-circle-content">2</strong>
+										</div>
+										<div class="process-step-content">
+											<h4 class="mb-1 text-4 font-weight-bold">Medicinal Based Products</h4>
+											<p class="mb-0">DELISHCARE offers a variety of products that are all made with natural ingredients and are known for their health benefits. </p>
+										</div>
+									</div>
+									<div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600">
+										<div class="process-step-circle">
+											<strong class="process-step-circle-content">3</strong>
+										</div>
+										<div class="process-step-content">
+											<h4 class="mb-1 text-4 font-weight-bold">Comprehensive Training </h4>
+											<p class="mb-0">DELISHCARE provides comprehensive training to their members and provides them with the resources and tools to help them succeed</p>
+										</div>
+									</div>
+									<div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+										<div class="process-step-circle">
+											<strong class="process-step-circle-content">4</strong>
+										</div>
+										<div class="process-step-content">
+											<h4 class="mb-1 text-4 font-weight-bold">Great Community</h4>
+											<p class="mb-0">DELISHCARE has a great community of like-minded individuals who share the same goals and objectives to help each other succeed</p>
+										</div>
+									</div>
+									<div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+										<div class="process-step-circle">
+											<strong class="process-step-circle-content">5</strong>
+										</div>
+										<div class="process-step-content">
+											<h4 class="mb-1 text-4 font-weight-bold">Simple Sign-Up Process</h4>
+											<p class="mb-0">The sign-up process for DELISHCARE is simple and straightforward. You don’t have to worry about complicated paperwork or long waiting times. </p>
+										</div>
+									</div>
+									<div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+										<div class="process-step-circle">
+											<strong class="process-step-circle-content">6</strong>
+										</div>
+										<div class="process-step-content">
+											<h4 class="mb-1 text-4 font-weight-bold">Low Risk</h4>
+											<p class="mb-0">Joining DELISHCARE’s network is low risk as there is no inventory or upfront costs involved. </p>
+										</div>
+									</div>
+									<div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+										<div class="process-step-circle">
+											<strong class="process-step-circle-content">7</strong>
+										</div>
+										<div class="process-step-content">
+											<h4 class="mb-1 text-4 font-weight-bold">Fun and Rewarding</h4>
+											<p class="mb-0"> Our community is filled with a lot of fun and very rewarding. With DELISHCARE, you can build your dream world.</p>
+										</div>
+									</div>
+									<div class="process-step appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="800">
+										<div class="process-step-circle">
+											<strong class="process-step-circle-content">8</strong>
+										</div>
+										<div class="process-step-content">
+											<h4 class="mb-1 text-4 font-weight-bold">Competitive Compensation Plan</h4>
+											<p class="mb-0">DELISHCARE offers a generous compensation plan with high earning potential. You can earn money from product sales, bonuses, Monthly Profit sharing,  and other incentives.</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+						
+				<section class="section section-custom-map appear-animation" data-appear-animation="fadeInUpShorter">
+				    <div class="container">
+						<h2 class="word-rotator slide font-weight-bold text-8 mb-3 text-center">
+							<span class="font-weight-extra-bold">Partnership Opportunities </span>
+						</h2>
+					    <div class="row column-row">
+						    <div class="col-md-6"> 
+                                <img src="img/proud-partner-man-2.png" height="450px" width="auto">
+							</div>
+							<div class="col-md-6"> 
+                                	<ul class="list list-icons list-icons-style-3 list-quaternary mt-4">
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="0"><i class="fas fa-check"></i><span class="font-weight-bold">Investor’s Commission:</span> We offer a lifetime investor’s package; you earn N4.50k per every single product sold on our platform. Eg, you can make N45m if DELISHCARE make a total of ten million pieces of products.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="300"><i class="fas fa-check"></i><span class="font-weight-bold">By subscribing to our investor’s package;</span> you also share 6% of our company’s annual profit return.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600"><i class="fas fa-check"></i><span class="font-weight-bold"> Stockiest:</span> You can partner with us by becoming our stockiest center; you will stand a chance of making 5% of total sales made in your center. </li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600"><i class="fas fa-check"></i>We have partnership opportunities for logistic companies across the country</li>
+
+									</ul>
+							</div>
+						</div>
                     </div>
-                </div>
+				</section>
 
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
+			</div>
+			<section class="call-to-action with-borders with-button-arrow mb-5">
+				<div class="col-sm-9 col-lg-9">
+					<div class="call-to-action-content">
+						<h3>Join us today and  <strong class="font-weight-extra-bold">unlock your limitless potential</strong></h3>
+						<h3>let's turn your dreams into reality and build <strong class="font-weight-extra-bold">a brighter future together!</strong></h3>
+					</div>
+				</div>
+				<div class="col-sm-3 col-lg-3">
+					<div class="call-to-action-btn">
+						<a href="" target="_blank" class="btn btn-modern text-2 btn-success">Become a Partner</a><span class="arrow hlb d-none d-md-block" data-appear-animation="rotateInUpLeft" style="left: 100%; top: -32px;"></span>
+					</div>
+				</div>
+			</section>
+			
+			<div class="container">
+				<div class="row align-items-center pt-5 pb-3 appear-animation" data-appear-animation="fadeInRightShorter">
+					<div class="col-lg-6 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
+						<h2 class=" font-weight-normal text-6 mb-2 text-dark" >Ways to Earn With<strong class="font-weight-extra-bold"> Delishcare</strong></h2>
+						<p class="lead" style="font-size:15px">Earning in 7 different ways with our company provides a multitude of benefits. Firstly, it allows for a diversified income stream, reducing the risk of over-dependence on any one source of income. Secondly, it provides the opportunity to maximize earnings potential by utilizing various skills and interests. Thirdly, it offers flexibility and freedom to work on multiple projects simultaneously or to switch between them as desired. Fourthly, it promotes creativity and innovation as partners can explore different ways to leverage their expertise and passion. Fifthly, it facilitates networking and collaboration with other partners, fostering a sense of community and support. Ultimately, earning in 7 ways with our company opens up a world of possibilities, enabling partners to reach their full potential and achieve financial success.</p>
+						<a href="" target="_blank" class="btn btn-modern text-2 btn-success">Download PDF</a>
+					   
+					</div>
+					<div class="col-sm-8 col-md-6 col-lg-6 " style="top: 0.3rem;">
+						<img src="img/generic/screen2.png" class="img-fluid appear-animation mb-2" data-appear-animation="expandIn" data-appear-animation-delay="600"  "alt="" />
+					</div>
+				</div>
+			</div>	
+				
+			<footer id="footer">				
+			     <div class="container">					
+				    <div class="footer-ribbon">						
+					    <span>Get in Touch</span>					
+					</div>					
+					<div class="row py-5 my-4">						
+						<div class="col-md-6 col-lg-6 mb-4 mb-lg-0">							
+							<h5 class="text-3 mb-3">Join the DelishCare</h5>							
+							<p class="pr-1">"Join the DelishCare family with our easy online registration process for partners. With just a few clicks, you can become a part of our mission to bring healthy and delicious meals to people everywhere. Sign up today and start offering our nutritious meal options to your customers!"</p>						
+							<div class="alert alert-danger d-none" id="newsletterError"></div>							
+                                <img src="img/payment-icon.png" alt="Payment icons" class="img-fluid mt-4 mt-lg-2">					
+						</div>											
+						<div class="col-md-6 col-lg-3 mb-4 mb-md-0">							
+							<div class="contact-details">								
+							<h5 class="text-3 mb-3">CONTACT US</h5>								
+								<ul class="list list-icons list-icons-lg">									
+									<li class="mb-1">
+									   <i class="far fa-dot-circle text-color-success"></i>
+									   <p class="m-0">No.18, Adeniyi Jones Estate, Ikoyi,Lagos.</p>
+								    </li>									
+									<li class="mb-1">
+										<i class="fab fa-whatsapp text-color-success"></i>
+									    <p class="m-0"><a href="tel:8001234567">+234(0)8035688969</a></p>
+									</li>									
+									<li class="mb-1">
+									   <i class="far fa-envelope text-color-success"></i>
+									   <p class="m-0"><a href="mailto:mail@example.com">Support@delishcare.com</a></p>
+								    </li>								
+								</ul>							
+							</div>						
+						</div>						
+						<div class="col-md-6 col-lg-2">							
+						    <h5 class="text-3 mb-3">FOLLOW US</h5>							
+						    <ul class="social-icons">								
+							    <li class="social-icons-facebook">
+								    <a href="" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+								</li>								
+								<li class="social-icons-twitter">
+								    <a href="" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+								</li>								
+								<li class="social-icons-instagram">
+									<a href="" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+								</li>
+								<li class="social-icons-youtube">
+									<a href="" target="_blank" title="youtube"><i class="fab fa-youtube"></i></a>
+								</li>									
+							</ul>						
+						</div>					
+					</div>				
+				</div>				
+				<div class="footer-copyright">					
+					<div class="container py-2">						
+						<div class="row py-4">							
+							<div class="col-lg-2 d-flex align-items-center justify-content-center justify-content-lg-start mb-4 mb-lg-0">								
+								<a href="index.html" class="logo pr-0 pr-lg-3">									
+								    <img alt="Porto Website Template" src="img/footer-img-white.png" class="opacity-5" height="33">								
+								</a>							
+							</div>															
+							<div class="col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-start mb-3 mt-3 mb-lg-0">
+							    <p>© Copyright 2023. Delishcare All Rights Reserved.</p>							
+							</div>							
+							<div class="col-lg-4 d-flex align-items-center justify-content-center justify-content-lg-end">								
+								<nav id="sub-menu">									
+									<ul>										
+										<li>
+											<i class="fas fa-angle-right"></i>
+											<a href="page-faq.html" class="ml-1 text-decoration-none"> Policy</a>
+										</li>										
+										<li>
+											<i class="fas fa-angle-right"></i>
+											<a href="sitemap.html" class="ml-1 text-decoration-none"> Terms</a>
+										</li>
+										<li>
+											<i class="fas fa-angle-right"></i>
+											<a href="sitemap.html" class="ml-1 text-decoration-none"> Home</a>
+										</li>										
+									</ul>								
+								</nav>							
+							</div>						
+						</div>					
+					</div>				
+				</div>			
+			</footer>	
 
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
+		</div>
+		
+		
+		<!---Product Modal---->
+		<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title font-weight-extra-bold" id="largeModalLabel">Delish Power Choco</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+					    <div class="row column-row">
+							<div class="col-md-6">
+							    <img src="img/projects/slide 1.png" class="img-thumbnail d-block lightbox" alt="">
+							</div>
+							<div class="col-md-6">
+								<h5 class="font-weight-bold">Benefits</h5>
+									<ul class="list list-icons list-icons-style-3 list-quaternary">
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="0"><i class="fas fa-check"></i><span class="font-weight-bold">Improved heart health:<span> The antioxidants found in chocolate may help to reduce inflammation and improve blood flow, which can lower the risk of heart disease and stroke.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="300"><i class="fas fa-check"></i><span class="font-weight-bold">Reduced inflammation:<span> The flavonoids found in chocolate have been shown to have anti-inflammatory properties, which may help to reduce chronic inflammation in the body that can lead to a variety of health problems.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600"><i class="fas fa-check"></i><span class="font-weight-bold"> Enhanced cognitive function:<span> Some studies have suggested that the antioxidants in chocolate may help to improve cognitive function and memory, potentially reducing the risk of age-related cognitive decline.</li>
+									</ul>
+							</div>
+						</div>	
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!----End Product Modal--->
+		
+		
+		
 
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
+		<!-- Vendor -->
+		<script src="vendor/jquery/jquery.min.js"></script>		
+		<script src="vendor/jquery.appear/jquery.appear.min.js"></script>		
+		<script src="vendor/jquery.easing/jquery.easing.min.js"></script>		
+		<script src="vendor/jquery.cookie/jquery.cookie.min.js"></script>		
+		<script src="master/style-switcher/style.switcher.js" id="styleSwitcherScript" data-base-path="" data-skin-src=""></script>		
+		
+		<script src="vendor/popper/umd/popper.min.js"></script>		
+		<script src="vendor/bootstrap/js/bootstrap.min.js"></script>		
+		<script src="vendor/common/common.min.js"></script>		
+		<script src="vendor/jquery.validation/jquery.validate.min.js"></script>		
+		<script src="vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>		
+		<script src="vendor/jquery.gmap/jquery.gmap.min.js"></script>		
+		<script src="vendor/jquery.lazyload/jquery.lazyload.min.js"></script>		
+		<script src="vendor/isotope/jquery.isotope.min.js"></script>		
+		<script src="vendor/owl.carousel/owl.carousel.min.js"></script>
+		<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>		
+		<script src="vendor/vide/jquery.vide.min.js"></script>		
+		<script src="vendor/vivus/vivus.min.js"></script>
+		
+		<!-- Theme Base, Components and Settings -->
+		<script src="js/theme.js"></script>
+		
+		<!-- Current Page Vendor and Views -->
+		<script src="vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>		<script src="vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>		<script src="vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>		<script src="js/views/view.home.js"></script>
+		
+		<!-- Theme Custom -->
+		<script src="js/custom.js"></script>
+		
+		<!-- Theme Initialization Files -->
+		<script src="js/theme.init.js"></script>
 
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','../../../../www.google-analytics.com/analytics.js','ga');
+		
+			ga('create', 'UA-42715764-5', 'auto');
+			ga('send', 'pageview');
+		</script>
+		<script src="master/analytics/analytics.js"></script>
 
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
+	</body>
+
+<!-- Mirrored from portotheme.com/html/porto/7.5.0/index-classic.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 Jul 2019 17:34:38 GMT -->
 </html>

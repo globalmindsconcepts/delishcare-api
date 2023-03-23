@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Services\UserProfileService;
 use Illuminate\Http\Request;
+use App\Services\BaseService;
+use Illuminate\Support\Facades\Log;
+use App\Http\Requests\BankDetailsUpdateRequest;
+use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
-    private $service;
+    private $service,$baseService;
 
     public function __construct()
     {
         $this->service = new UserProfileService;
+        $this->baseService = new BaseService;
     }
     /**
      * Display a listing of the resource.
@@ -39,9 +44,20 @@ class ProfileController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(Request $request,string $user_uuid)
     {
-        $data = $this->service->create($request->all());
+        try {  
+            $file_url = $request->hasFile('image') 
+            ? $this->baseService->processFileUpload($request,'image','profile-photos','public')
+            : null ;
+            $request['photo_path'] = $file_url;
+            
+        } catch (\Exception $e) {
+            Log::error("Error creating profile",[$e]);
+            return response()->json(["message"=>"An internal error occured"],500);
+        }
+        
+        $data = $this->service->create($user_uuid,$request->all());
         return response()->json($data, $data['status']);
     }
 
@@ -49,22 +65,12 @@ class ProfileController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Profile  $profile
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function show(Profile $profile)
+    public function show(Request $request, string $user_uuid)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Profile  $profile
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Profile $profile)
-    {
-        //
+        $data = $this->service->get($user_uuid);
+        return response()->json($data,$data['status']);
     }
 
     /**
@@ -74,10 +80,26 @@ class ProfileController extends Controller
      * @param  \App\Models\Profile  $profile
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request)
+    public function update(ProfileUpdateRequest $request, string $user_uuid)
     {
+        try {  
+            $file_url = $request->hasFile('image') 
+            ? $this->baseService->processFileUpload($request,'image','profile-photos','public')
+            : null ;
+            $request['photo_path'] = $file_url;
+        } catch (\Exception $e) {
+            Log::error("Error updating profile",[$e]);
+            return response()->json(["message"=>"An internal error occured"],500);
+        }
+        unset($request['image']);
         $user_uuid = $request->user()->uuid;
-        $data = $this->service->update($user_uuid, $request->all());
+        $data = $this->service->update($user_uuid, $request->validated()+['photo_path'=>$request['photo_path']]);
         return response()->json($data, $data['status']);
+    }
+
+    public function updateBankDetails(BankDetailsUpdateRequest $request, string $user_uuid)
+    {
+        $data = $this->service->updateBankDetails($user_uuid,$request->all());
+        return response()->json($data,$data['status']);
     }
 }

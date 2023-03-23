@@ -21,22 +21,28 @@ class PackageRepository{
 
     public function create(array $data)
     {
-        return $this->model->save($data);
+        return (new Package($data))->save();
     }
 
     public function update(int $id, array $data)
     {
         return $this->table->where('id', '=', $id)->update($data);
+        //info('upd', [$upd]);
     }
 
     public function get($id)
     {
-       return $this->table->where('id',$id)->first();
+       return $this->table->where('id','=',$id)->get()->first();
     }
 
     public function delete(int $id)
     {
         return $this->table->delete($id);
+    }
+
+    public function checkPackage(Int $id, array $data)
+    {
+        return $this->table->select('id')->where($data)->where('id', '<>', $id)->get()->first();
     }
 
 }

@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Services\IncentiveService;
 use Illuminate\Http\Request;
+use App\Services\BaseService;
+use Illuminate\Support\Facades\Log;
+use App\Http\Requests\IncentiveCreateRequest;
 
 class IncentiveController extends Controller
 {
-    private $service;
+    private $service,$baseService;
 
     public function __construct()
     {
         $this->service = new IncentiveService;
+        $this->baseService = new BaseService;
     }
 
     /**
@@ -31,9 +35,25 @@ class IncentiveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(IncentiveCreateRequest $request)
     {
-        $data = $this->service->create($request->all());
+        try {  
+            $file_url = $request->hasFile('image') 
+            ? $this->baseService->processFileUpload($request,'image','incentives','public')
+            : null ;
+        } catch (\Exception $e) {
+            Log::error("Error creating incentive",[$e]);
+            return response()->json(["message"=>"An internal error occured"],500);
+        }
+        $request['file_path'] = $file_url;
+        unset($request['image']);
+        $data = $this->service->create($request->only('rank_id','file_path','incentive','worth'));
+        return response()->json($data, $data['status']);
+    }
+
+    public function show($id)
+    {
+        $data = $this->service->get($id);
         return response()->json($data, $data['status']);
     }
 
@@ -44,9 +64,18 @@ class IncentiveController extends Controller
      * @param  \App\Models\Incentive  $incentive
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, Int $id)
+    public function update(IncentiveCreateRequest $request, Int $id)
     {
-        $data = $this->service->update($id, $request->all());
+        try {  
+            $file_url = $request->hasFile('image') 
+            ? $this->baseService->processFileUpload($request,'image','incentives','public')
+            : null ;
+        } catch (\Exception $e) {
+            Log::error("Error creating incentive",[$e]);
+            return response()->json(["message"=>"An internal error occured"],500);
+        }
+        $request['file_path'] = $file_url;
+        $data = $this->service->update($id, $request->only('rank_id','file_path','incentive','worth'));
         return response()->json($data, $data['status']);
     }
 
@@ -60,5 +89,10 @@ class IncentiveController extends Controller
     {
         $data = $this->service->delete($id);
         return response()->json($data, $data['status']);
+    }
+
+    public function claim(Request $request)
+    {
+        
     }
 }

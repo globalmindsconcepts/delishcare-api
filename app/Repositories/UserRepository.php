@@ -76,7 +76,7 @@ class UserRepository{
 
     public function userExists(string $email)
     {
-        $data = DB::table('users')->where('email', '=', $email)->first();
+        $data = DB::table('users')->where('email', '=', $email)->orWhere('username','=',$email)->first();
         return $data;
     }
 
@@ -88,7 +88,7 @@ class UserRepository{
 
     public function checkVerificationCode(string $email, string $code)
     {
-        $data = DB::table('users')->where('email', '=', $email)->where('verification_code', '=', $code)->first();
+        $data = DB::table('users')->where('email', '=', $email)->orWhere('username', '=', $email)->where('verification_code', '=', $code)->first();
         return $data;
     }
 
@@ -100,7 +100,7 @@ class UserRepository{
 
     public function verifyEmail(string $email)
     {
-        $res = DB::table('users')->where('email', '=', $email)->update(['email_verified_at' => now()]);
+        $res = DB::table('users')->where('email', '=', $email)->orWhere('username','=',$email)->update(['email_verified_at' => now()]);
         return $res;
     }
 

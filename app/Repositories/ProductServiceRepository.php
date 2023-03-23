@@ -71,7 +71,7 @@ class ProductServiceRepository {
     public function getServiceById($id)
     {
         $sql = "SELECT * FROM product_services WHERE id='$id' LIMIT 1";
-        $res = DB::selectOne($sql);
+        $res = DB::select($sql);
         $data = (array)$res[0];
         if(empty($data)){
             return null;

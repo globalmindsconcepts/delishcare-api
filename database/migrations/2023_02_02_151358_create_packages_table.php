@@ -17,11 +17,11 @@ class CreatePackagesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('vip')->unique(); //e.g vip1,vip2
-            $table->text('description')->nullable();
             $table->double('point_value');
             $table->double('value'); // point_value x unit pv
             $table->double('registration_value');
             $table->boolean('profit_pool_eligible')->default(false);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
