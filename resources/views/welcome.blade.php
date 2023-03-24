@@ -141,10 +141,10 @@
 													    <a class="dropdown-item" href="#">Why Us</a>														
 													</li>													
 													<li class="dropdown">														
-													    <a class="dropdown-item" href="#">Login</a>														
+													    <a class="dropdown-item" href="http://138.68.145.71:8080/login">Login</a>														
 													</li>													
 													<li class="dropdown">														
-													    <a class="dropdown-item" href="#">Register</a>														
+													    <a class="dropdown-item" href="http://138.68.145.71:8080/register">Register</a>														
 													</li>
 												</ul>
 											</nav>
