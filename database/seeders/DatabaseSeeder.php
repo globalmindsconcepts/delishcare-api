@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         (new ServiceProviderTableSeeder)->run();
         (new ProductServiceTableSeeder)->run();
         (new ProductTableSeeder)->run();
+        (new SingleUserSeeder)->run();
     }
 }
