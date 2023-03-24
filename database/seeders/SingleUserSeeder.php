@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\PackagePayment;
+use App\Models\WelcomeBonus;
 
 class SingleUserSeeder extends Seeder
 {
@@ -22,6 +24,20 @@ class SingleUserSeeder extends Seeder
                 'username'=>'delishcare',
                 'package_id'=>1
             ])->create();
+
+            (new PackagePayment([
+                'user_uuid'=>User::first()->uuid,
+                'amount'=>20000,
+                'point_value'=>5,
+                'status'=>'approved',
+                'reference'=>'deliscare001',
+                'processor'=>'paystack'
+            ]))->save();
+
+            (new WelcomeBonus([
+                'user_uuid'=>User::first()->uuid,
+                'bonus'=>20000,
+            ]))->save();
         }
     }
 }
