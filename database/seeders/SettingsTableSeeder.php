@@ -31,7 +31,10 @@ class SettingsTableSeeder extends Seeder
                 'global_profit_second_percentage'=>10,
                 'next_global_profit_share_month'=>10,
                 'next_global_profit_share_day'=>30,
-                'placement_bonus_percentage'=>5
+                'placement_bonus_percentage'=>5,
+                
+                'general_message'=>'Welcome to Delish care',
+                'home_page_message'=>'Welcome to Delish care'
             ]))->save();
         }
         

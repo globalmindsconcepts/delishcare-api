@@ -19,7 +19,7 @@ class RankRepository{
 
     public function all()
     {
-        return $this->table->paginate(20);
+        return $this->table->get();
     }
 
     public function get(Int $id)

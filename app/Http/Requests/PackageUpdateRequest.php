@@ -25,9 +25,9 @@ class PackageUpdateRequest extends FormRequest
     {
         return [
             'name'=>'bail|required|string',
-            'vip'=>'bail|required|string',
+            //'vip'=>'bail|required|string',
             'point_value'=>'bail|required|numeric',
-            'value'=> 'bail|required|numeric',
+            //'value'=> 'bail|required|numeric',
             'registration_value'=>'bail|required|numeric',
             'profit_pool_eligible'=>'bail|nullable|in:true,false'
         ];

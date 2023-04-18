@@ -17,7 +17,9 @@ class WithdrawalRepository{
 
     public function all()
     {
-        return $this->table->leftJoin('users','users.uuid','=','withdrawals.user_uuid')->paginate(20);
+        return $this->table->leftJoin('users','users.uuid','=','withdrawals.user_uuid')
+        ->select(['users.username','withdrawals.amount','withdrawals.status','withdrawals.created_at'])
+        ->paginate(20);
     }
 
     //user withdrawal history
@@ -26,15 +28,20 @@ class WithdrawalRepository{
         return $this->table->where('user_uuid','=',$uuid)->paginate(20);
     }
 
+    public function processingWithdrawal(string $uuid)
+    {
+        return $this->table->where('user_uuid','=',$uuid)->where('status','=','processing')->count();
+    }
+
     //user total withdraeals
     public function userTotal(string $uuid)
     {
-        return $this->table->where('user_uuid','=',$uuid)->sum('amount');
+        return $this->table->where('user_uuid','=',$uuid)->where('status','=','successful')->sum('amount');
     }
     //total withdrawals
     public function total()
     {
-        return $this->table->sum('amount');
+        return $this->table->where('status','=','successful')->sum('amount');
     }
 
     public function create(array $data)

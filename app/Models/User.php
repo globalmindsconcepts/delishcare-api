@@ -44,11 +44,16 @@ class User extends Authenticatable
 
     public function package()
     {
-        return $this->hasOne(Package::class);
+        return $this->belongsTo(Package::class);
     }
 
     public function packagePayment()
     {
         return $this->hasOne(PackagePayment::class,'user_uuid','uuid');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class,'user_uuid','uuid');
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\WithdrawalService;
+use App\Http\Requests\WithdrawalRequest;
 
 class WithdrawalController extends Controller
 {
@@ -13,7 +14,7 @@ class WithdrawalController extends Controller
         $this->service = new WithdrawalService;
     }
 
-    public function initiate(Request $request, string $uuid)
+    public function initiate(WithdrawalRequest $request, string $uuid)
     {
         $data = $this->service->create($uuid,$request->all());
         return response()->json($data,$data['status']);
@@ -37,7 +38,7 @@ class WithdrawalController extends Controller
         return response()->json($data,$data['status']);
     }
 
-    public function total(Request $request, string $uuid)
+    public function total(Request $request)
     {
         $data = $this->service->total(); 
         return response()->json($data,$data['status']);

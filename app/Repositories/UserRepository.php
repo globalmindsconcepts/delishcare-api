@@ -21,15 +21,13 @@ class UserRepository{
     {
         unset($data['referrer']);
         unset($data['placer']);
-       return $this->table->insert($data);
+       return (new User($data))->save(); //$this->table->insert($data);
     }
 
     public function update(string $uuid, array $data)
     {
         return $this->table->where('uuid', $uuid)->update($data);
     }
-
-
 
     public function activeUsers(bool $count)
     {
@@ -60,6 +58,8 @@ class UserRepository{
             return $data;
         }
         $data = DB::table('users')->leftJoin('user_profiles', 'users.uuid', '=', 'user_profiles.user_uuid')
+        ->leftJoin('packages', 'users.package_id', '=', 'packages.id')
+        ->where('users.id','<>',1)
         ->orderByDesc('users.created_at')->paginate(50);
         return $data;
     }
@@ -74,8 +74,11 @@ class UserRepository{
         return $res[0];
     }
 
-    public function userExists(string $email)
+    public function userExists(string $email,$model=false)
     {
+        if($model){
+            return User::where('email',$email)->orWhere('username','=',$email)->first();//->createToken();
+        }
         $data = DB::table('users')->where('email', '=', $email)->orWhere('username','=',$email)->first();
         return $data;
     }
@@ -94,6 +97,7 @@ class UserRepository{
 
     public function updatePassword(string $email, string $password)
     {
+        //info($email);
         $res = DB::table('users')->where('email', '=', $email)->update(['verification_code' => null, 'password' => $password]);
         return $res;
     }
@@ -121,6 +125,11 @@ class UserRepository{
         WHERE user_uuid = '$uuid'";
         $res = DB::delete($sql);
         return $res;
+    }
+
+    public function totalRegistrations()
+    {
+        return $this->table->get()->count();
     }
 
 }

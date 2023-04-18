@@ -26,9 +26,11 @@ class AuthControllerTest extends TestCase
     public function test_create_user_200()
     {
         $user1 = $this->createUsers()->first();
+        $package = $this->createPackage(['name' => 'basic', 'vip' => 'vip6', 'point_value' => 5, 
+        'registration_value' => 20000,'profit_pool_eligible'=>true])->first();
         $user = ['first_name'=>'larry','last_name'=>'josh','email'=>'larry@mail',
         'phone'=>'090123456','username'=>'larry','referrer'=>$user1->username,
-        'password'=>'password'];
+        'password'=>'password','package_id'=>$package->id];
 
         $response = $this->postJson($this->v1API('auth/register'), $user);
 
@@ -50,10 +52,10 @@ class AuthControllerTest extends TestCase
 
     public function test_user_login()
     {
-        $this->createUsers(1,['email'=>'larry@mail'])->first();
+        $this->createUsers(1,['email'=>'larry@mail','username'=>'mooko'])->first();
 
         $response = $this->postJson($this->v1API('auth/login'),
-        ['email'=>'larry@mail','password'=>'password']);
+        ['username'=>'mooko','password'=>'password']);
 
         $response->assertStatus(200);
     }
@@ -73,9 +75,11 @@ class AuthControllerTest extends TestCase
         $users = $this->createUsers(2,null);
         $user1 = $users->first();
         $user2 = $users->last();
+        $package = $this->createPackage(['name' => 'basic', 'vip' => 'vip6', 'point_value' => 5, 
+        'registration_value' => 20000,'profit_pool_eligible'=>true])->first();
         $user = ['first_name'=>'larry','last_name'=>'josh','email'=>'larry@mail',
         'phone'=>'090123456','username'=>'larry','referrer'=>$user1->username,'placer'=>$user2->username,
-        'password'=>'password'];
+        'password'=>'password','package_id'=>$package->id];
 
         $response = $this->postJson($this->v1API('auth/register'), $user);
 

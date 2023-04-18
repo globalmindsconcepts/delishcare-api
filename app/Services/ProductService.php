@@ -39,6 +39,9 @@ class ProductService{
     public function update(int $id, array $data)
     {
         try {
+            // if($this->productServiceRepo->checkUpdate($id,['service'=>$data['service']])){
+
+            // }
             $this->productServiceRepo->update($id, $data);
             return ['message' => 'Product service updated succesfully', 'status' => 200];
         } catch (Exception $e) {

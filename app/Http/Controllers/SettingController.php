@@ -76,4 +76,11 @@ class SettingController extends Controller
         $data = $this->service->updateReferralBonusSetting($id, $request->all());
         return response()->json($data, $data['status']);
     }
+
+    public function getReferralBonusSetting(Request $request)
+    {
+        //info('hu');
+        $data = $this->service->getReferralBonusSetting();
+        return response()->json($data, $data['status']);
+    }
 }

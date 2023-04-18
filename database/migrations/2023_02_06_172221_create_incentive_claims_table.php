@@ -17,6 +17,7 @@ class CreateIncentiveClaimsTable extends Migration
             $table->id();
             $table->string('user_uuid')->references('uuid')->on('users');
             $table->integer('incentive_id')->references('id')->on('incentives');
+            $table->integer('rank_id')->references('id')->on('ranks');
             $table->enum('status', ['approved', 'processing', 'declined'])->default('processing');
             $table->timestamps();
         });

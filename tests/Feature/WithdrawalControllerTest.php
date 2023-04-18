@@ -23,7 +23,7 @@ class WithdrawalControllerTest extends TestCase
         $response = $this->actingAs($user)->post($this->v1API("withdrawals/{$user->uuid}/initiate"),$data);
 
         $response->assertStatus(200);
-        $this->assertDatabaseHas('withdrawals',['reference'=>$data['reference'],'amount'=>$data['amount']]);
+        $this->assertDatabaseHas('withdrawals',['user_uuid'=>$user->uuid,'amount'=>$data['amount']]);
     }
 
     public function test_all_withdrawals()

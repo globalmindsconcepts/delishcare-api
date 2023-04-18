@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Repositories\WithdrawalRepository;
 use \Exception;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 class WithdrawalService{
 
     private $repo;
@@ -52,8 +53,21 @@ class WithdrawalService{
     public function create(string $uuid, array $data)
     {
         try {
-           $rank = $this->repo->create($data+['user_uuid'=>$uuid]);
-            return ['data' => $rank, 'message' => 'Withdrawal created succesfully', 'status' => 200];
+            //check balance with provider 
+
+            if($this->repo->processingWithdrawal($uuid) > 0){
+                return ['message'=>'You have a pending withdrawal','status'=>400];
+            }
+
+            //check user balance
+            if($data['amount'] > (new WalletService)->totalBalance($uuid)){
+                return ['message'=>'Insuffucuent funds','status'=>400];
+            }
+
+            $data['status'] = 'processing';
+            $data['reference']=Str::random(10);
+           $withdrawal = $this->repo->create($data+['user_uuid'=>$uuid]);
+            return ['data' => $withdrawal, 'message' => 'Withdrawal created succesfully', 'status' => 200];
         } catch (Exception $e) {
             Log::error("create withdrawal error", [$e]);
             $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();

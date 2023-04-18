@@ -13,7 +13,7 @@ class PasswordResetRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class PasswordResetRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'code'=>'bail|required|string',
+            'email'=>'bail|required|email',
+            'user_type'=>'bail|required|string|in:user,admin',
+            'password'=>'bail|required|string'
         ];
     }
 }

@@ -47,4 +47,24 @@ class BonusService{
             return ['data' => $rank, 'message' => $message, 'status' => 500];
         }
     }
+
+    public function totalEquilibrumBonus()
+    {
+
+    }
+
+    public function totalLoyaltyBonus()
+    {
+        
+    }
+
+    public function totalProfitPoolBonus()
+    {
+        
+    }
+
+    public function totalGLobalProfitBonus()
+    {
+        
+    }
 }

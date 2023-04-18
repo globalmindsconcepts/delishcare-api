@@ -31,4 +31,11 @@ class ReferralBonusSettingRepository{
        return $this->table->where('package_id','=',$package_id)->first();
     }
 
+    public function all()
+    {
+       return $this->table->leftJoin('packages','packages.id','=','referral_bonus_settings.package_id')->get();
+    }
+
+
+
 }

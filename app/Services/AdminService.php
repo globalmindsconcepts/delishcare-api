@@ -33,8 +33,13 @@ class AdminService{
         return $this->adminRepository->updateVerificationCode($email,$code);
     }
 
-    public function userExists(string $email)
+    public function userExists(string $email, $model=false)
     {
-        return $this->adminRepository->userExists($email);
+        return $this->adminRepository->userExists($email,$model);
+    }
+
+    public function toggle2Fa(string $email,$data)
+    {
+        return $this->adminRepository->toggle2Fa($email,$data);
     }
 }

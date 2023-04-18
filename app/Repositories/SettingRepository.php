@@ -22,7 +22,7 @@ class SettingRepository{
 
     public function getSettings()
     {
-        return $this->table->first();
+        return $this->table->get()->first();
     }
 
 
@@ -33,7 +33,7 @@ class SettingRepository{
 
     public function update(array $data)
     {
-        $this->table->where('id','=', 1)->update($data);
+        $this->table->where('id', 1)->update($data);
     }
 
 }

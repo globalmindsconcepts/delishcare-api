@@ -72,4 +72,6 @@ class CompanyProductService{
             return ['message' => $message, 'status' => 500];
         }
     }
+
+    //public function 
 }

@@ -16,7 +16,7 @@ class TransactionRepository{
 
     public function create(array $data)
     {
-        return $this->table->insert($data);
+        return (new Transaction($data))->save(); //$this->table->insert($data);
     }
 
     public function update(string $reference, array $data)

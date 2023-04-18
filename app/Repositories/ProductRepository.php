@@ -26,7 +26,8 @@ class ProductRepository{
 
     public function get($id)
     {
-       return $this->table->where('id',$id)->get();
+        return Product::find($id);
+       //return $this->table->where('id',$id)->get()->first();
     }
 
     public function getData($param,$value)

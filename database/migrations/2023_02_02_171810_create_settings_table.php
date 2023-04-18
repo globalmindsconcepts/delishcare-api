@@ -39,9 +39,16 @@ class CreateSettingsTable extends Migration
 
             $table->double('placement_bonus_percentage')->default(0);
 
-            //$table->
-            
-            //$table->double('')
+            $table->string('general_message_subject')->nullable();
+            $table->text('general_message')->nullable();
+
+            $table->string('home_page_message_subject')->nullable();
+            $table->text('home_page_message')->nullable();
+            $table->boolean('show_front_page_message')->default(false);
+
+            $table->text('company_address')->nullable();
+            $table->string('company_email')->nullable();
+            $table->text('company_phone')->nullable();
             
             $table->timestamps();
         });

@@ -67,15 +67,16 @@ class IncentiveController extends Controller
     public function update(IncentiveCreateRequest $request, Int $id)
     {
         try {  
-            $file_url = $request->hasFile('image') 
-            ? $this->baseService->processFileUpload($request,'image','incentives','public')
+            $file_url = $request->hasFile('file_path') 
+            ? $this->baseService->processFileUpload($request,'file_path','incentives','public')
             : null ;
         } catch (\Exception $e) {
-            Log::error("Error creating incentive",[$e]);
+            Log::error("Error updating incentive",[$e]);
             return response()->json(["message"=>"An internal error occured"],500);
         }
-        $request['file_path'] = $file_url;
-        $data = $this->service->update($id, $request->only('rank_id','file_path','incentive','worth'));
+        $reqData = $request->only('rank_id','incentive','worth');
+        $reqData['file_path'] = $file_url;
+        $data = $this->service->update($id, $reqData);
         return response()->json($data, $data['status']);
     }
 

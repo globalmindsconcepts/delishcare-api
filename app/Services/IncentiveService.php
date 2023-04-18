@@ -14,6 +14,7 @@ class IncentiveService{
     {
         try {
             $incentives = $this->incentiveRepo->all();
+            //info('inc',[$incentives]);
             return ['data' => $incentives, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
             $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();

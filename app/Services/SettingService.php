@@ -67,6 +67,17 @@ class SettingService{
         }
     }
 
+    public function getReferralBonusSetting()
+    {
+        try {
+            $data = $this->referralBonusSetting->all();
+            return ['data'=>$data, 'message' => 'Referral bonus setting fetched succesfully', 'status' => 200];
+        } catch (Exception $e) {
+            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
+            return ['message' => $message, 'status' => 500];
+        }
+    }
+
     public function delete()
     {
         try {

@@ -417,6 +417,205 @@ class WalletControllerTest extends TestCase
 
         $response->assertOk();
     }
+
+    public function test_total_profit_pool_bonus()
+    {
+        $package = $this->createPackage(['name' => 'basic', 'vip' => 'vip1', 'point_value' => 5, 'registration_value' => 20000])->first();
+        $user = $this->createUsers(1,['package_id'=>$package->id])->first();
+
+        $data = [
+            'user_uuid' => $user->uuid,
+            'value' => 2000
+        ];
+
+        $this->createProfitPool($data);
+        $this->createProfitPool($data);
+
+        $response = $this->actingAs($user)->getJson($this->v1API("bonuses/total-profit-pool-bonus"));
+        $response->assertOk();
+
+        $this->assertDatabaseHas('profit_pools', ['user_uuid' => $user->uuid, 'value' => $data['value']]);
+        $response->assertJson(['data'=>4000]);
+    }
+
+    public function test_total_equilibrum_bonus()
+    {
+        $package = $this->createPackage(['name' => 'basic', 'vip' => 'vip1', 'point_value' => 5, 'registration_value' => 20000])->first();
+        $user = $this->createUsers(1,['package_id'=>$package->id])->first();
+
+        $data = [
+            'user_uuid' => $user->uuid,
+            'value' => 2000,
+            'num_downlines'=>4,
+            'bonus_value'=>5
+        ];
+
+        $this->createEquilibrumBonus($data);
+        $this->createEquilibrumBonus($data);
+
+        $response = $this->actingAs($user)->getJson($this->v1API("bonuses/total-equilibrum-bonus"));
+
+        $response->assertOk();
+        $response->assertJson(['data' => 4000]);
+        $this->assertDatabaseHas('equilibrum_bonuses', ['user_uuid' => $user->uuid, 'value' => $data['value']]);
+    }
+
+    public function test_total_loyalty_bonus()
+    {
+        $package = $this->createPackage(['name' => 'basic', 'vip' => 'vip1', 'point_value' => 5, 'registration_value' => 20000])->first();
+        $user = $this->createUsers(1,['package_id'=>$package->id])->first();
+
+        $data = [
+            'user_uuid' => $user->uuid,
+            'value' => 2000,
+            'bonus_value'=>5
+        ];
+
+        $this->createLoyaltyBonus($data);
+        $this->createLoyaltyBonus($data);
+
+        $response = $this->actingAs($user)->getJson($this->v1API("bonuses/total-loyalty-bonus"));
+
+        $response->assertOk();
+        $response->assertJson(['data' => 4000]);
+        $this->assertDatabaseHas('loyalty_bonuses', ['user_uuid' => $user->uuid, 'value' => $data['value']]);
+    }
+
+    public function test_total_global_profit_bonus()
+    {
+        $package = $this->createPackage(['name' => 'basic', 'vip' => 'vip1', 'point_value' => 5, 'registration_value' => 20000])->first();
+        $user = $this->createUsers(1,['package_id'=>$package->id])->first();
+
+        $data = [
+            'user_uuid' => $user->uuid,
+            'profit' => 2000,
+        ];
+
+        $this->createGlobalProfit($data);
+        $this->createGlobalProfit($data);
+
+        $response = $this->actingAs($user)->getJson($this->v1API("bonuses/total-global-profit-bonus"));
+
+        $response->assertOk();
+        $response->assertJson(['data' => 4000]);
+        $this->assertDatabaseHas('global_profits', ['user_uuid' => $user->uuid, 'profit' => $data['profit']]);
+    }
+
+    public function test_company_wallet_balance()
+    {
+        $admin = $this->setAdmin();
+        $setting = $this->createSetting()->first();
+        $package = $this->createPackage(['name' => 'basic', 'vip' => 'vip6', 'point_value' => 5, 
+        'registration_value' => 20000,'profit_pool_eligible'=>true])->first();
+
+        $user = $this->createUsers(1,['package_id'=>$package->id])->first();
+        $user1 = $this->createUsers(1,['package_id'=>$package->id,'email'=>'email1@mail.com'])->first();
+        $user2 = $this->createUsers(1,['package_id'=>$package->id,'email'=>'email2@mail.com'])->first();
+        $user3 = $this->createUsers(1,['package_id'=>$package->id,'email'=>'email3@mail.com'])->first();
+        $user4 = $this->createUsers(1,['package_id'=>$package->id,'email'=>'email4@mail.com'])->first();
+
+        $this->createChild(['parent_id' => $user->uuid, 'child_id' => $user1->uuid]);
+        $this->createChild(['parent_id' => $user->uuid, 'child_id' => $user2->uuid]);
+        $this->createChild(['parent_id' => $user->uuid, 'child_id' => $user3->uuid]);
+        $this->createChild(['parent_id' => $user->uuid, 'child_id' => $user4->uuid]);
+
+        $this->createPackagePayment(['user_uuid' => $user->uuid, 'amount' => 20000, 
+        'point_value' => $setting->point_value, 'reference' => 'hdhdhyey34y5jeje','updated_at'=>'2022-12-01']);
+
+        (new PackagePayment([
+            'user_uuid' => $user1->uuid,
+            'amount' => 20000,
+            'point_value' => $setting->point_value,
+            'reference' => 'hdhdhyey34y5jeje',
+            'status'=>'approved'
+        ]))->save();
+        (new PackagePayment([
+            'user_uuid' => $user2->uuid,
+            'amount' => 20000,
+            'point_value' => $setting->point_value,
+            'reference' => 'hdhdhyey34y5jeje',
+            'status'=>'approved'
+        ]))->save();
+        (new PackagePayment([
+            'user_uuid' => $user3->uuid,
+            'amount' => 20000,
+            'point_value' => $setting->point_value,
+            'reference' => 'hdhdhyey34y5jeje',
+            'status'=>'approved'
+        ]))->save();
+        (new PackagePayment([
+            'user_uuid' => $user4->uuid,
+            'amount' => 20000,
+            'point_value' => $setting->point_value,
+            'reference' => 'hdhdhyey34y5jeje',
+            'status'=>'approved'
+        ]))->save();
+
+        $this->createWithdrawal(['user_uuid'=>$user->uuid,'amount'=>10000,'status'=>'successful']);
+        $this->createWithdrawal(['user_uuid'=>$user->uuid,'amount'=>10000,'status'=>'successful']);
+
+        $response = $this->actingAs($admin)->getJson($this->v1API("bonuses/company-wallet-balance"));
+        $response->assertOk();
+        $response->assertJson(['data'=>60000]);
+    }
+
+    public function test_total_company_wallet()
+    {
+        $admin = $this->setAdmin();
+        $setting = $this->createSetting()->first();
+        $package = $this->createPackage(['name' => 'basic', 'vip' => 'vip6', 'point_value' => 5, 
+        'registration_value' => 20000,'profit_pool_eligible'=>true])->first();
+
+        $user = $this->createUsers(1,['package_id'=>$package->id])->first();
+        $user1 = $this->createUsers(1,['package_id'=>$package->id,'email'=>'email1@mail.com'])->first();
+        $user2 = $this->createUsers(1,['package_id'=>$package->id,'email'=>'email2@mail.com'])->first();
+        $user3 = $this->createUsers(1,['package_id'=>$package->id,'email'=>'email3@mail.com'])->first();
+        $user4 = $this->createUsers(1,['package_id'=>$package->id,'email'=>'email4@mail.com'])->first();
+
+        $this->createChild(['parent_id' => $user->uuid, 'child_id' => $user1->uuid]);
+        $this->createChild(['parent_id' => $user->uuid, 'child_id' => $user2->uuid]);
+        $this->createChild(['parent_id' => $user->uuid, 'child_id' => $user3->uuid]);
+        $this->createChild(['parent_id' => $user->uuid, 'child_id' => $user4->uuid]);
+
+        $this->createPackagePayment(['user_uuid' => $user->uuid, 'amount' => 20000, 
+        'point_value' => $setting->point_value, 'reference' => 'hdhdhyey34y5jeje','updated_at'=>'2022-12-01']);
+
+        (new PackagePayment([
+            'user_uuid' => $user1->uuid,
+            'amount' => 20000,
+            'point_value' => $setting->point_value,
+            'reference' => 'hdhdhyey34y5jeje',
+            'status'=>'approved'
+        ]))->save();
+        (new PackagePayment([
+            'user_uuid' => $user2->uuid,
+            'amount' => 20000,
+            'point_value' => $setting->point_value,
+            'reference' => 'hdhdhyey34y5jeje',
+            'status'=>'approved'
+        ]))->save();
+        (new PackagePayment([
+            'user_uuid' => $user3->uuid,
+            'amount' => 20000,
+            'point_value' => $setting->point_value,
+            'reference' => 'hdhdhyey34y5jeje',
+            'status'=>'approved'
+        ]))->save();
+        (new PackagePayment([
+            'user_uuid' => $user4->uuid,
+            'amount' => 20000,
+            'point_value' => $setting->point_value,
+            'reference' => 'hdhdhyey34y5jeje',
+            'status'=>'approved'
+        ]))->save();
+
+        $this->createWithdrawal(['user_uuid'=>$user->uuid,'amount'=>10000,'status'=>'successful']);
+        $this->createWithdrawal(['user_uuid'=>$user->uuid,'amount'=>10000,'status'=>'successful']);
+
+        $response = $this->actingAs($admin)->getJson($this->v1API("bonuses/total-company-wallet"));
+        $response->assertOk();
+        $response->assertJson(['data'=>80000]);
+    }
 }
 
 

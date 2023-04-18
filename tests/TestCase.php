@@ -115,9 +115,19 @@ abstract class TestCase extends BaseTestCase
         return \App\Models\Incentive::factory()->create($data);
     }
 
+    // public function createProduct($data=null)
+    // {
+    //     return \App\Models\Product::factory()->create($data);
+    // }
+
     public function createIncentiveClaim($data=null)
     {
         return \App\Models\IncentiveClaim::factory()->create($data);
+    }
+
+    public function createProductClaim($data=null)
+    {
+        return \App\Models\ProductClaim::factory()->create($data);
     }
 
     public function createUserProfile($data=null)

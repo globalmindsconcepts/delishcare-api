@@ -63,4 +63,30 @@ class UserProfileService{
             return ['message' => $message, 'status' => 500];
         }
     }
+
+    public function toggle2FA(string $uuid, array $data)
+    {
+        try {
+            $enable = $data['enable_2fa'] == 'true' | true ? true : false;
+            $this->profileRepo->toggle2FA($uuid,$enable);
+            
+           return ['success'=>true,'status'=>200];
+        } catch (Exception $e) {
+            Log::error("Error sending toggling 2fa",[$e]);
+            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+        }
+    }
+
+    public function bankEditable(string $uuid, array $data)
+    {
+        try {
+            $enable = $data['bank_editable'] == true ? true : false;
+            $this->profileRepo->toggleBankEditable($uuid,$enable);
+            
+           return ['success'=>true,'status'=>200];
+        } catch (Exception $e) {
+            Log::error("Error sending toggling 2fa",[$e]);
+            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+        }
+    }
 }

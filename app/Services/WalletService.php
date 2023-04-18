@@ -15,6 +15,7 @@ use App\Repositories\GlobalProfitRepository;
 use App\Repositories\WelcomeBonusRepository;
 use App\Repositories\ReferralBonusRepository;
 use App\Repositories\PlacementBonusRepository;
+use App\Repositories\WithdrawalRepository;
 
 /**
  * user wallet trait
@@ -31,7 +32,7 @@ class WalletService{
     private $user;
     private $packagePayment;
     private $profitPool, $equilibrumBonus, $loyaltyBonus, 
-    $globalProfit, $welcomeBonus,$rank,$placementBonus;
+    $globalProfit, $welcomeBonus,$rank,$placementBonus,$withdrawal;
     public function __construct()
     {
         $this->setting = new SettingRepository;
@@ -48,6 +49,7 @@ class WalletService{
         $this->rank = new RankRepository;
         $this->referralBonus = new ReferralBonusRepository;
         $this->placementBonus = new PlacementBonusRepository;
+        $this->withdrawal = new WithdrawalRepository;
     }
 
     /**
@@ -87,7 +89,7 @@ class WalletService{
 
     public function totalBonus(string $user_uuid)
     {
-        $welcome_bonus = $this->computeWelcomeBonus($user_uuid,true)->bonus;
+        $welcome_bonus = $this->computeWelcomeBonus($user_uuid,true)->bonus ?? 0;
         $referral_bonus = $this->referralBonus($user_uuid)->sum('bonus');
         $placement_bonus = $this->placementBonus($user_uuid)->sum('bonus');
         $equilibrum_bonus = $this->equillibrumBonus($user_uuid,true)->sum('value');
@@ -97,6 +99,12 @@ class WalletService{
 
         $total = $welcome_bonus + $referral_bonus + $placement_bonus + $equilibrum_bonus + $loyalty_bonus + $profit_pool + $global_profit;
         return $total;
+    }
+
+    public function totalBalance(string $uuid)
+    {
+        $balance = $this->totalBonus($uuid) - $this->withdrawal->userTotal($uuid);
+        return $balance;
     }
 
      /**
@@ -181,7 +189,7 @@ class WalletService{
     {
         
         if($fetch){
-            return $this->equilibrumBonus->table->where('user_uuid', $user_uuid);//->sum('value');
+            return $this->equilibrumBonus->table->where('user_uuid', $user_uuid)->get();//->sum('value');
         }
 
         $sum = 0;
@@ -239,7 +247,7 @@ class WalletService{
     public function loyaltyBonus(string $user_uuid, bool $fetch=false)
     {   
         if($fetch){
-           return $this->loyaltyBonus->table->where('user_uuid', $user_uuid);//->sum('value');
+           return $this->loyaltyBonus->table->where('user_uuid', $user_uuid)->get();//->sum('value');
         }
 
         $loyalty_bonus = $this->setting->get('loyalty_bonus_percentage')->loyalty_bonus_percentage;
@@ -396,5 +404,50 @@ class WalletService{
                 ])
             ]);
         }
+    }
+
+    public function totalEquilibrumBonus($count=false)
+    {
+        $bonus = $this->equilibrumBonus->table->get();//->sum('value');
+        return $count ? $bonus->count() : $bonus->sum('value');
+    }
+
+    public function totalLoyaltyBonus($count=false)
+    {
+        $bonus = $this->loyaltyBonus->table->get();//->sum('value');
+        return $count ? $bonus->count() : $bonus->sum('value');
+    }
+
+    public function totalProfitPoolBonus($count=false)
+    {
+        $bonus = $this->profitPool->table->get();//->sum('value');
+        return $count ? $bonus->count() : $bonus->sum('value');
+    }
+
+    public function totalGlobalProfitBonus($count=false)
+    {
+        $bonus = $this->globalProfit->table->get();//->sum('profit');
+        return $count ? $bonus->count() : $bonus->sum('profit');
+    }
+
+    public function totalWelcomeBonus($count=false)
+    {
+        $bonus = $this->welcomeBonus->table->get();//->sum('profit');
+        return $count ? $bonus->count() : $bonus->sum('bonus');
+    }
+
+    public function totalCompanyWallet()
+    {
+       return $this->packagePayment->table->where('status','approved')->get()->sum('amount');
+    }
+
+    public function totalWithdrawals()
+    {
+        return $this->withdrawal->table->where('status','successful')->get()->sum('amount');
+    }
+
+    public function companyWalletBalance()
+    {
+        return $this->totalCompanyWallet() - $this->totalWithdrawals();
     }
 }

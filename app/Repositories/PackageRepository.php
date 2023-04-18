@@ -26,7 +26,12 @@ class PackageRepository{
 
     public function update(int $id, array $data)
     {
-        return $this->table->where('id', '=', $id)->update($data);
+        info('id',[$id]);
+        //return $this->table->where('id',$id)->update($data);
+
+        $sql = "UPDATE packages SET registration_value=?, name=?, point_value=? WHERE id=?";
+        $res = DB::select($sql,[$data['registration_value'],$data['name'],$data['point_value'],$id]);
+        return $res;
         //info('upd', [$upd]);
     }
 

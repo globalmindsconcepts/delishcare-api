@@ -11,6 +11,7 @@ class BaseService{
             return 'file.png';
         }
         $file_path = $request->file($field_name)->store($file_path,$directory);
+        info('fpath',[$file_path]);
         if(!$file_path){
             throw new Exception("Unable to store file");
         }

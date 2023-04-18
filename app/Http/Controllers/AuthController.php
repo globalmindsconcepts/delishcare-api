@@ -10,11 +10,14 @@ use App\Services\AdminService;
 use App\Http\Requests\RegistrationRequest;
 use App\Http\Requests\EmailConfirmationRequest;
 use App\Http\Requests\PasswordResetRequest;
+use App\Http\Requests\Authenticate2FA;
 use App\Mail\PasswordResetEmail;
+use App\Mail\TwoFactorVerifyMail;
 use \Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use App\Http\Requests\ChangeUserPassword;
 
 class AuthController extends Controller
 {
@@ -35,7 +38,13 @@ class AuthController extends Controller
             if (!Auth::attempt($credentials)) {
                 return response()->json(["message"=>"Invalid login credentials"],400);
             }
+
             $user = $request->user();
+            $enable_2fa = false;
+            if($profile=$user->profile()->first()){
+                $enable_2fa = $profile->enable_2fa;
+            }
+
             $token = $user->createToken('authToken');//->plainTextToken;
             if ($request->remember_me){}
 
@@ -44,6 +53,8 @@ class AuthController extends Controller
             $resource = [
                 'access_token' => $token->plainTextToken,
                 'email_verified_at'=> $user->email_verified_at,
+                'enable_2fa'=>$enable_2fa,
+                //'details'=>$user,
                 'payment'=>$payment
                 //'token_type' => 'Bearer',
                 //'user'=>$user->load('level')
@@ -67,11 +78,16 @@ class AuthController extends Controller
                 return response()->json(["message"=>'Invalid login credentials'],400);
             }
             $user = $request->user('admin');
+            $enable_2fa = $user->enable_2fa;
+
             $token = $user->createToken('authToken');
             
             $resource = [
                 'access_token' => $token->plainTextToken,
+                //'details'=>$user,
                 'email_verified_at'=> $user->email_verified_at,
+                'is_admin'=>true,
+                'enable_2fa'=>$enable_2fa
             ];
             return response()->json(["message"=>"Logged in successfully",'data'=>$resource],200);
         }catch(Exception $e){
@@ -139,6 +155,29 @@ class AuthController extends Controller
         }
     }
 
+    public function authenticate2FA(Authenticate2FA $request)
+    { 
+        try {
+            $code = $request->code;
+            $email = $request->email;
+            $userType = $request->user_type;
+            $service = $userType == 'user' ? $this->userService : $this->adminService;
+            
+            if($service->checkVerificationCode($email,$code)){
+                $data = $service->userExists($email,true); 
+                $resource = [
+                    'access_token' => $data->createToken('authToken')->plainTextToken,
+                    'is_admin'=> $userType == 'admin' ? true : false
+                ];
+                return response()->json(['data'=>$resource, "message"=>"2FA verified successfully"]);
+            }
+            return response()->json(["message"=>"Invalid verification code"],400);
+        } catch (Exception $e) {
+            Log::error("Error verifying 2FA", [$e]);
+            return response()->json(["message"=>"An error occured, please try again"],500);
+        }
+    }
+
     public function sendPasswordResetEmail(Request $request)
     {
         try {
@@ -181,17 +220,63 @@ class AuthController extends Controller
         }
     }
 
+    public function send2faEmail(Request $request)
+    {
+        try {
+            $verifyCode = Str::random(5);
+            $data['verification_code'] = $verifyCode;
+            $email = $request->email;
+            $userType = $request->user_type;
+            $service = $userType == 'user' ? $this->userService : $this->adminService;
+            if($user = $service->userExists($email)){
+                $service->updateVerificationCode($user->email,$verifyCode);
+                Mail::to($user->email)->queue(new TwoFactorVerifyMail($verifyCode));
+                return response()->json(["message"=>"Please check your email for the 2FA authentication code"]);
+            }
+            return response()->json(["message"=>"Error, Email does not exist"],400);
+        } catch (Exception $e) {
+            Log::error("Error sending 2FA email",[$e]);
+            return response()->json(["message"=>"An error occured, please try again"],500);
+        }
+    }
+
     public function authUser(Request $request)
     {
         $user = $request->user();
-        //info()
         return response()->json($user);
     }
 
     public function authAdmin(Request $request)
     {
-        $user = $request->user('admin');
-        //info()
+        $user = $request->user();
         return response()->json($user);
+    }
+
+    //admin change user password
+    public function changeUserPassword(ChangeUserPassword $request, string $uuid)
+    {
+        $user = (new \App\Repositories\UserRepository)->getUser($uuid);
+        $email = $user['email'];
+        try {
+            $this->userService->updatePassword($email,$request->password);
+            //send email to user
+            return response()->json(["message"=>"Password reset successfully"]);
+        } catch (Exception $e) {
+            Log::error("Error changing user password",[$e]);
+            return response()->json(["message"=>"An error occured, please try again"],500);
+        }
+    }
+
+    public function toggleAdmin2fa(Request $request)
+    {
+        try {
+            $admin = $request->user();
+            $email = $admin->email;
+            $this->adminService->toggle2fa($email,$request->only('enable_2fa'));
+            return response()->json(["message"=>"2FA toggled successfully"]);
+        } catch (Exception $e) {
+            Log::error("Error enabling admin 2fa",[$e]);
+            return response()->json(["message"=>"An error occured, please try again"],500);
+        }
     }
 }

@@ -24,9 +24,18 @@ class AdminRepository {
         return $data;
     }
 
-    public function userExists(string $email)
+    public function userExists(string $email, $model=false)
     {
+        if($model){
+            return Admin::where('email',$email)->first();//->createToken();
+        }
         $data = DB::table('admins')->where('email','=',$email)->first();
+        return $data;
+    }
+
+    public function toggle2Fa(string $email,array $data)
+    {
+        $data = DB::table('admins')->where('email','=',$email)->update($data);
         return $data;
     }
 }

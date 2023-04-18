@@ -77,13 +77,13 @@
 										<nav class="header-nav-top">
 											<ul class="nav nav-pills">
 												<li class="nav-item  py-2 d-none d-sm-inline-flex">
-													<span class="pl-0"><i class="far fa-dot-circle text-4" style="top: 1px;color:#2A840B"></i>No.18, Adeniyi Jones Estate, Ikoyi,Lagos.</span>
+													<span class="pl-0"><i class="far fa-dot-circle text-4" style="top: 1px;color:#2A840B"></i><?php echo $data['company_address'] ? $data['company_address'] :  'No.18, Adeniyi Jones Estate, Ikoyi,Lagos.'?></span>
 												</li>
 												<li class="nav-item border-left py-2">
-													<a href="tel:123-456-7890"><i class="fab fa-whatsapp text-4" style="top: 0;color:#2A840B"></i> +234(0)8035688969</a>
+													<a href="#"><i class="fab fa-whatsapp text-4" style="top: 0;color:#2A840B"></i><?php echo $data['company_phone']? $data['company_phone'] : '+234(0)8035688969' ?> </a>
 												</li>
 												<li class="nav-item nav-item-borders border-right border-left py-2 ">
-													<a href="mailto:mail@domain.com"><i class="far fa-envelope text-4" style="top: 1px;color:#2A840B"></i> Support@delishcare.com</a>
+													<a href="#"><i class="far fa-envelope text-4" style="top: 1px;color:#2A840B"></i><?php echo $data['company_email']? $data['company_email'] : 'Support@delishcare.com'?> </a>
 												</li>
 											</ul>
 										</nav>
@@ -141,10 +141,10 @@
 													    <a class="dropdown-item" href="#">Why Us</a>														
 													</li>													
 													<li class="dropdown">														
-													    <a class="dropdown-item" href="http://138.68.145.71:8080/login">Login</a>														
+													    <a class="dropdown-item" href="<?=env('CLIENT_URL');?>/login">Login</a>														
 													</li>													
 													<li class="dropdown">														
-													    <a class="dropdown-item" href="http://138.68.145.71:8080/register">Register</a>														
+													    <a class="dropdown-item" href="<?=env('CLIENT_URL');?>/register">Register</a>														
 													</li>
 												</ul>
 											</nav>
@@ -882,15 +882,15 @@
 								<ul class="list list-icons list-icons-lg">									
 									<li class="mb-1">
 									   <i class="far fa-dot-circle text-color-success"></i>
-									   <p class="m-0">No.18, Adeniyi Jones Estate, Ikoyi,Lagos.</p>
+									   <p class="m-0"><?php echo $data['company_address'] ? $data['company_address'] : 'No.18, Adeniyi Jones Estate, Ikoyi,Lagos.' ?></p>
 								    </li>									
 									<li class="mb-1">
 										<i class="fab fa-whatsapp text-color-success"></i>
-									    <p class="m-0"><a href="tel:8001234567">+234(0)8035688969</a></p>
+									    <p class="m-0"><a href="#"><?php echo $data['company_phone'] ? $data['company_phone'] : '+234(0)8035688969'?></a></p>
 									</li>									
 									<li class="mb-1">
 									   <i class="far fa-envelope text-color-success"></i>
-									   <p class="m-0"><a href="mailto:mail@example.com">Support@delishcare.com</a></p>
+									   <p class="m-0"><a href="mailto:mail@example.com"><?php echo $data['company_email']?$data['company_email'] : 'Support@delishcare.com'?></a></p>
 								    </li>								
 								</ul>							
 							</div>						
@@ -981,10 +981,30 @@
 			</div>
 		</div>	
 		<!----End Product Modal--->
-		
-		
-		
 
+		<div class="modal fade" id="notifyModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title font-weight-extra-bold" id="largeModalLabel">Delishcare Notification</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+					    <div class="row column-row">
+							<div class="col-md-12 text-center">
+								<h5 class="modal-title font-weight-extra-bold mb-2" id="largeModalLabel"><?=$data['home_page_message_subject']?></h5>
+                                 <p> <?=$data['home_page_message']?></p>
+							</div>
+						</div>	
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+		
+		
 		<!-- Vendor -->
 		<script src="vendor/jquery/jquery.min.js"></script>		
 		<script src="vendor/jquery.appear/jquery.appear.min.js"></script>		
@@ -1016,6 +1036,16 @@
 		
 		<!-- Theme Initialization Files -->
 		<script src="js/theme.init.js"></script>
+
+		<script type="text/javascript">
+			<?php 
+				if($data['show_front_page_message']){
+					?>
+					$('#notifyModal').modal('show');
+			<?php		
+				}
+			?>
+		</script>
 
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

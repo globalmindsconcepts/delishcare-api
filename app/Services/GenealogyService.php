@@ -562,16 +562,17 @@ Class GenealogyService {
      */
     public function generateTree(&$family_arr,$child_id): array
     {
-        if($this->findChildren($child_id,false)){
-            foreach($this->findChildren($child_id,false) as $child){
-                $family_arr['children'] = [
+        if($children = $this->findChildren($child_id,false)){
+            foreach($children as $child){
+                $family_arr['children'][] = [
                     "name" => User::where('uuid',$child->child_id)->first()->username,
-                    "stage" => USer::where('uuid',$child->child_id)->first()->package->name,
-                    'img'=> User::where('uuid',$child->child_id)->first()->profile->user_img
+                    "title" => USer::where('uuid',$child->child_id)->first()->package->name,
+                    'img'=> User::where('uuid',$child->child_id)->first()->profile->photo_path
                 ];
-               
-                $this->generateTree($family_arr['children'],$child->child_id);
-                
+
+               //if($this->findChildren($child->child_id,false)){
+                    $this->generateTree($family_arr['children'],$child->child_id);
+               //} 
             }
         }
         return $family_arr;
@@ -587,13 +588,12 @@ Class GenealogyService {
         if(User::where('uuid',$user_id)->first()){
             $family_arr = [
                 'name' => User::where('uuid',$user_id)->first()->username,
-                'package' => User::where('uuid',$user_id)->first()->package->name,
-                'img'=> User::where('uuid',$user_id)->first()->profile->user_img
+                'title' => User::where('uuid',$user_id)->first()->package->name,
+                'img'=> User::where('uuid',$user_id)->first()->profile->photo_path
             ];
             
             return $this->generateTree($family_arr,$user_id);
         }
-        
     }
 
     public function sumDownlines(&$sum,$uuid)

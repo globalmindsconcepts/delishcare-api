@@ -20,6 +20,8 @@ class CreateAdminsTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('is_admin')->default(true);
             $table->string('password');
+            $table->boolean('enable_2fa')->default(false);
+            $table->string('verification_code')->nullable();
             $table->timestamps();
         });
     }

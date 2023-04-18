@@ -20,13 +20,13 @@ class IncentiveClaimControllerTest extends TestCase
         $user = $this->createUsers(1,['package_id'=>$package->id])->first();
         $rank = $this->createRank()->first();
         $incentive = $this->createIncentive(['rank_id' => $rank->id, 'worth' => 2000, 
-        'incentive' => 'smart phone','file_path'=> 'incentive.png']);
+        'incentive' => 'smart phone','file_path'=> 'incentive.png'])->first();
         $data = [
             'user_uuid' => $user->uuid,
             'incentive_id' => $incentive->id,
         ];
 
-        $response = $this->actingAs($user)->postJson($this->v1API('incentive-claims/create'), $data);
+        $response = $this->actingAs($user)->postJson($this->v1API("incentive-claims/{$user->uuid}/create"), $data);
 
         $response->assertStatus(200);
         $this->assertDatabaseHas('incentive_claims', ['user_uuid' => $data['user_uuid'], 'incentive_id' => $data['incentive_id'],'status'=>'processing']);
@@ -38,11 +38,11 @@ class IncentiveClaimControllerTest extends TestCase
         $user = $this->createUsers(1,['package_id'=>$package->id])->first();
         $rank = $this->createRank()->first();
         $incentive = $this->createIncentive(['rank_id' => $rank->id, 'worth' => 2000, 
-        'incentive' => 'smart phone','file_path'=> 'incentive.png']);
+        'incentive' => 'smart phone','file_path'=> 'incentive.png'])->first();
         $claim = $this->createIncentiveClaim([
             'user_uuid' => $user->uuid,
             'incentive_id' => $incentive->id,
-        ]);
+        ])->first();
 
         $response = $this->actingAs($user)->putJson($this->v1API("incentive-claims/{$claim->id}/approve"));
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\IncentiveClaimService;
+use App\Http\Requests\IncentiveClaimCreate;
 
 class IncentiveClaimController extends Controller
 {
@@ -19,9 +20,9 @@ class IncentiveClaimController extends Controller
         return response()->json($data, $data['status']);
     }
 
-    public function create(Request $request)
+    public function create(IncentiveClaimCreate $request, string $uuid)
     {
-        $data = $this->service->create($request->all());
+        $data = $this->service->create($uuid, $request->all());
         return response()->json($data, $data['status']);
     }
 
@@ -42,6 +43,12 @@ class IncentiveClaimController extends Controller
     public function claimedIncentives(Request $request, string $uuid)
     {
         $data = $this->service->claimedIncentives($uuid);
+        return response()->json($data, $data['status']);
+    }
+
+    public function currentIncentive(Request $request, string $uuid)
+    {
+        $data = $this->service->currentIncentive($uuid);
         return response()->json($data, $data['status']);
     }
 }

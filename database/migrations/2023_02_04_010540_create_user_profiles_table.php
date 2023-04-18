@@ -23,6 +23,8 @@ class CreateUserProfilesTable extends Migration
             $table->text('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('photo_path')->nullable();
+            $table->boolean('enable_2fa')->default(false);
+            $table->boolean('bank_editable')->default(false);
             $table->timestamps();
         });
     }

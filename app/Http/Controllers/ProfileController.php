@@ -8,6 +8,8 @@ use App\Services\BaseService;
 use Illuminate\Support\Facades\Log;
 use App\Http\Requests\BankDetailsUpdateRequest;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\Toggle2FARequest;
+use App\Http\Requests\BankEditable;
 
 class ProfileController extends Controller
 {
@@ -100,6 +102,18 @@ class ProfileController extends Controller
     public function updateBankDetails(BankDetailsUpdateRequest $request, string $user_uuid)
     {
         $data = $this->service->updateBankDetails($user_uuid,$request->all());
+        return response()->json($data,$data['status']);
+    }
+
+    public function toggle2FA(Toggle2FARequest $request, string $uuid)
+    {
+        $data = $this->service->toggle2FA($uuid,$request->all());
+        return response()->json($data,$data['status']);
+    }
+
+    public function setBankEditable(BankEditable $request, string $uuid)
+    {
+        $data = $this->service->bankEditable($uuid,$request->all());
         return response()->json($data,$data['status']);
     }
 }

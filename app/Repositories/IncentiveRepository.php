@@ -18,7 +18,9 @@ class IncentiveRepository{
 
     public function all()
     {
-        return $this->table->leftJoin('ranks', 'incentives.rank_id', '=', 'ranks.id')->paginate(20);
+        return $this->table->leftJoin('ranks', 'incentives.rank_id', '=', 'ranks.id')
+        ->select(['ranks.name','ranks.points','incentives.worth','incentives.incentive','incentives.file_path','incentives.id','incentives.rank_id'])
+        ->paginate(20);
     }
 
     public function get($id)

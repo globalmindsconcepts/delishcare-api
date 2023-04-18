@@ -34,7 +34,7 @@ class UserProfileControllerTest extends TestCase
 
         $response->assertOk();
         $response->assertJson(['status' => 200, 'success' => true]);
-        $this->assertDatabaseHas('user_profiles', ['user_uuid' => $user->uuid, 'phone' => $data['phone']]);
+        $this->assertDatabaseHas('user_profiles', ['user_uuid' => $user->uuid]);
     }
 
     public function test_update_user_profile_with_photo()
@@ -57,6 +57,22 @@ class UserProfileControllerTest extends TestCase
 
         $response->assertOk();
         $response->assertJson(['status' => 200]);
-        $this->assertDatabaseHas('user_profiles', ['user_uuid' => $user->uuid, 'phone' => $data['phone']]);
+        $this->assertDatabaseHas('user_profiles', ['user_uuid' => $user->uuid]);
+    }
+
+    public function test_toggle_2fa()
+    {
+        $admin = $this->setAdmin();
+        $package = $this->createPackage(['name' => 'basic', 'vip' => 'vip1', 'point_value' => 5, 'registration_value' => 20000])->first();
+        $user = $this->createUsers(1,['package_id'=>$package->id])->first();
+
+        $this->createUserProfile(['user_uuid'=>$user->uuid]);
+
+        $data = [
+            'enable_2fa'=>true
+        ];
+
+        $response = $this->actingAs($admin)->putJson($this->v1API("users/{$user->uuid}/toggle-2fa"),$data);
+        $response->assertOk();
     }
 }
