@@ -67,8 +67,8 @@ class UserProfileService{
     public function toggle2FA(string $uuid, array $data)
     {
         try {
-            $enable = $data['enable_2fa'] == 'true' | true ? true : false;
-            $this->profileRepo->toggle2FA($uuid,$enable);
+            //$enable = $data['enable_2fa'] == 'true' || $data['enable_2fa'] == true ? true : false;
+            $this->profileRepo->toggle2FA($uuid,$data);
             
            return ['success'=>true,'status'=>200];
         } catch (Exception $e) {

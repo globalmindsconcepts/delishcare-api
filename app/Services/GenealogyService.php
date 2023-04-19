@@ -509,7 +509,7 @@ Class GenealogyService {
      * @return - child_id
      */
     public function findChildren($ref_id,$check_for_level_movement=false) {
-        $res = DB::table('children')->select('child_id')->where(['parent_id'=>$ref_id])->get();//"select child_id from children where parent_id='$ref_id' and level_id='$level_id'";
+        $res = DB::table('children')->select('child_id')->where(['parent_id'=>$ref_id])->orderBy('id','desc')->get();//"select child_id from children where parent_id='$ref_id' and level_id='$level_id'";
         if($check_for_level_movement){
             if($res->count() == 2){ // change back to 2
                 return $res;
@@ -571,7 +571,8 @@ Class GenealogyService {
                 ];
 
                //if($this->findChildren($child->child_id,false)){
-                    $this->generateTree($family_arr['children'],$child->child_id);
+                    $this->generateTree($family_arr['children'][count($family_arr['children'])-1],$child->child_id);
+                    //$this->getDownlineTreeStructure($child->child_id);
                //} 
             }
         }
@@ -591,8 +592,9 @@ Class GenealogyService {
                 'title' => User::where('uuid',$user_id)->first()->package->name,
                 'img'=> User::where('uuid',$user_id)->first()->profile->photo_path
             ];
-            
-            return $this->generateTree($family_arr,$user_id);
+            $arr = $this->generateTree($family_arr,$user_id);
+            info('gen',[$arr]);
+            return $arr ;
         }
     }
 

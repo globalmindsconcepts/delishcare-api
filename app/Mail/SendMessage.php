@@ -33,6 +33,6 @@ class SendMessage extends Mailable
         return $this->view('mail.send-message',[
             'subject'=>$this->data['subject'],
             'body'=>$this->data['body']
-        ]);
+        ])->subject('Delishcare Direct Message');
     }
 }

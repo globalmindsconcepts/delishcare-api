@@ -21,6 +21,7 @@ class UserRepository{
     {
         unset($data['referrer']);
         unset($data['placer']);
+        //info('user',[$data]);
        return (new User($data))->save(); //$this->table->insert($data);
     }
 
@@ -91,8 +92,11 @@ class UserRepository{
 
     public function checkVerificationCode(string $email, string $code)
     {
-        $data = DB::table('users')->where('email', '=', $email)->orWhere('username', '=', $email)->where('verification_code', '=', $code)->first();
-        return $data;
+        $data = DB::table('users')->where('email', '=', $email)->orWhere('username', '=', $email)->get();//->first();
+        if($data->first()){
+           return $data->where('verification_code', '=', $code)->first();
+        }
+        
     }
 
     public function updatePassword(string $email, string $password)

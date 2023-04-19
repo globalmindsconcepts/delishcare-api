@@ -42,9 +42,9 @@ class UserProfileRepository{
         //return $this->table->where('user_uuid', $uuid)->updatesert($data);
     }
 
-    public function toggle2FA(string $uuid,$enable_2fa)
+    public function toggle2FA(string $uuid,$data)
     {
-        return $this->table->where('user_uuid',$uuid)->update(['enable_2fa'=>$enable_2fa]);
+        return $this->table->where('user_uuid',$uuid)->update($data);
     }
 
     public function toggleBankEditable(string $uuid,$bank_editable)

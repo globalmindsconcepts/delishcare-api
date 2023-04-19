@@ -35,6 +35,6 @@ class UserConfirmationEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.email-verification',['data'=>$this->data]);
+        return $this->view('mail.email-verification',['data'=>$this->data])->subject('Email Verification');
     }
 }

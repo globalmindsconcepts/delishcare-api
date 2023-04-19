@@ -55,7 +55,7 @@ class AuthController extends Controller
                 'email_verified_at'=> $user->email_verified_at,
                 'enable_2fa'=>$enable_2fa,
                 //'details'=>$user,
-                'payment'=>$payment
+                'payment'=> $payment ? $payment->status : null
                 //'token_type' => 'Bearer',
                 //'user'=>$user->load('level')
                 // 'expires_at' => Carbon::parse(

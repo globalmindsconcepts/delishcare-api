@@ -2,6 +2,7 @@
 namespace App\Services;
 
 //use App\Interfaces\UserInterface;
+use App\Models\Package;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Exception;
@@ -63,11 +64,17 @@ class UserService{
     {
         try {
             
+            $referer = $this->userRepository->getUser($data['referrer']);
+            if($this->referralRepository->refereds($referer['uuid'])->count()>=2){
+                return ["success"=>false,"message"=>"You have exceeded the limit of direct downlines registration. Please proceed with a placement.",
+                "status"=>400];
+            }
+
             $data['uuid'] = $this->generateUUID();
             $data['password'] = bcrypt($data['password']);
             $verifyCode = Str::random(10);
             $data['verification_code'] = $verifyCode;
-            $referer = $this->userRepository->getUser($data['referrer']);
+            
             if(!$referer){
                 return ["success"=>false,"message"=>"Referrer not found","status"=>400];
             }
@@ -77,6 +84,7 @@ class UserService{
             }
 
             DB::transaction(function () use ($data,$referer,$placement) {
+                
                 $this->userRepository->create($data);
                 $refData = ['referrer_uuid'=>$referer['uuid'],'referred_uuid'=>$data['uuid'],'placer_uuid'=>$placement];
                 $this->referralRepository->create($refData);
@@ -210,7 +218,7 @@ class UserService{
                 'id'=>$ele->id,
                 'name'=>User::where('uuid','=',$ele->referred_uuid)->first()->first_name.' '.User::where('uuid','=',$ele->referred_uuid)->first()->last_name,
                 'username'=>User::where('uuid','=',$ele->referred_uuid)->first()->username,
-                'package'=>$this->packageRepo->get(User::where('uuid','=',$ele->referred_uuid)->first()->package_id)->name,
+                'package'=>Package::find(User::where('uuid','=',$ele->referred_uuid)->first()->package_id)->name,
                 'downlines'=>$this->referralRepository->refereds($ele->referred_uuid)->count()
               ];
            }); 
@@ -240,7 +248,7 @@ class UserService{
                  'email'=>User::where('uuid','=',$ele->referred_uuid)->first()->email,
                  'name'=>User::where('uuid','=',$ele->referred_uuid)->first()->first_name.' '.User::where('uuid','=',$ele->referred_uuid)->first()->last_name,
                  'username'=>User::where('uuid','=',$ele->referred_uuid)->first()->username,
-                 'package'=>$this->packageRepo->get(User::where('uuid','=',$ele->referred_uuid)->first()->package_id)->name,
+                 'package'=>Package::find(User::where('uuid','=',$ele->referred_uuid)->first()->package_id)->name,
                ];
             }); 
  
@@ -263,14 +271,15 @@ class UserService{
         }
     }
 
-    public function inviteGuest(string $uuid,$email)
+    public function inviteGuest(string $uuid,$data)
     {
         try {
             $user = $this->userRepository->getUser($uuid);
             $mailData = ['sender_name'=>$user['first_name'].''.$user['last_name'],
-                    'sender_username'=>$user['username'], 'receiver_email'=>$email
+                    'sender_username'=>$user['username'], 'receiver_email'=>$data['email'],
+                    'referrer'=>$data['referrer']
                 ];
-           Mail::to($email)->queue(new InviteGuestMail($mailData));
+           Mail::to($data['email'])->queue(new InviteGuestMail($mailData));
            return ['status'=>200];
         } catch (Exception $e) {
             Log::error("Error sending guest email",[$e]);

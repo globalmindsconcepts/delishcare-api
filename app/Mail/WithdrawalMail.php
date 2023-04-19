@@ -7,20 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class TwoFactorVerifyMail extends Mailable
+class WithdrawalMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    private $code;
+    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(string $code)
+    public function __construct(array $data)
     {
-        $this->code = $code;
+        $this->data = $data;
     }
 
     /**
@@ -30,6 +30,10 @@ class TwoFactorVerifyMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.two-factor-verify',['code'=>$this->code])->subject('Two Factor Verification');
+        return $this->view('mail.withdrawal',[
+            'sender_name'=>$this->data['sender_name'],
+            'sender_username'=>$this->data['sender_username'],
+            'referrer'=>$this->data['referrer']
+        ])->subject('Delishcare Invitation');
     }
 }

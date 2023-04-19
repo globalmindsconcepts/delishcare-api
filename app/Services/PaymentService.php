@@ -11,6 +11,7 @@ use App\Repositories\UserRepository;
 use App\Repositories\PackageRepository;
 use App\Repositories\ReferralRepository;
 use App\Repositories\WelcomeBonusRepository;
+use App\Models\User;
 
 class PaymentService{
     //use WalletAccountHelpers;
@@ -32,6 +33,15 @@ class PaymentService{
     public function initiate(string $user_uuid, array $data)
     {
         try {
+
+            if(!User::where('uuid',$user_uuid)->first()->profile()->first()){
+                return ["success"=>false,"message"=>'Please fill in your bank details',"status"=>400];
+            }
+
+            if($this->packagePayment->table->where('user_uuid',$user_uuid)->where('status','approved')->get()->count() > 0){
+                return ["success"=>false,"message"=>'You have already made your package payment',"status"=>400];
+            }
+
             $data['reference'] = $this->generateTransactionReference();
             $data['description'] = 'package payment';
             

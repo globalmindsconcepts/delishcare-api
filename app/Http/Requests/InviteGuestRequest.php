@@ -24,7 +24,8 @@ class InviteGuestRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=>'bail|required|email|unique:users,email'
+            'email'=>'bail|required|email|unique:users,email',
+            'referrer'=>'bail|nullable|exists:users,username'
         ];
     }
 }

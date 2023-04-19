@@ -64,7 +64,7 @@ class UserController extends Controller
 
     public function inviteGuest(InviteGuestRequest $request, string $uuid)
     {
-        $data = $this->userService->inviteGuest($uuid,$request->only('email'));
+        $data = $this->userService->inviteGuest($uuid,$request->only(['email','referrer']));
         return response()->json($data,$data['status']);
     }
 

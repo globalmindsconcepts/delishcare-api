@@ -30,9 +30,10 @@ class InviteGuestMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.invite-guest',[
+        return $this->view('mail.delishcare-invitation',[
             'sender_name'=>$this->data['sender_name'],
-            'sender_username'=>$this->data['sender_username']
-        ]);
+            'sender_username'=>$this->data['sender_username'],
+            'referrer'=>$this->data['referrer']
+        ])->subject('Delishcare Invitation');
     }
 }

@@ -85,6 +85,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
     </style>
   
   
+
 <!--[if !mso]><!--><link href="https://fonts.googleapis.com/css?family=Raleway:400,700&display=swap" rel="stylesheet" type="text/css"><!--<![endif]-->
 
 </head>
@@ -115,21 +116,42 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 								<table width="100%" cellpadding="0" cellspacing="0" border="0">
 									<tr>
 										<td style="padding-right: 0px;padding-left: 0px; padding-top:20px" align="center">			  
-											<img align="center" border="0" src="images/Delish.png" alt="image" title="image" style="outline: none; !important;border: none;height: auto;float: none;width: 100%;max-width: 249px;" width="149" class="v-src-width v-src-max-width"/>		  
+											<img align="center" border="0" src="img/Delish.png" alt="image" title="image" style="outline: none; !important;border: none;height: auto;float: none;width: 100%;max-width: 249px;" width="149" class="v-src-width v-src-max-width"/>		  
 										</td>
 								  </tr>
 								  <tr>
-									<td style="padding-right: 0px;padding-left: 0px; padding-bottom:30px; padding-top:30px" align="center">			  
-                                         <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_L7YrbxFm46.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"    autoplay></lottie-player>	 										 
+									<td style="padding-right: 0px;padding-left: 0px;" align="center">			  
+								   <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_3ghvm6sn.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"    autoplay></lottie-player>			  
 									</td>
 								  </tr>
 								    <tr>
-										  <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 60px;font-family:'Raleway',sans-serif;padding-bottom:30px" align="left">
-											  <h1 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 20px; padding-bottom:10px; "><strong>{{$code']}}</strong></h1>   
-											  <p class="v-font-size " style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 12px;">Here is your <strong>Password Reset Code</strong> code to reset your password. 
-                                              <br>It is only valid for 10 minutes. Do not share with anyone</p>
-									      </td>
+										  <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 60px;font-family:'Raleway',sans-serif;" align="left">
+									      <h1 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 20px; padding-bottom:10px; "><strong>Hi {{$data['name']}}</strong></h1>   
+									      <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 14px;">"Congratulations and welcome to Delishcare,<br> We're excited to have you on board and can't wait to see all the great things we can achieve together. Let's get started!"</h1>
+									  </td>
 									</tr>
+                  <tr>
+                  <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 60px;font-family:'Raleway',sans-serif;" align="left"> 
+                      <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-size: 14px;  padding-bottom:20px">Thank you for taking the first step to register as a partner with Delishcare. Your enthusiasm and quick response is admirable. As we move forward, I encourage you to complete the remaining steps of the registration process by verifying your email and proceeding with payment to finalize your registration.</h1> 
+                      
+                      <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-size: 14px;  padding-bottom:10px"> Your participation is integral, and We are confident that you will enjoy the many benefits that come with being a member of Delishcare. Thank you again for your commitment, and we look forward to working with you soon.</h1>
+                      <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-size: 14px;  padding-bottom:20px">Best Regards</h1>
+                      <img align="center" border="0" src="images/signature1.png" alt="image" title="image" style="outline: none; !important;border: none;height: auto;float: none;width: 100%;max-width: 120px;  padding-bottom:5px"" width="149" class="v-src-width v-src-max-width"/>
+                      <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-size: 14px;  padding-bottom:20px">The Delishcare Team</h1>
+                    </td>
+                  </tr>
+									<tr>
+										<td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:30px 10px 40px;font-family:'Raleway',sans-serif;" align="left">										
+											<!--[if mso]><style>.v-button {background: transparent !important;}</style><![endif]-->
+											<div align="center">
+											  <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.unlayer.com" style="height:37px; v-text-anchor:middle; width:220px;" arcsize="67.5%"  stroke="f" fillcolor="#fdb441"><w:anchorlock/><center style="color:#000000;font-family:'Raleway',sans-serif;"><![endif]-->  
+												<a href="{{env('CLIENT_URL')}}/register" target="_blank" class="v-button v-size-width v-font-size" style="box-sizing: border-box;display: inline-block;font-family:'Raleway',sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #ffff; background-color: #2E671A; border-radius: 25px;-webkit-border-radius: 25px; -moz-border-radius: 25px; width:38%; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;font-size: 14px;">
+												  <span style="display:block;padding:10px 20px;line-height:120%;"><span style="line-height: 16.8px;">Login To Your Account</span></span>
+												</a>
+											  <!--[if mso]></center></v:roundrect><![endif]-->
+											</div>
+									    </td>
+                                    </tr>
 								</table>
 							  </td>
 							</tr>
@@ -155,49 +177,66 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
   <div style="height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;">
   <!--[if (!mso)&(!IE)]><!--><div style="box-sizing: border-box; height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;"><!--<![endif]-->
   
-<table id="u_content_social_1" style="font-family:'Raleway',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
-  <tbody>
-      <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:40px 10px 10px;font-family:'Raleway',sans-serif;" align="left">
+  <table id="u_content_social_1" style="font-family:'Raleway',sans-serif;" role="presentation" cellpadding="0" cellspacing="0" width="100%" border="0">
+    <tbody>
+      <tr>
+        <tr>
+        <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 60px;font-family:'Raleway',sans-serif;" align="center"> 
+        <p style="font-size: 11px; line-height: 170%;">kindly be reminded that there is a 7-day time limit for completing your registration,so please finish the remaining part as soon as possible to avoid missing out.</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:40px 10px 10px;font-family:'Raleway',sans-serif;" align="left">
+          
+          <div align="center">
+            <div style="display: table; max-width:167px;">
+              <!--[if (mso)|(IE)]><table width="167" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse;" align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:167px;"><tr><![endif]-->
+            
+              
+              <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 10px;" valign="top"><![endif]-->
+              <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 10px">
+                <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+                    <a href="#" title="Facebook" target="_blank">
+                      <img src="img/Delish.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                    </a>
+                  </td></tr>
+                </tbody>
+              </table>
+              <!--[if (mso)|(IE)]></td><![endif]-->
+              
+              <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 10px;" valign="top"><![endif]-->
+              <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 10px">
+                <tbody>
+                  <tr style="vertical-align: top">
+                    <td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+                      <a href="#" title="Twitter" target="_blank">
+                        <img src="images/Delish.png" alt="Twitter" title="Twitter" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+                      </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+    <!--[if (mso)|(IE)]></td><![endif]-->
         
-			<div align="center">
-			  <div style="display: table; max-width:167px;">
-			  <!--[if (mso)|(IE)]><table width="167" cellpadding="0" cellspacing="0" border="0"><tr><td style="border-collapse:collapse;" align="center"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; mso-table-lspace: 0pt;mso-table-rspace: 0pt; width:167px;"><tr><![endif]-->
-			  
-				
-				<!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 10px;" valign="top"><![endif]-->
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 10px">
-				  <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-					<a href="https://www.facebook.com/unlayer" title="Facebook" target="_blank">
-					  <img src="images/image-1.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-					</a>
-				  </td></tr>
-				</tbody></table>
-				<!--[if (mso)|(IE)]></td><![endif]-->
-				
-				<!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 10px;" valign="top"><![endif]-->
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 10px">
-				  <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-					<a href="https://twitter.com/unlayerapp" title="Twitter" target="_blank">
-					  <img src="images/image-3.png" alt="Twitter" title="Twitter" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-					</a>
-				  </td></tr>
-				</tbody></table>
-				<!--[if (mso)|(IE)]></td><![endif]-->
-					
-				<!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 0px;" valign="top"><![endif]-->
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
-				  <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-					<a href="https://www.instagram.com/unlayer_official/" title="Instagram" target="_blank">
-					  <img src="images/image-4.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
-					</a>
-				  </td></tr>
-				</tbody></table>
-				<!--[if (mso)|(IE)]></td><![endif]-->
-				
-				
-				<!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
-			  </div>
-			</div>
+    <!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 0px;" valign="top"><![endif]-->
+    <table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
+      <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
+        <a href="#" title="Instagram" target="_blank">
+          <img src="images/Delish.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+        </a>
+      </td></tr>
+    </tbody></table>
+    <!--[if (mso)|(IE)]></td><![endif]-->
+    
+    
+    <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
+  </div>
+</div>
 
       </td>
     </tr>
@@ -249,7 +288,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       
-      <img align="center" border="0" src="images/logo.png" alt="image" title="image" style="outline: none; !important;border: none;height: auto;float: none;width: 100%;max-width: 149px;" width="149" class="v-src-width v-src-max-width"/>
+      <img align="center" border="0" src="img/logo.png" alt="image" title="image" style="outline: none; !important;border: none;height: auto;float: none;width: 100%;max-width: 149px;" width="149" class="v-src-width v-src-max-width"/>
       
     </td>
   </tr>
@@ -278,8 +317,6 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
   <!--[if mso]></div><![endif]-->
   <!--[if IE]></div><![endif]-->
   <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  
-
 </body>
 
 </html>

@@ -107,7 +107,7 @@ class ProfileController extends Controller
 
     public function toggle2FA(Toggle2FARequest $request, string $uuid)
     {
-        $data = $this->service->toggle2FA($uuid,$request->all());
+        $data = $this->service->toggle2FA($uuid,$request->validated());
         return response()->json($data,$data['status']);
     }
 
