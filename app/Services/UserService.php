@@ -78,7 +78,15 @@ class UserService{
             if(!$referer){
                 return ["success"=>false,"message"=>"Referrer not found","status"=>400];
             }
-            $placement = array_key_exists('placer',$data) && ! empty($data['placer']) ? $this->userRepository->getUser($data['placer'])['uuid'] : null;
+
+            $placement = null;
+            if(! empty($data['placer'])){
+                $placement = $this->userRepository->getUser($data['placer'])['uuid'];
+                if(is_null($placement)){
+                    return ["success"=>false,"message"=>"Placer not found","status"=>400];
+                }
+            }
+            
             if(array_key_exists('placer',$data) && is_null($placement)){
                 return ["success"=>false,"message"=>"Placer not found","status"=>400];
             }
