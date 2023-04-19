@@ -86,10 +86,6 @@ class UserService{
                     return ["success"=>false,"message"=>"Placer not found","status"=>400];
                 }
             }
-            
-            if(array_key_exists('placer',$data) && is_null($placement)){
-                return ["success"=>false,"message"=>"Placer not found","status"=>400];
-            }
 
             DB::transaction(function () use ($data,$referer,$placement) {
                 
