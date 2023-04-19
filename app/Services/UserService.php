@@ -80,7 +80,7 @@ class UserService{
             }
 
             $placement = null;
-            if(! empty($data['placer'])){
+            if(! is_null($data['placer'])){
                 $placement = $this->userRepository->getUser($data['placer'])['uuid'];
                 if(is_null($placement)){
                     return ["success"=>false,"message"=>"Placer not found","status"=>400];
