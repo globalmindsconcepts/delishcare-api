@@ -125,7 +125,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 								  </tr>
 								    <tr>
 										  <td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 60px;font-family:'Raleway',sans-serif;padding-bottom:30px" align="left">
-											  <h1 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 20px; padding-bottom:10px; "><strong>{{$code']}}</strong></h1>   
+											  <h1 class="v-font-size" style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 20px; padding-bottom:10px; "><strong>{{$code}}</strong></h1>   
 											  <p class="v-font-size " style="margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-size: 12px;">Here is your <strong>Password Reset Code</strong> code to reset your password. 
                                               <br>It is only valid for 10 minutes. Do not share with anyone</p>
 									      </td>
