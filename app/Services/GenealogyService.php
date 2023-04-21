@@ -34,37 +34,28 @@ Class GenealogyService {
      */
     public function makeReferrerAParent($ref_id,$child_id,$placer_id=null): void
     {
-        try {
+        $query_1 = DB::table('children')->select('id')->where('parent_id',$ref_id)->get(); //Children::where('parent_id',$ref_id)->get(); //"select parent_id from children where parent_id=$ref_id and level_id=$level_id";
+        if($query_1->count() < config('genealogy.max_referrals') && !$this->checkDuplicateChildId($child_id)) {
+            $this->makeReferredAChild($ref_id,$child_id,$placer_id); 
             
-            DB::transaction(function() use ($ref_id,$child_id,$placer_id){
-                
-                $query_1 = DB::table('children')->select('id')->where('parent_id',$ref_id)->get(); //Children::where('parent_id',$ref_id)->get(); //"select parent_id from children where parent_id=$ref_id and level_id=$level_id";
-                if($query_1->count() < config('genealogy.max_referrals') && !$this->checkDuplicateChildId($child_id)) {
-                    $this->makeReferredAChild($ref_id,$child_id,$placer_id); 
-                    
-                    //generation 1
-                }
-                
-                if($query_1->count() >= config('genealogy.max_referrals') && !$this->checkDuplicateChildId($child_id)) {
-                    
-                    $children = $this->findChildren($ref_id);
-                    if($children != null){
-                        info('gen',[$query_1->count()]);
-                        //generation 2
-                        $this->makeReferredAGrandChild($ref_id,$child_id,$children);
-                        //if($level_id==config('level_start')){
-                            $grandchildren = $this->findGrandChildren($ref_id);
-                            if(! is_null($grandchildren)){
-                                $this->makeReferredAGreatGrandChild($ref_id,$child_id,$grandchildren);
-                            }
-                        //}
-                    } 
-                }
-            },2);
-        } catch (Exception $e) {
-            Log::error("Error in genealogy",[$e]);
+            //generation 1
         }
         
+        if($query_1->count() >= config('genealogy.max_referrals') && !$this->checkDuplicateChildId($child_id)) {
+            
+            $children = $this->findChildren($ref_id);
+            if($children != null){
+                info('gen',[$query_1->count()]);
+                //generation 2
+                $this->makeReferredAGrandChild($ref_id,$child_id,$children);
+                //if($level_id==config('level_start')){
+                    $grandchildren = $this->findGrandChildren($ref_id);
+                    if(! is_null($grandchildren)){
+                        $this->makeReferredAGreatGrandChild($ref_id,$child_id,$grandchildren);
+                    }
+                //}
+            } 
+        }
     }
 
     private function makeReferredAChild($ref_id,$child_id,$placer_id=null):void
@@ -590,7 +581,7 @@ Class GenealogyService {
             $family_arr = [
                 'name' => User::where('uuid',$user_id)->first()->username,
                 'title' => User::where('uuid',$user_id)->first()->package->name,
-                'img'=> User::where('uuid',$user_id)->first()->profile->photo_path
+                //'img'=> User::where('uuid',$user_id)->first()->profile->photo_path
             ];
             $arr = $this->generateTree($family_arr,$user_id);
             info('gen',[$arr]);

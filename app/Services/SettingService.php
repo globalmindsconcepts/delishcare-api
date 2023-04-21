@@ -4,7 +4,7 @@ namespace App\Services;
 use App\Repositories\SettingRepository;
 use App\Repositories\ReferralBonusSettingRepository;
 use \Exception;
-class SettingService{
+class SettingService extends BaseService{
 
     private $settingRepo,$referralBonusSetting;
     public function __construct(){
@@ -18,8 +18,7 @@ class SettingService{
            $rank = $this->settingRepo->create($data);
             return ['data' => $rank, 'message' => 'Setting created succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e, "Error creating setting");
         }
     }
 
@@ -27,10 +26,9 @@ class SettingService{
     {
         try {
             $rank = $this->settingRepo->getSettings();
-            return ['data' => $rank, 'message' => 'Setting created succesfully', 'status' => 200];
+            return ['data' => $rank, 'message' => 'Setting fetched succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error fetching settings");
         }
     }
 
@@ -40,8 +38,7 @@ class SettingService{
             $data = $this->settingRepo->get($column);
             return ['data' => $data, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error fetching setting");
         }
     }
 
@@ -51,8 +48,7 @@ class SettingService{
             $this->settingRepo->update($data);
             return ['message' => 'Setting updated succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error updating settings");
         }
     }
 
@@ -62,8 +58,7 @@ class SettingService{
             $this->referralBonusSetting->update($id,$data);
             return ['message' => 'Referral bonus setting updated succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error updating referral bonus settings");
         }
     }
 
@@ -73,8 +68,7 @@ class SettingService{
             $data = $this->referralBonusSetting->all();
             return ['data'=>$data, 'message' => 'Referral bonus setting fetched succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error fetching referral bonus settings");
         }
     }
 
@@ -84,8 +78,7 @@ class SettingService{
             $this->settingRepo->table->delete(1);
             return ['message' => 'Setting deleted succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_ENV' == 'production') ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error deleting settings");
         }
     }
 }

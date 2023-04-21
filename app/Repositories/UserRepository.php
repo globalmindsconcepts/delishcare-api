@@ -70,9 +70,9 @@ class UserRepository{
         $sql = "SELECT * FROM users
         LEFT JOIN user_profiles 
         ON users.uuid = user_profiles.user_uuid
-        WHERE users.user_uuid = '$user_uuid' LIMIT 1";
+        WHERE users.uuid = '$user_uuid' LIMIT 1";
         $res = DB::select($sql);
-        return $res[0];
+        return (array) $res[0];
     }
 
     public function userExists(string $email,$model=false)

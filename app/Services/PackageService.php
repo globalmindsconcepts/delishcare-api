@@ -3,7 +3,7 @@ namespace App\Services;
 
 use App\Repositories\PackageRepository;
 use \Exception;
-class PackageService{
+class PackageService extends BaseService{
     private $packageRepo;
     public function __construct(){
         $this->packageRepo = new PackageRepository;
@@ -15,8 +15,7 @@ class PackageService{
             $packages = $this->packageRepo->all();
             return ['data' => $packages, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500, 'success'=>false];
+            return $this->logger($e,"Error fetching all packages");
         }
     }
 
@@ -26,8 +25,7 @@ class PackageService{
             $package = $this->packageRepo->get($id);
             return ['data' => $package, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500, 'success'=>false];
+            return $this->logger($e,"error getting package");
         }
     }
 
@@ -37,8 +35,7 @@ class PackageService{
            $package = $this->packageRepo->create($data);
             return ['data' => $package, 'message' => 'Package created succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['data' => $package, 'message' => $message, 'status' => 500];
+            return $this->logger($e,"Error creating package");
         }
     }
 
@@ -51,8 +48,7 @@ class PackageService{
             $this->packageRepo->update($id, $data);
             return ['message' => 'Package updated succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error updating package");
         }
     }
 
@@ -62,8 +58,7 @@ class PackageService{
             $this->packageRepo->table->delete($id);
             return ['message' => 'package deleted succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error deleting package");
         }
     }
 }

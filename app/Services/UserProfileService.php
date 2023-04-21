@@ -4,7 +4,7 @@ namespace App\Services;
 use App\Repositories\UserProfileRepository;
 use \Exception;
 use Illuminate\Support\Facades\Log;
-class UserProfileService{
+class UserProfileService extends BaseService{
 
     private $profileRepo;
     public function __construct(){
@@ -19,9 +19,7 @@ class UserProfileService{
             $profile = $this->profileRepo->create($data);
             return ['success' => true, 'message' => 'Profile created succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("error creating profile",[$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error creating profile");
         }
     }
 
@@ -31,9 +29,7 @@ class UserProfileService{
             $profile = $this->profileRepo->get($user_uuid);
             return ['data'=>$profile,'status'=>200,'success'=>true];
         } catch (Exception $e) {
-            Log::error("error fetching profile",[$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error fetching profile");
         }
     }
 
@@ -44,9 +40,7 @@ class UserProfileService{
             $this->profileRepo->update($user_uuid,$data);
             return ['message' => 'Profile updated succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("error updating profile",[$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error updating profile");
         }
     }
 
@@ -58,9 +52,7 @@ class UserProfileService{
             $this->profileRepo->update($user_uuid,$data);
             return ['success'=>true, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("error updating bank details",[$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error updating bank details");
         }
     }
 
@@ -72,8 +64,7 @@ class UserProfileService{
             
            return ['success'=>true,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error sending toggling 2fa",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error toggling 2FA");
         }
     }
 
@@ -85,8 +76,7 @@ class UserProfileService{
             
            return ['success'=>true,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error sending toggling 2fa",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error toggling bank editable");
         }
     }
 }

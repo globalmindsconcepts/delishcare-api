@@ -115,12 +115,12 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 								<table width="100%" cellpadding="0" cellspacing="0" border="0">
 									<tr>
 										<td style="padding-right: 0px;padding-left: 0px; padding-top:20px" align="center">			  
-											<img align="center" border="0" src="images/Delish.png" alt="image" title="image" style="outline: none; !important;border: none;height: auto;float: none;width: 100%;max-width: 249px;" width="149" class="v-src-width v-src-max-width"/>		  
+											<img align="center" border="0" src="https://delishcare.com/img/Delish.png" alt="image" title="image" style="outline: none; !important;border: none;height: auto;float: none;width: 100%;max-width: 249px;" width="149" class="v-src-width v-src-max-width"/>		  
 										</td>
 								  </tr>
 								  <tr>
 									<td style="padding-right: 0px;padding-left: 0px; padding-bottom:30px; padding-top:30px" align="center">			  
-                                         <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_L7YrbxFm46.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"    autoplay></lottie-player>	 										 
+                                         <lottie-player src="#"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"    autoplay></lottie-player>	 										 
 									</td>
 								  </tr>
 								    <tr>
@@ -167,8 +167,8 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 				<!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 10px;" valign="top"><![endif]-->
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 10px">
 				  <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-					<a href="https://www.facebook.com/unlayer" title="Facebook" target="_blank">
-					  <img src="images/image-1.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+					<a href="#" title="Facebook" target="_blank">
+					  <img src="https://delishcare.com/img/Delish.png" alt="Facebook" title="Facebook" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
 					</a>
 				  </td></tr>
 				</tbody></table>
@@ -177,8 +177,8 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 				<!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 10px;" valign="top"><![endif]-->
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 10px">
 				  <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-					<a href="https://twitter.com/unlayerapp" title="Twitter" target="_blank">
-					  <img src="images/image-3.png" alt="Twitter" title="Twitter" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+					<a href="#" title="Twitter" target="_blank">
+					  <img src="https://delishcare.com/img/Delish.png" alt="Twitter" title="Twitter" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
 					</a>
 				  </td></tr>
 				</tbody></table>
@@ -187,8 +187,8 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 				<!--[if (mso)|(IE)]><td width="32" style="width:32px; padding-right: 0px;" valign="top"><![endif]-->
 				<table align="left" border="0" cellspacing="0" cellpadding="0" width="32" height="32" style="width: 32px !important;height: 32px !important;display: inline-block;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;margin-right: 0px">
 				  <tbody><tr style="vertical-align: top"><td align="left" valign="middle" style="word-break: break-word;border-collapse: collapse !important;vertical-align: top">
-					<a href="https://www.instagram.com/unlayer_official/" title="Instagram" target="_blank">
-					  <img src="images/image-4.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
+					<a href="#" title="Instagram" target="_blank">
+					  <img src="https://delishcare.com/img/Delish.png" alt="Instagram" title="Instagram" width="32" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: block !important;border: none;height: auto;float: none;max-width: 32px !important">
 					</a>
 				  </td></tr>
 				</tbody></table>
@@ -249,7 +249,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
   <tr>
     <td style="padding-right: 0px;padding-left: 0px;" align="center">
       
-      <img align="center" border="0" src="images/logo.png" alt="image" title="image" style="outline: none; !important;border: none;height: auto;float: none;width: 100%;max-width: 149px;" width="149" class="v-src-width v-src-max-width"/>
+      <img align="center" border="0" src="https://delishcare.com/img/logo.png" alt="image" title="image" style="outline: none; !important;border: none;height: auto;float: none;width: 100%;max-width: 149px;" width="149" class="v-src-width v-src-max-width"/>
       
     </td>
   </tr>

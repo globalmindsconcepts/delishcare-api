@@ -3,7 +3,7 @@ namespace App\Services;
 
 use App\Repositories\PackagePaymentRepository;
 use \Exception;
-class PackagePaymentService{
+class PackagePaymentService extends BaseService{
     private $packagePaymentRepo;
     public function __construct(){
         $this->packagePaymentRepo = new PackagePaymentRepository;
@@ -15,8 +15,7 @@ class PackagePaymentService{
             $incentives = $this->packagePaymentRepo->all();
             return ['data' => $incentives, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            $message = env('APP_env' == 'production') ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500, 'success'=>false];
+            return $this->logger($e,"Error fetching all package payments");
         }
     }
 
@@ -26,8 +25,7 @@ class PackagePaymentService{
            $data = $this->packagePaymentRepo->create($data);
             return ['data' => $data, 'message' => 'Package created succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_env' == 'production') ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error creating package payment");
         }
     }
 
@@ -37,8 +35,7 @@ class PackagePaymentService{
             $this->packagePaymentRepo->table->delete($id);
             return ['message' => 'package deleted succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_env' == 'production') ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error deleting package payment");
         }
     }
 }

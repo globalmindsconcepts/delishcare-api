@@ -3,7 +3,7 @@ namespace App\Services;
 
 use App\Repositories\ProfitPoolRepository;
 use \Exception;
-class ProfitPoolService{
+class ProfitPoolService extends BaseService{
 
     private $profitPoolRepo;
     public function __construct(){
@@ -16,8 +16,7 @@ class ProfitPoolService{
             $pools = $this->profitPoolRepo->table->leftJoin('users', 'users.uuid', '=', 'profit_pools.user_uuid')->paginate(20);
             return ['data' => $pools, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            $message = env('APP_env' == 'production') ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error fetching all profit pools");
         }
     }
 
@@ -27,8 +26,7 @@ class ProfitPoolService{
            $rank = $this->profitPoolRepo->create($data);
             return ['data' => $rank, 'message' => 'Profit pool created succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_env' == 'production') ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error creating profit pool");
         }
     }
 
@@ -38,8 +36,7 @@ class ProfitPoolService{
             $this->profitPoolRepo->update($id, $data);
             return ['message' => 'Profit pool updated succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_env' == 'production') ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error updating profit pool");
         }
     }
 
@@ -49,8 +46,7 @@ class ProfitPoolService{
             $this->profitPoolRepo->table->delete($id);
             return ['message' => 'Profit pool deleted succesfully', 'status' => 200];
         } catch (Exception $e) {
-            $message = env('APP_env' == 'production') ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error deleting profit pool");
         }
     }
 }

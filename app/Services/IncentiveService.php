@@ -4,7 +4,7 @@ namespace App\Services;
 use App\Repositories\IncentiveRepository;
 use \Exception;
 use Illuminate\Support\Facades\Log;
-class IncentiveService{
+class IncentiveService extends BaseService{
     private $incentiveRepo;
     public function __construct(){
         $this->incentiveRepo = new IncentiveRepository;
@@ -17,8 +17,7 @@ class IncentiveService{
             //info('inc',[$incentives]);
             return ['data' => $incentives, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500, 'success'=>false];
+            return $this->logger($e,"Error fetching all incentives");
         }
     }
 
@@ -28,9 +27,7 @@ class IncentiveService{
             $incentive = $this->incentiveRepo->get($id);
             return ['data' => $incentive, 'message' => 'Incentive fetched succesfully', 'success'=>true, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("fetch incentive error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"fetch incentive error");
         }
     }
 
@@ -40,9 +37,7 @@ class IncentiveService{
            $incentive = $this->incentiveRepo->create($data);
             return ['data' => $incentive, 'message' => 'Incentive created succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("create incdntive error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"create incdntive error");
         }
     }
 
@@ -52,9 +47,7 @@ class IncentiveService{
             $this->incentiveRepo->update($id, $data);
             return ['message' => 'Incentive updated succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("update incdntive error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"update incdntive error");
         }
     }
 
@@ -64,9 +57,7 @@ class IncentiveService{
             $this->incentiveRepo->table->delete($id);
             return ['message' => 'Incentive deleted succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("delete incdntive error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"delete incdntive error");
         }
     }
 }

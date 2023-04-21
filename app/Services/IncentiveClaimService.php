@@ -8,7 +8,7 @@ use App\Repositories\RankRepository;
 
 use \Exception;
 use Illuminate\Support\Facades\Log;
-class IncentiveClaimService{
+class IncentiveClaimService extends BaseService{
     private $incentiveClaimRepo,$incentiveRepo, $userRepo,$rankRepo;
     public function __construct(){
         $this->incentiveClaimRepo = new IncentiveClaimRepository;
@@ -23,9 +23,7 @@ class IncentiveClaimService{
             $incentives = $this->incentiveClaimRepo->all();
             return ['data' => $incentives, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            Log::error("error fetching incentive claims", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500, 'success'=>false];
+            return $this->logger($e,'error fetching incentive claims');
         }
     }
 
@@ -43,9 +41,7 @@ class IncentiveClaimService{
            $incentive = $this->incentiveClaimRepo->create($data);
             return ['data' => $incentive, 'message' => 'Incentive claimed succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("error creating incentive claim", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return [ 'message' => $message, 'status' => 500];
+            return $this->logger($e,"error creating incentive claim");
         }
     }
 
@@ -55,9 +51,7 @@ class IncentiveClaimService{
             $this->incentiveClaimRepo->update($id, $data);
             return ['message' => 'Incentive claim updated succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("error updating incentive claim", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"error updating incentive claim");
         }
     }
 
@@ -67,9 +61,7 @@ class IncentiveClaimService{
             $data = $this->incentiveClaimRepo->claimedIncentives($user_uuid);
             return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("error fetching claimed incentives", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"error fetching claimed incentives");
         }
     }
 
@@ -95,9 +87,7 @@ class IncentiveClaimService{
            }
            return ['data'=>$incentive, 'status'=>200];
         } catch (Exception $e) {
-            Log::error("error fetching current incentive", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"error fetching current incentive");
         }
     }
 }

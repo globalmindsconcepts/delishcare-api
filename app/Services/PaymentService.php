@@ -12,8 +12,9 @@ use App\Repositories\PackageRepository;
 use App\Repositories\ReferralRepository;
 use App\Repositories\WelcomeBonusRepository;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
-class PaymentService{
+class PaymentService extends BaseService{
     //use WalletAccountHelpers;
 
     private $service;
@@ -61,8 +62,7 @@ class PaymentService{
             $this->transactionRepository->create($fundData);
 
         } catch (Exception $e) {
-            Log::error("Error initiating payment",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error initiating payment");
         }
        
         return ["success"=>true, "data"=>json_decode($initPay,true),
@@ -93,18 +93,19 @@ class PaymentService{
                     'point_value'=>$package_pv
                 ];
 
-                $this->packagePayment->create($paymentData);
+                DB::transaction(function () use ($paymentData,$transaction) {
+                    $this->packagePayment->create($paymentData);
 
-                (new WalletService)->computeWelcomeBonus($transaction['user_uuid']);
+                    (new WalletService)->computeWelcomeBonus($transaction['user_uuid']);
 
-                $ref = $this->referral->get($transaction['user_uuid']);
-                
-                (new GenealogyService)->makeReferrerAParent($ref->referrer_uuid, $ref->referred_uuid, $ref->placer_uuid);
+                    $ref = $this->referral->get($transaction['user_uuid']);
+                    
+                    (new GenealogyService)->makeReferrerAParent($ref->referrer_uuid, $ref->referred_uuid, $ref->placer_uuid);
+                },2);
             }
             
          } catch (Exception $e) {
-             Log::error("Error verifying payment",[$e]);
-             return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error verifying payment");
          }
 
         return ["success"=>true, "data"=>[],

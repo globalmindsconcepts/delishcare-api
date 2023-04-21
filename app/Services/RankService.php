@@ -4,7 +4,7 @@ namespace App\Services;
 use App\Repositories\RankRepository;
 use \Exception;
 use Illuminate\Support\Facades\Log;
-class RankService{
+class RankService extends BaseService{
 
     private $rankRepo;
     public function __construct(){
@@ -17,9 +17,7 @@ class RankService{
             $data = $this->rankRepo->all();
             return ['data' => $data, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("all ranka error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error fetching all ranks");
         }
     }
 
@@ -29,9 +27,7 @@ class RankService{
             $data = $this->rankRepo->get($id);
             return ['data' => $data, 'message' => 'Rank fetched successfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("get rank error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error fetching a rank");
         }
     }
 
@@ -41,9 +37,7 @@ class RankService{
            $rank = $this->rankRepo->create($data);
             return ['data' => $rank, 'message' => 'Rank created succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("create rank erro", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error creating rank");
         }
     }
 
@@ -53,9 +47,7 @@ class RankService{
             $this->rankRepo->update($id, $data);
             return ['message' => 'Rank updated succesfully', 'success'=>true, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("update rank erro", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error updating rank");
         }
     }
 
@@ -65,9 +57,7 @@ class RankService{
             $this->rankRepo->table->delete($id);
             return ['message' => 'Rank deleted succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("delete rank erro", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"Error deleting ranks");
         }
     }
 }

@@ -6,7 +6,7 @@ use App\Repositories\ProductClaimRepository;
 use App\Repositories\ProductRepository;
 use \Exception;
 use Illuminate\Support\Facades\Log;
-class ProductClaimService{
+class ProductClaimService extends BaseService{
     private $productClaimRepo,$productRepo;
     public function __construct(){
         $this->productClaimRepo = new productClaimRepository;
@@ -19,9 +19,7 @@ class ProductClaimService{
             $products = $this->productClaimRepo->all();
             return ['data' => $products, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            Log::error("error fetching product claims", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500, 'success'=>false];
+            return $this->logger($e,"error fetching product claims");
         }
     }
 
@@ -34,16 +32,16 @@ class ProductClaimService{
             }
 
             $data['user_uuid'] = $uuid;
-            $totalPoints=0;
+            $totalWorth=0;
             foreach($product_ids as $val){
                 //info($val,[$this->productRepo->get($val)]);
-                $totalPoints = $totalPoints + $this->productRepo->get($val)->points;
+                $totalWorth = $totalWorth + ($this->productRepo->get($val)->worth);
             }
 
             $user = User::where('uuid',$uuid)->first();
-            if($user->packagePayment->first()->point_value < $totalPoints){
-                info($totalPoints);
-                return ['message'=>'Insufficient point values','status'=>400];
+            if($user->packagePayment->first()->amount/2 < $totalWorth){
+                //info($totalPoints);
+                return ['message'=>'Insufficient package amount, please select items with lesser prices','status'=>400];
             }
 
             foreach($product_ids as $val){
@@ -55,9 +53,7 @@ class ProductClaimService{
             $selectedProducts = $this->productClaimRepo->claimedProducts($uuid);//->where('user_uuid',$uuid)->get();
             return ['data' => $selectedProducts, 'message' => 'product claimed successfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("error creating product claim", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return [ 'message' => $message, 'status' => 500];
+            return $this->logger($e,"error creating product claim");
         }
     }
 
@@ -67,9 +63,7 @@ class ProductClaimService{
             $this->productClaimRepo->update($uuid, $data);
             return ['message' => 'product claim updated succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("error updating product claim", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"error updating product claim");
         }
     }
 
@@ -79,9 +73,7 @@ class ProductClaimService{
             $data = $this->productClaimRepo->claimedProducts($user_uuid);
             return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("error fetching claimed products", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"error fetching claimed products");
         }
     }
 
@@ -93,9 +85,7 @@ class ProductClaimService{
             ->where('status','approved')->get()->sum('worth');
             return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("error summing claimed products", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"error summing claimed products");
         }
     }
 
@@ -105,9 +95,7 @@ class ProductClaimService{
             $data = $this->productClaimRepo->table->where('status','approved')->get()->count();
             return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("error fetching total products sold", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"error fetching total products sold");
         }
     }
 
@@ -117,9 +105,7 @@ class ProductClaimService{
             $data = $this->productClaimRepo->table->where('status','approved')->get()->sum('points');
             return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("error fetching total products pv", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"error fetching total products pv");
         }
     }
 }

@@ -4,7 +4,7 @@ namespace App\Services;
 use App\Repositories\ProductRepository;
 use \Exception;
 use Illuminate\Support\Facades\Log;
-class CompanyProductService{
+class CompanyProductService extends BaseService{
     private $productRepo;
     public function __construct(){
         $this->productRepo = new ProductRepository;
@@ -16,9 +16,7 @@ class CompanyProductService{
             $products = $this->productRepo->all();
             return ['data' => $products, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            Log::error('error fetching products',[$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500, 'success'=>false];
+            return $this->logger($e,'error fetching products');
         }
     }
 
@@ -28,9 +26,7 @@ class CompanyProductService{
             $product = $this->productRepo->get($id);
             return ['data' => $product, 'status' => 200, 'success' => true];
         } catch (Exception $e) {
-            Log::error('error getting product',[$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500, 'success'=>false];
+            return $this->logger($e,'error getting product');
         }
     }
 
@@ -38,11 +34,9 @@ class CompanyProductService{
     {
         try {
            $package = $this->productRepo->create($data);
-            return ['data' => $package, 'message' => 'Package created succesfully', 'status' => 200];
+            return ['data' => $package, 'message' => 'Product created succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error('error creating product',[$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['data' => $package, 'message' => $message, 'status' => 500];
+            return $this->logger($e,'error creating product');
         }
     }
 
@@ -53,11 +47,9 @@ class CompanyProductService{
                 return ['message' => 'Package name already exists', 'status' => 400];
             }
             $this->productRepo->update($id, $data);
-            return ['message' => 'Package updated succesfully', 'status' => 200];
+            return ['message' => 'Product updated succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error('error updating product',[$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,'error updating product');
         }
     }
 
@@ -67,9 +59,7 @@ class CompanyProductService{
             $this->productRepo->table->delete($id);
             return ['message' => 'package deleted succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error('error deleting product',[$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,'error deleting product');
         }
     }
 

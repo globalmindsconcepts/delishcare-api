@@ -20,7 +20,7 @@ use App\Repositories\WithdrawalRepository;
 /**
  * user wallet trait
  */
-class WalletService{
+class WalletService extends BaseService{
 
     private $setting;
     private $referralBonus;

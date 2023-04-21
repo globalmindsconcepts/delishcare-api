@@ -17,7 +17,7 @@ use App\Repositories\PackagePaymentRepository;
 use App\Mail\InviteGuestMail;
 //se Illuminate\Support\Facades\Mail;
 
-class UserService{
+class UserService extends BaseService{
 
     private $service;
     private $userRepository;
@@ -39,8 +39,7 @@ class UserService{
         try {
             $data = $this->userRepository->all($count);
         } catch (Exception $e) {
-            Log::error("Error fetching users",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error fetching users");
         }
 
         return ["success"=>true, "data"=>$data,
@@ -52,8 +51,7 @@ class UserService{
         try {
             $data = $this->userRepository->activeUsers($count);
         } catch (Exception $e) {
-            Log::error("Error fetching active users",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error fetching active users");
         }
 
         return ["success"=>true, "data"=>$data,
@@ -97,8 +95,7 @@ class UserService{
             Mail::to($data['email'])->queue((new UserConfirmationEmail($data)));
 
         } catch (Exception $e) {
-            Log::error("Error creating user",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error creating user");
         }
         return ["success"=>true,
         "message"=>"user created sucessfully","status"=>200];
@@ -109,8 +106,7 @@ class UserService{
         try {
             $data = $this->userRepository->details($uuid);
         } catch (Exception $e) {
-            Log::error("Error fetching user",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(), "status"=>500];
+            return $this->logger($e,"Error fetching user details");
         }
         return ["success"=>true, "data"=>$data,
         "message"=>"user fetched sucessfully","status"=>200];
@@ -161,8 +157,7 @@ class UserService{
         try {
             $data = $this->userRepository->details($user_uuid);
         } catch (Exception $e) {
-            Log::error("Error fetching user",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(), "status"=>500];
+            return $this->logger($e,"Error admin fetching user");
         }
         return ["success"=>true, "data"=>$data,
         "message"=>"user fetched sucessfully","status"=>200];
@@ -173,7 +168,7 @@ class UserService{
         try {
             $this->userRepository->delete($user_uuid);
         } catch (Exception $e) {
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error deleting user");
         }
         return ["success"=>true,
         "message"=>"user deleted sucessfully","status"=>200];
@@ -184,8 +179,7 @@ class UserService{
         try {
            $this->userRepository->update($user_uuid,$data);
         } catch (Exception $e) {
-            Log::error("Error updating user",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error updating user");
         }
         return ["success"=>true,
         "message"=>"user updated sucessfully","status"=>200];
@@ -195,13 +189,12 @@ class UserService{
     {
         try {
            $ref = $this->referralRepository->get($uuid);
-           $data = $this->userRepository->getUser($ref->referrer_uuid);
+           $data = $this->userRepository->details($ref->referrer_uuid);
            $package = $this->packageRepo->get($data['package_id']);
            $data['package'] = $package->name; 
            return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error fetching upline details",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error fetching upline details");
         }
     }
 
@@ -229,8 +222,7 @@ class UserService{
 
            return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error fetching downlines",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error fetching downlines");
         }
     }
 
@@ -253,13 +245,13 @@ class UserService{
                  'name'=>User::where('uuid','=',$ele->referred_uuid)->first()->first_name.' '.User::where('uuid','=',$ele->referred_uuid)->first()->last_name,
                  'username'=>User::where('uuid','=',$ele->referred_uuid)->first()->username,
                  'package'=>Package::find(User::where('uuid','=',$ele->referred_uuid)->first()->package_id)->name,
+                 'photo_path'=>User::where('uuid','=',$ele->referred_uuid)->first()->profile()->first()->photo_path
                ];
             }); 
  
             return ['data'=>$data,'status'=>200];
          } catch (Exception $e) {
-             Log::error("Error fetching direct downlines",[$e]);
-             return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error fetching direct downlines");
          }
     }
 
@@ -270,8 +262,7 @@ class UserService{
            //info('gen',[$data]);
            return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error fetching genealogy",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error fetching genealogy");
         }
     }
 
@@ -286,8 +277,7 @@ class UserService{
            Mail::to($data['email'])->queue(new InviteGuestMail($mailData));
            return ['status'=>200];
         } catch (Exception $e) {
-            Log::error("Error sending guest email",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error sending guest email");
         }
     }
 
@@ -297,8 +287,7 @@ class UserService{
             $data = $this->userRepository->totalRegistrations();
             return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error fetching total registrations",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error fetching total registrations");
         }
     }
 
@@ -308,8 +297,7 @@ class UserService{
             $data = $this->packagePaymentRepo->totalRegistrationPV();
             return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error fetching total registration pv",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error fetching total registration pv");
         }
     }
 
@@ -319,8 +307,7 @@ class UserService{
             $data = $this->userRepository->getUser($uuid);
             return ['data'=>$data,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error fetching user",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error fetching user");
         }
     }
 
@@ -331,8 +318,7 @@ class UserService{
             Mail::to($user['email'])->send(new \App\Mail\SendMessage($data));
             return ['status'=>200];
         } catch (Exception $e) {
-            Log::error("Error sending message to user",[$e]);
-            return ["success"=>false,"message"=>$e->getMessage(),"status"=>500];
+            return $this->logger($e,"Error sending message to user");
         }
     }
 
@@ -342,8 +328,7 @@ class UserService{
             $users = $this->packagePaymentRepo->paidUsers();
             return ['data'=>$users,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error getting paid users",[$e]);
-            return ["success"=>false,"message"=>'An error occured, please try again',"status"=>500];
+            return $this->logger($e,"Error getting paid users");
         }
     }
 
@@ -353,8 +338,7 @@ class UserService{
             $users = $this->packagePaymentRepo->paidUsers(true);
             return ['data'=>$users,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error getting total paid users",[$e]);
-            return ["success"=>false,"message"=>'An error occured, please try again',"status"=>500];
+            return $this->logger($e,"Error getting total paid users");
         }
     }
 
@@ -364,8 +348,7 @@ class UserService{
             $users = $this->packagePaymentRepo->sumPaidUsers();
             return ['data'=>$users,'status'=>200];
         } catch (Exception $e) {
-            Log::error("Error summing paid users",[$e]);
-            return ["success"=>false,"message"=>'An error occured, please try again',"status"=>500];
+            return $this->logger($e,"Error summing paid users");
         }
     }
 

@@ -5,7 +5,7 @@ use App\Repositories\WithdrawalRepository;
 use \Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-class WithdrawalService{
+class WithdrawalService extends BaseService{
 
     private $repo;
     private $service;
@@ -20,9 +20,7 @@ class WithdrawalService{
             $data = $this->repo->all();
             return ['data' => $data, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("withdrawal history error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"withdrawal history error");
         }
     }
 
@@ -32,9 +30,7 @@ class WithdrawalService{
             $data = $this->repo->userHistory($uuid);
             return ['data' => $data, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("user withdrawal history error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"user withdrawal history error");
         }
     }
 
@@ -44,9 +40,7 @@ class WithdrawalService{
             $data = $this->repo->details($id);
             return ['data' => $data, 'message' => 'withdrawal fetched successfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("fetch withdrawal error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"fetch withdrawal error");
         }
     }
 
@@ -69,9 +63,7 @@ class WithdrawalService{
            $withdrawal = $this->repo->create($data+['user_uuid'=>$uuid]);
             return ['data' => $withdrawal, 'message' => 'Withdrawal created succesfully', 'status' => 200];
         } catch (Exception $e) {
-            Log::error("create withdrawal error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"create withdrawal error");
         }
     }
 
@@ -81,9 +73,7 @@ class WithdrawalService{
             $this->repo->update($id, $data);
             return ['message' => 'Withdrawal updated succesfully', 'success'=>true, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("update rank erro", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"update rank error");
         }
     }
 
@@ -93,9 +83,7 @@ class WithdrawalService{
             $total = $this->repo->total(); 
             return ['data' => $total, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("total withdrawal error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"total withdrawal error");
         }
     }
 
@@ -105,9 +93,7 @@ class WithdrawalService{
             $total = $this->repo->userTotal($uuid);
             return ['data' => $total, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("user total withdrawal error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"user total withdrawal error");
         }
     }
 
@@ -117,9 +103,7 @@ class WithdrawalService{
             //$total = $this->repo->userTotal($uuid);
             //return ['data' => $total, 'status' => 200];
         } catch (Exception $e) {
-            Log::error("user total withdrawal error", [$e]);
-            $message = env('APP_ENV') == 'production' ? 'An error occured' : $e->getMessage();
-            return ['message' => $message, 'status' => 500];
+            return $this->logger($e,"user total withdrawal error");
         }
     }
 
