@@ -50,7 +50,7 @@ class PackagePaymentRepository{
          return $this->table->leftJoin('users','users.uuid','=','package_payments.user_uuid')
             ->leftJoin('packages','users.package_id','=','packages.id')
             ->where('package_payments.status','=','approved')
-            ->select(['users.first_name','users.last_name','packages.name','packages.vip','package_payments.created_at','package_payments.amount']) ->paginate(20);
+            ->select(['users.first_name','users.last_name','users.username','packages.name','packages.vip','package_payments.created_at','package_payments.amount']) ->paginate(20);
         }
         return $this->table->get()->count();
     }

@@ -28,7 +28,7 @@ class ReferralBonusSettingRepository{
 
     public function get($package_id)
     {
-       return $this->table->where('package_id','=',$package_id)->first();
+       return $this->table->where('package_id','=',$package_id)->get()->first();
     }
 
     public function all()
