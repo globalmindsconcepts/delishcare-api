@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         (new ProductServiceTableSeeder)->run();
         (new ProductTableSeeder)->run();
         (new SingleUserSeeder)->run();
+        (new ReferralBonusSettingSeeder)->run();
     }
 }
