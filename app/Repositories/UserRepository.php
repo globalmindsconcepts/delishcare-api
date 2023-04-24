@@ -60,7 +60,18 @@ class UserRepository{
         }
         $data = DB::table('users')->leftJoin('user_profiles', 'users.uuid', '=', 'user_profiles.user_uuid')
         ->leftJoin('packages', 'users.package_id', '=', 'packages.id')
+        ->leftJoin('package_payments','package_payments.user_uuid','=','users.uuid') //delete later
         ->where('users.id','<>',1)
+        ->orderByDesc('users.created_at')->paginate(50);
+        return $data;
+    }
+
+    public function search($data)
+    {
+        $data = DB::table('users')->leftJoin('user_profiles', 'users.uuid', '=', 'user_profiles.user_uuid')
+        ->leftJoin('packages', 'users.package_id', '=', 'packages.id')
+        ->where('users.id','<>',1)
+        ->where($data)
         ->orderByDesc('users.created_at')->paginate(50);
         return $data;
     }

@@ -73,7 +73,8 @@ class WalletService extends BaseService{
                 'package_pv' => $package_pv,
                 'package_id' => $package_id,
                 'unit_pv' => $unit_pv
-            ])
+            ]),
+            'created_at'=>now()
         ]);
     }
 
@@ -96,6 +97,8 @@ class WalletService extends BaseService{
         $loyalty_bonus = $this->loyaltyBonus($user_uuid,true)->sum('value');
         $profit_pool = $this->computeProfitPool($user_uuid, true)->sum('value');
         $global_profit = $this->computeUserGlobalProfitShare($user_uuid, 1, true)->sum('profit');
+
+        //info('bonuses',['wel'=>$welcome_bonus,'ref'=>$referral_bonus,'plce'=>$placement_bonus,'equ'=>$equilibrum_bonus,'loy'=>$loyalty_bonus,'profp'=>$profit_pool,'global'=>$global_profit]);
 
         $total = $welcome_bonus + $referral_bonus + $placement_bonus + $equilibrum_bonus + $loyalty_bonus + $profit_pool + $global_profit;
         return $total;
@@ -208,12 +211,14 @@ class WalletService extends BaseService{
                         'value'=>$bonus,
                         'bonus_value'=>$eqilibrum_bonus,
                         'num_downlines'=>$eqilibrum_downline,
+                        'created_at'=>now()
                     ]);
                 }else{
                     $this->equilibrumBonus->table->where(['user_uuid' => $user_uuid, 'bonus_value' => $eqilibrum_bonus])->update(
                         [
                             'value' => $bonus,
                             'num_downlines'=>$diff,
+                            'updated_at'=>now()
                         ]
                     );
                 }
@@ -229,6 +234,7 @@ class WalletService extends BaseService{
                     'value'=>$bonus,
                     'bonus_value'=>$eqilibrum_bonus,
                     'num_downlines'=>$eqilibrum_downline,
+                    'created_at'=>now()
                 ]);
             }
         }
@@ -260,17 +266,19 @@ class WalletService extends BaseService{
                     $this->loyaltyBonus->create([
                         'user_uuid'=>$user_uuid,
                         'value'=>$bonus,
-                        'bonus_value'=>$loyalty_bonus
+                        'bonus_value'=>$loyalty_bonus,
+                        'created_at'=>now()
                     ]);
                 }else{
                     $this->loyaltyBonus->table->where(['user_uuid' => $user_uuid, 'bonus_value' => $loyalty_bonus])
-                        ->update(['value' => $bonus]);
+                        ->update(['value' => $bonus,'updated_at'=>now()]);
                 }
             }else{
                 $this->loyaltyBonus->create([
                     'user_uuid'=>$user_uuid,
                     'value'=>$bonus,
-                    'bonus_value'=>$loyalty_bonus
+                    'bonus_value'=>$loyalty_bonus,
+                    'created_at'=>now()
                 ]);
             }
         }
@@ -312,7 +320,8 @@ class WalletService extends BaseService{
                         'unit_pv'=>$unit_pv,
                         'profit_pool_percentage'=>$pool_percentage,
                         'package_pv'=>$package->point_value
-                    ])
+                    ]),
+                    'created_at'=>now()
                 ]);
             }
         }
@@ -401,7 +410,8 @@ class WalletService extends BaseService{
                     'unit_pv'=>$globalProfit['unit_pv'],
                     'global_profit_first_percentage'=>$globalProfit['global_profit_first_percentage'],
                     'global_profit_second_percentage'=>$globalProfit['global_profit_second_percentage']
-                ])
+                ]),
+                'created_at'=>now()
             ]);
         }
     }

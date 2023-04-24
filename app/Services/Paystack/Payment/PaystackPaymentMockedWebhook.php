@@ -1,6 +1,6 @@
 <?php
 namespace App\Services\Paystack\Payment;
-trait PaystckPaymentMockedWebhook{
+trait PaystackPaymentMockedWebhook{
 
     function chargeSuccessful()
     {

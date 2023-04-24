@@ -45,6 +45,16 @@ class UserService extends BaseService{
         return ["success"=>true, "data"=>$data,
         "message"=>$count ? 'Total users': 'Users'."fetched sucessfully","status"=>200];
     }
+
+    public function search(array $data)
+    {
+        try {
+            $data = $this->userRepository->search($data);
+            return ['data'=>$data,'status'=>200];
+        } catch (Exception $e) {
+            return $this->logger($e,"Error searching users");
+        }
+    }
     
     public function activeUsers(bool $count=false)
     {

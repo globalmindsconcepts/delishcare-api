@@ -73,18 +73,6 @@ class ReferralBonusSettingSeeder extends Seeder
             ]
                 
             ))->save();
-
-            (new ReferralBonusSetting([
-                'package_id'=>6,
-                'generation_1_percentage'=>5,
-                'generation_2_percentage'=>5,
-                'generation_3_percentage'=>5,
-                'generation_4_percentage'=>5,
-                'generation_5_percentage'=>5,
-                'generation_6_percentage'=>5,
-            ]
-                
-            ))->save();
         }
     }
 }
