@@ -33,7 +33,7 @@ class WalletController extends Controller
     public function referralBonus(string $user_uuid)
     {
         try {
-            $data = $this->service->referralBonus($user_uuid)->sum('bonus');
+            $data = $this->service->referralBonus($user_uuid)->sum('bonus') + $this->service->placementBonus($user_uuid)->sum('bonus');
             return response()->json(['bonus'=>$data,'success'=>true], 200);
         } catch (\Exception $e) {
             Log::error("welcome bonus error", [$e]);

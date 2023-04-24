@@ -62,6 +62,7 @@ class UserRepository{
         ->leftJoin('packages', 'users.package_id', '=', 'packages.id')
         ->leftJoin('package_payments','package_payments.user_uuid','=','users.uuid') //delete later
         ->where('users.id','<>',1)
+        ->whereIn('package_payments.status',['approved','processing'])
         ->orderByDesc('users.created_at')->paginate(50);
         return $data;
     }
