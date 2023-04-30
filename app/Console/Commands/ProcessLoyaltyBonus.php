@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Repositories\UserRepository;
 use App\Services\BaseService;
 use App\Services\WalletService;
 use Illuminate\Console\Command;
@@ -41,9 +42,9 @@ class ProcessLoyaltyBonus extends Command
     public function handle()
     {
         try {
-            $users = User::all()->where('is_deactivated',0);
+            $users = (new UserRepository)->cronUsers();
             $users->each(function($user) {
-                (new WalletService)->loyaltyBonus($user);
+                (new WalletService)->loyaltyBonus($user->uuid);
             });
             return 0;
         } catch (\Exception $e) {

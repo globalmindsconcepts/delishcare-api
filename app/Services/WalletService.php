@@ -258,7 +258,7 @@ class WalletService extends BaseService{
 
         $loyalty_bonus = $this->setting->get('loyalty_bonus_percentage')->loyalty_bonus_percentage;
         $parent = $this->genealogyService->checkIfRefHasAParent($user_uuid);
-        $equilibrum_bonus = $this->equillibrumBonus($parent);
+        $equilibrum_bonus = $parent ? $this->equillibrumBonus($parent) : 0;
         $bonus = $equilibrum_bonus * ($loyalty_bonus / 100);
         if($parent && $bonus>0){
             if($user = $this->loyaltyBonus->table->where('user_uuid',$user_uuid)->get()->last()){

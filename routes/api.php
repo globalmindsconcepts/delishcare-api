@@ -178,3 +178,8 @@ Route::group(['prefix'=>'withdrawals','middleware'=>['auth:sanctum'], 'namespace
     Route::get('{uuid}/user-total','WithdrawalController@userTotal');
     Route::get('{id}/details','WithdrawalController@details');
 });
+
+Route::group(['prefix'=>'webhooks','namespace'=>'App\Http\Controllers'], function() {
+    Route::post('fincra','WebhookController@processFincraWebhook');
+    Route::post('paystack','WebhookController@processPaystackWebhook');
+});

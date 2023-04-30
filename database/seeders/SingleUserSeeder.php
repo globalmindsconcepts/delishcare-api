@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Transaction;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\PackagePayment;
@@ -17,13 +18,23 @@ class SingleUserSeeder extends Seeder
     public function run()
     {
         if(!User::first()){
-            User::factory([
+            (new User([
                 'first_name'=>'Delishcare',
                 'last_name'=>'Delsihcare',
                 'email'=>'delishcare@mail.com',
                 'username'=>'delishcare',
                 'package_id'=>1
-            ])->create();
+            ]))->save();
+
+            (new Transaction([
+                'user_uuid' => User::first()->uuid,
+                'amount' => 20000,
+                'txn_reference' => 'deliscare001',
+                'txn_status'=>'successful',
+                'narration'=>'payment',
+                'txn_type'=>'credit',
+                'txn_source'=>'package_payment'
+            ]))->save();
 
             (new PackagePayment([
                 'user_uuid'=>User::first()->uuid,

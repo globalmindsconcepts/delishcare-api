@@ -63,7 +63,17 @@ class UserRepository{
         ->leftJoin('package_payments','package_payments.user_uuid','=','users.uuid') //delete later
         ->where('users.id','<>',1)
         ->whereIn('package_payments.status',['approved','processing'])
-        ->orderByDesc('users.created_at')->paginate(50);
+        ->orderByDesc('users.created_at')->paginate(3);
+        return $data;
+    }
+
+    public function cronUsers()
+    {
+        $data = DB::table('users')
+        ->leftJoin('package_payments','package_payments.user_uuid','=','users.uuid') //delete later
+        ->where('users.id','<>',1)->where('users.is_deactivated',0)
+        ->whereIn('package_payments.status',['approved'])
+        ->get('users.uuid');
         return $data;
     }
 

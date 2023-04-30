@@ -3,8 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Repositories\UserRepository;
 use App\Services\BaseService;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 class DeactivateUserCommand extends Command
 {
@@ -40,13 +42,18 @@ class DeactivateUserCommand extends Command
     public function handle()
     {
         try {
-            User::all()->each(function($user){
+            $res = DB::select("SELECT id, uuid, created_at FROM users WHERE NOT EXISTS (SELECT user_uuid FROM transactions WHERE transactions.user_uuid = users.uuid)");
+            $users = (array) $res ;
+            info('users',[$users]);
+           
+            collect($users)->each(function($user){
+                info('de-user',[$user->created_at]);
                 $signUpTime = strtotime($user->created_at);
                 $currTime = time();
                 $timeDiff = $currTime - $signUpTime;
                 $daysDiff = round($timeDiff/(60 * 60 * 24));
                 if($daysDiff >= 7){
-                    User::find($user->id)->update(['is_deactivated'=>1]);
+                    User::find($user->id)->delete();//update(['is_deactivated'=>1]);
                 }
             });
             return 0;

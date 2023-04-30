@@ -116,7 +116,7 @@ class PaymentService extends BaseService{
     {
         $verify = $this->verify($data);
        if($verify['success']==false){
-            throw new Exception("Error while processing charge success webhook");
+            throw new Exception("Error unable to verify charge success webhook");
        }
     }
 

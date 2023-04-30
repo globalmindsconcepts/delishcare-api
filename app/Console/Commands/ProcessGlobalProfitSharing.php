@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Repositories\UserRepository;
 use App\Services\BaseService;
 use App\Services\WalletService;
 use Illuminate\Console\Command;
@@ -41,10 +42,10 @@ class ProcessGlobalProfitSharing extends Command
     public function handle()
     {
         try {
-            $users = User::all()->where('is_deactivated',0);
+            $users = (new UserRepository)->cronUsers();
             $count = $users->count();
             $users->each(function($user) use ($count){
-                (new WalletService)->computeUserGlobalProfitShare($user,$count);
+                (new WalletService)->computeUserGlobalProfitShare($user->uuid,$count);
             });
             return 0;
         } catch (\Exception $e) {
