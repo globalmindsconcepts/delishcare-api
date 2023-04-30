@@ -49,7 +49,7 @@ Route::get('/send-message-mail', function () {
         'body'=>'Please pay up your money',
     ];
  
-    return new App\Mail\InviteGuestMail($data);
+    return new App\Mail\SendMessage($data);
 });
 
 Route::get('/two-factor-mail', function () {
