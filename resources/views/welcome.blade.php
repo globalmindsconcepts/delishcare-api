@@ -9,8 +9,26 @@
 		<title>Delishcare</title>	
 
 		<meta name="keywords" content="Delishcare" />
-		<meta name="description" content="Delish care">
 		<meta name="author" content="Delischare">
+		<meta name="keywords" content="delishcare,delishcare products, delishcare review, delishcare product price, delish choco, delishcare nigeria, delishcare office, delishcare price, delishcare compensation plan">
+
+		<!-- Primary Meta Tags -->
+		<meta name="title" content="DelishCare is incredibly extremely passionate about you...">
+		<meta name="description" content="An innovative and forward-thinking global health, food, and wealth creation company that provides opportunities for its partners to grow financially together, and reach out to the world.k">
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://delishcare.com/">
+		<meta property="og:title" content="DelishCare is incredibly extremely passionate about you...">
+		<meta property="og:description" content="An innovative and forward-thinking global health, food, and wealth creation company that provides opportunities for its partners to grow financially together, and reach out to the world.k">
+		<meta property="og:image" content="">
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://delishcare.com/">
+		<meta property="twitter:title" content="DelishCare is incredibly extremely passionate about you...">
+		<meta property="twitter:description" content="An innovative and forward-thinking global health, food, and wealth creation company that provides opportunities for its partners to grow financially together, and reach out to the world.k">
+		<meta property="twitter:image" content="">
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon" />
@@ -65,7 +83,9 @@
 				<div class="bounce3"></div>
 			</div>
 		</div>
-		
+
+
+	<body class="one-page" data-target="#header" data-spy="scroll" data-offset="100">	
 		<div class="body">
  			<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyChangeLogo': true, 'stickyStartAt': 120, 'stickyHeaderContainerHeight': 70}">
 				<div class="header-body border-top-0">
@@ -129,16 +149,16 @@
 													    <a class="dropdown-item active" href="#">Home</a>
 													</li>													
 													<li class="dropdown dropdown-mega">
-													    <a class="dropdown-item" href="#">About Us</a>
+													    <a class="dropdown-item" href="#about">About Us</a>
 													</li>													
 													<li class="dropdown">	
-													    <a class="dropdown-item " href="#">Products</a>														
+													    <a class="dropdown-item " href="#product">Products</a>														
 													</li>													
 													<li class="dropdown">														
-													    <a class="dropdown-item" href="#">Benefits</a>														
+													    <a class="dropdown-item" href="#benefit">Why Us</a>														
 													</li>													
 													<li class="dropdown">														
-													    <a class="dropdown-item" href="#">Why Us</a>														
+													    <a class="dropdown-item" href="#business">Business</a>														
 													</li>													
 													<li class="dropdown">														
 													    <a class="dropdown-item" href="<?=env('CLIENT_URL');?>/login">Login</a>														
@@ -384,7 +404,7 @@
 				</div>
 
 
-				<div class="container mt-5" style="padding-bottom:40px">				
+				<div class="container mt-5" style="padding-bottom:40px" id="about">				
 					<div class="row text-center pt-3">
 						<div class="col-md-10 mx-md-auto">
 							<h1 class="word-rotator slide font-weight-bold text-8 text-dark mb-3 appear-animation"  data-appear-animation="fadeInUpShorter">
@@ -429,7 +449,7 @@
 						<div class="row mb-5">
 							<div class="col text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
 								<h2 class="font-weight-bold text-color-light mb-2">Our CORE BELIEFS</h2>
-								<p class="text-color-light opacity-7">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT</p>
+								
 							</div>
 						</div>
 						<div class="row mb-lg-4">
@@ -506,7 +526,7 @@
 				</section>
 				
 				
-				<div id="projects" class="container">
+				<div  class="container" id="product">
 					<div class="row justify-content-center pt-5 mt-5">
 						<div class="col-lg-9 text-center">
 							<div class="appear-animation" data-appear-animation="fadeInUpShorter">
@@ -715,7 +735,7 @@
 					</div>
 				</section>
 
-				<div class="container mb-5 pb-2">											
+				<div class="container mb-5 pb-2" id="benefit">											
 					<div class="row text-center pt-4">
 						<div class="col">
 							<h2 class="word-rotator slide font-weight-bold text-8 text-dark mb-2">
@@ -845,12 +865,12 @@
 				</div>
 				<div class="col-sm-3 col-lg-3">
 					<div class="call-to-action-btn">
-						<a href="" target="_blank" class="btn btn-modern text-2 btn-success">Become a Partner</a><span class="arrow hlb d-none d-md-block" data-appear-animation="rotateInUpLeft" style="left: 100%; top: -32px;"></span>
+						<a href="<?=env('CLIENT_URL');?>/register">" target="_blank" class="btn btn-modern text-2 btn-success">Become a Partner</a><span class="arrow hlb d-none d-md-block" data-appear-animation="rotateInUpLeft" style="left: 100%; top: -32px;"></span>
 					</div>
 				</div>
 			</section>
 			
-			<div class="container">
+			<div class="container" id="business">
 				<div class="row align-items-center pt-5 pb-3 appear-animation" data-appear-animation="fadeInRightShorter">
 					<div class="col-lg-6 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
 						<h2 class=" font-weight-normal text-6 mb-2 text-dark" >Ways to Earn With<strong class="font-weight-extra-bold"> Delishcare</strong></h2>
