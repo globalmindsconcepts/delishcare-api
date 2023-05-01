@@ -126,7 +126,7 @@ table, td { color: #000000; } #u_body a { color: #0000ee; text-decoration: under
 								    <tr>
 										<td class="v-container-padding-padding" style="overflow-wrap:break-word;word-break:break-word;padding:10px 60px;font-family:'Raleway',sans-serif;" align="left"> 
 									        <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-size: 14px;  padding-bottom:20px">{{$name}},</h1>
-                                            <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-size: 14px;  padding-bottom:20px">{{$message}}</h1> 
+                                            <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-size: 14px;  padding-bottom:20px">{{$messag}}</h1> 
                                             
                                             <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-size: 14px;  padding-bottom:10px"> Your participation is integral, and We are confident that you will enjoy the many benefits that come with being a member of Delishcare. Thank you again for your commitment, and we look forward to working with you.</h1>
                                             <h1 class="v-font-size " style="margin: 0px; line-height: 140%; text-align: left; word-wrap: break-word; font-size: 14px;  padding-bottom:20px">Best Regards</h1>

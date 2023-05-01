@@ -11,7 +11,7 @@ class WithdrawalMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    private $data;
 
     /**
      * Create a new message instance.
@@ -31,9 +31,8 @@ class WithdrawalMail extends Mailable
     public function build()
     {
         return $this->view('mail.withdrawal',[
-            'sender_name'=>$this->data['sender_name'],
-            'sender_username'=>$this->data['sender_username'],
-            'referrer'=>$this->data['referrer']
-        ])->subject('Delishcare Invitation');
+            'name'=>$this->data['name'],
+            'messag'=>$this->data['messag'],
+        ])->subject('Delishcare Withdrawal');
     }
 }
