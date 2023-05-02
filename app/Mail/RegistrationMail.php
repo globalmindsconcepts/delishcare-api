@@ -30,7 +30,7 @@ class RegistrationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.registration',[
+        return $this->view('mail.successful-registration',[
             'name'=>$this->data['name'],
             'message'=>$this->data['message'],
         ])->subject('Delishcare Registration');

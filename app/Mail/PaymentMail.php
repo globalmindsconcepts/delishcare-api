@@ -32,7 +32,7 @@ class PaymentMail extends Mailable
     {
         return $this->view('mail.payment',[
             'name'=>$this->data['name'],
-            'message'=>$this->data['message'],
+            'messag'=>$this->data['messag'],
         ])->subject('Delishcare Payment');
     }
 }

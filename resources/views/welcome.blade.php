@@ -158,7 +158,7 @@
 													    <a class="dropdown-item" href="#benefit">Why Us</a>														
 													</li>													
 													<li class="dropdown">														
-													    <a class="dropdown-item" href="#business">Business</a>														
+													    <a class="dropdown-item" href="#business">startup plan</a>														
 													</li>													
 													<li class="dropdown">														
 													    <a class="dropdown-item" href="<?=env('CLIENT_URL');?>/login">Login</a>														
@@ -404,7 +404,7 @@
 				</div>
 
 
-				<div class="container mt-5" style="padding-bottom:40px" id="about">				
+				<div class="container mt-5" style="padding-bottom:40px" data-appear-animation="fadeIn" id="about">				
 					<div class="row text-center pt-3">
 						<div class="col-md-10 mx-md-auto">
 							<h1 class="word-rotator slide font-weight-bold text-8 text-dark mb-3 appear-animation"  data-appear-animation="fadeInUpShorter">
@@ -546,9 +546,9 @@
 										<a href="" data-toggle="modal" data-target="#largeModal">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
-													<img src="img/projects/slide 1.png" class="img-fluid border-radius-0" alt="">
+													<img src="img/projects/productslide 1.png" class="img-fluid border-radius-0" alt="">
 													<span class="thumb-info-title">
-														<span class="thumb-info-inner">Delish Power Choco</span>
+														<span class="thumb-info-inner">Delish Jian Choco</span>
 														<span class="thumb-info-type">Deliscare</span>
 													</span>
 													<span class="thumb-info-action">
@@ -560,12 +560,12 @@
 									</div>
 
 									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal">
+										<a href="" data-toggle="modal" data-target="#largeModal1">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
-													<img src="img/projects/slide 2.png" class="img-fluid border-radius-0" alt="">
+													<img src="img/projects/productslide 2.png" class="img-fluid border-radius-0" alt="">
 													<span class="thumb-info-title">
-														<span class="thumb-info-inner">Delish Choco Bar</span>
+														<span class="thumb-info-inner">Delish Power Choco</span>
 														<span class="thumb-info-type" >Deliscare</span>
 													</span>
 													<span class="thumb-info-action">
@@ -577,12 +577,12 @@
 									</div>
 
 									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal">
+										<a href="" data-toggle="modal" data-target="#largeModal2">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
-													<img src="img/projects/slide 3.png" class="img-fluid border-radius-0" alt="">
+													<img src="img/projects/productslide 3.png" class="img-fluid border-radius-0" alt="">
 													<span class="thumb-info-title">
-														<span class="thumb-info-inner">Oma Liquid Pepper</span>
+														<span class="thumb-info-inner">Delish Choco Spread</span>
 														<span class="thumb-info-type">Deliscare</span>
 													</span>
 													<span class="thumb-info-action">
@@ -865,7 +865,7 @@
 				</div>
 				<div class="col-sm-3 col-lg-3">
 					<div class="call-to-action-btn">
-						<a href="<?=env('CLIENT_URL');?>/register">" target="_blank" class="btn btn-modern text-2 btn-success">Become a Partner</a><span class="arrow hlb d-none d-md-block" data-appear-animation="rotateInUpLeft" style="left: 100%; top: -32px;"></span>
+						<a href="" target="_blank" class="btn btn-modern text-2 btn-success">Become a Partner</a><span class="arrow hlb d-none d-md-block" data-appear-animation="rotateInUpLeft" style="left: 100%; top: -32px;"></span>
 					</div>
 				</div>
 			</section>
@@ -873,7 +873,7 @@
 			<div class="container" id="business">
 				<div class="row align-items-center pt-5 pb-3 appear-animation" data-appear-animation="fadeInRightShorter">
 					<div class="col-lg-6 pb-sm-4 pb-lg-0 pr-lg-5 mb-sm-5 mb-lg-0">
-						<h2 class=" font-weight-normal text-6 mb-2 text-dark" >Ways to Earn With<strong class="font-weight-extra-bold"> Delishcare</strong></h2>
+						<h2 class=" font-weight-normal text-6 mb-2 text-dark" >Ways to Startup With<strong class="font-weight-extra-bold"> Delishcare</strong></h2>
 						<p class="lead" style="font-size:15px">Earning in 7 different ways with our company provides a multitude of benefits. Firstly, it allows for a diversified income stream, reducing the risk of over-dependence on any one source of income. Secondly, it provides the opportunity to maximize earnings potential by utilizing various skills and interests. Thirdly, it offers flexibility and freedom to work on multiple projects simultaneously or to switch between them as desired. Fourthly, it promotes creativity and innovation as partners can explore different ways to leverage their expertise and passion. Fifthly, it facilitates networking and collaboration with other partners, fostering a sense of community and support. Ultimately, earning in 7 ways with our company opens up a world of possibilities, enabling partners to reach their full potential and achieve financial success.</p>
 						<a href="" target="_blank" class="btn btn-modern text-2 btn-success">Download PDF</a>
 					   
@@ -971,7 +971,7 @@
 		</div>
 		
 		
-		<!---Product Modal---->
+		<!---Product Modal delish jian choco---->
 		<div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
@@ -982,7 +982,7 @@
 					<div class="modal-body">
 					    <div class="row column-row">
 							<div class="col-md-6">
-							    <img src="img/projects/slide 1.png" class="img-thumbnail d-block lightbox" alt="">
+							    <img src="img/projects/productslide 1.png" class="img-thumbnail d-block lightbox" alt="">
 							</div>
 							<div class="col-md-6">
 								<h5 class="font-weight-bold">Benefits</h5>
@@ -1000,7 +1000,69 @@
 				</div>
 			</div>
 		</div>	
-		<!----End Product Modal--->
+		<!----End Product Modal delish jian choco--->
+
+		<!---Product Modal delish power choco---->
+		<div class="modal fade" id="largeModal1" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title font-weight-extra-bold" id="largeModalLabel">Delish Power Choco</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+					    <div class="row column-row">
+							<div class="col-md-6">
+							    <img src="img/projects/productslide 2.png" class="img-thumbnail d-block lightbox" alt="">
+							</div>
+							<div class="col-md-6">
+								<h5 class="font-weight-bold">Benefits</h5>
+									<ul class="list list-icons list-icons-style-3 list-quaternary">
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="0"><i class="fas fa-check"></i><span class="font-weight-bold">Improved heart health:<span> The antioxidants found in chocolate may help to reduce inflammation and improve blood flow, which can lower the risk of heart disease and stroke.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="300"><i class="fas fa-check"></i><span class="font-weight-bold">Reduced inflammation:<span> The flavonoids found in chocolate have been shown to have anti-inflammatory properties, which may help to reduce chronic inflammation in the body that can lead to a variety of health problems.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600"><i class="fas fa-check"></i><span class="font-weight-bold"> Enhanced cognitive function:<span> Some studies have suggested that the antioxidants in chocolate may help to improve cognitive function and memory, potentially reducing the risk of age-related cognitive decline.</li>
+									</ul>
+							</div>
+						</div>	
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!----End Product Modal delish power choco--->
+
+		<!---Product Modal delish choco spread---->
+		<div class="modal fade" id="largeModal2" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title font-weight-extra-bold" id="largeModalLabel">Delish Power Choco</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+					    <div class="row column-row">
+							<div class="col-md-6">
+							    <img src="img/projects/productslide 3.png" class="img-thumbnail d-block lightbox" alt="">
+							</div>
+							<div class="col-md-6">
+								<h5 class="font-weight-bold">Benefits</h5>
+									<ul class="list list-icons list-icons-style-3 list-quaternary">
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="0"><i class="fas fa-check"></i><span class="font-weight-bold">Improved heart health:<span> The antioxidants found in chocolate may help to reduce inflammation and improve blood flow, which can lower the risk of heart disease and stroke.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="300"><i class="fas fa-check"></i><span class="font-weight-bold">Reduced inflammation:<span> The flavonoids found in chocolate have been shown to have anti-inflammatory properties, which may help to reduce chronic inflammation in the body that can lead to a variety of health problems.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600"><i class="fas fa-check"></i><span class="font-weight-bold"> Enhanced cognitive function:<span> Some studies have suggested that the antioxidants in chocolate may help to improve cognitive function and memory, potentially reducing the risk of age-related cognitive decline.</li>
+									</ul>
+							</div>
+						</div>	
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!----End Product Modal delish choco spread--->
 
 		<div class="modal fade" id="notifyModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
 			<div class="modal-dialog modal-lg">
@@ -1067,16 +1129,29 @@
 			?>
 		</script>
 
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXCNVWKLGW"></script>
 		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','../../../../www.google-analytics.com/analytics.js','ga');
-		
-			ga('create', 'UA-42715764-5', 'auto');
-			ga('send', 'pageview');
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-YXCNVWKLGW');
 		</script>
-		<script src="master/analytics/analytics.js"></script>
+
+		<!--Start of Tawk.to Script-->
+		<script type="text/javascript">
+		var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+		(function(){
+		var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+		s1.async=true;
+		s1.src='https://embed.tawk.to/645006e131ebfa0fe7fb6867/1gvc9loti';
+		s1.charset='UTF-8';
+		s1.setAttribute('crossorigin','*');
+		s0.parentNode.insertBefore(s1,s0);
+		})();
+		</script>
+		<!--End of Tawk.to Script-->
 
 	</body>
 </html>

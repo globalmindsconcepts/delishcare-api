@@ -49,7 +49,7 @@ Route::get('/send-message-mail', function () {
         'body'=>'Please pay up your money',
     ];
  
-    return new App\Mail\InviteGuestMail($data);
+    return new App\Mail\SendMessage($data);
 });
 
 Route::get('/two-factor-mail', function () {
@@ -63,5 +63,29 @@ Route::get('/confirmation-mail', function () {
  
     return new App\Mail\UserConfirmationEmail($data);
 });
+
+Route::get('/withdrawal-mail', function () {
+    $data = ['name'=>'Innocent Aluu',
+    'messag'=>'
+    Your withdrawal request of the amount ₦25,000 has been 
+    successfully processed. The funds will be transferred to 
+    your designated account within the next 1-3 business days.
+    '];
+ 
+    return new App\Mail\WithdrawalMail($data);
+});
+
+Route::get('/payment-mail', function () {
+    $data = ['name'=>'Innocent Aluu','messag'=>'
+    Thank you for taking the first step to register as a partner 
+    with Delishcare. Your enthusiasm and quick response is admirable.
+     As we move forward, I encourage you to complete the remaining 
+     steps of the registration process by verifying your email and 
+    proceeding with payment to finalize your registration.'];
+ 
+    return new App\Mail\PaymentMail($data);
+});
+
+
 
 
