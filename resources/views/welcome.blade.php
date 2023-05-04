@@ -577,7 +577,7 @@
 									</div>
 
 									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal1">
+										<a href="" data-toggle="modal" data-target="#largeModal2">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
 													<img src="img/projects/productslide 3.png" class="img-fluid border-radius-0" alt="">
@@ -595,7 +595,7 @@
 
 									
 									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal1">
+										<a href="" data-toggle="modal" data-target="#largeModal3">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
 													<img src="img/projects/productslide 4.jpg" class="img-fluid border-radius-0" alt="">
@@ -612,7 +612,7 @@
 									</div>
 
 									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal1">
+										<a href="" data-toggle="modal" data-target="#largeModal4">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
 													<img src="img/projects/productslide 5.jpg" class="img-fluid border-radius-0" alt="">
@@ -629,7 +629,7 @@
 									</div>
 									
 									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal1">
+										<a href="" data-toggle="modal" data-target="#largeModal5">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
 													<img src="img/projects/productslide 6.jpg" class="img-fluid border-radius-0" alt="">
@@ -920,11 +920,11 @@
 									<ul>										
 										<li>
 											<i class="fas fa-angle-right"></i>
-											<a href="#" class="ml-1 text-decoration-none"> Policy</a>
+											<a href="/privacy" class="ml-1 text-decoration-none"> Policy</a>
 										</li>										
 										<li>
 											<i class="fas fa-angle-right"></i>
-											<a href="#" class="ml-1 text-decoration-none"> Terms</a>
+											<a href="/terms" class="ml-1 text-decoration-none"> Terms</a>
 										</li>
 										<li>
 											<i class="fas fa-angle-right"></i>
@@ -983,7 +983,7 @@
 					<div class="modal-body">
 					    <div class="row column-row">
 							<div class="col-md-6">
-							    <img src="img/projects/productslide 2.png" class="img-thumbnail d-block lightbox" alt="">
+							    <img src="img/projects/productslide 2.jpg" class="img-thumbnail d-block lightbox" alt="">
 							</div>
 							<div class="col-md-6">
 								<h5 class="font-weight-bold">Benefits</h5>
@@ -1033,6 +1033,103 @@
 			</div>
 		</div>	
 		<!----End Product Modal delish choco spread--->
+
+		<!---Product Modal delish liquid pepper---->
+		<div class="modal fade" id="largeModal3" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title font-weight-extra-bold" id="largeModalLabel">Delish Power Choco</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+					    <div class="row column-row">
+							<div class="col-md-6">
+							    <img src="img/projects/productslide 4.jpg" class="img-thumbnail d-block lightbox" alt="">
+							</div>
+							<div class="col-md-6">
+								<h5 class="font-weight-bold">Benefits</h5>
+									<ul class="list list-icons list-icons-style-3 list-quaternary">
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="0"><i class="fas fa-check"></i><span class="font-weight-bold">Improved heart health:<span> The antioxidants found in chocolate may help to reduce inflammation and improve blood flow, which can lower the risk of heart disease and stroke.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="300"><i class="fas fa-check"></i><span class="font-weight-bold">Reduced inflammation:<span> The flavonoids found in chocolate have been shown to have anti-inflammatory properties, which may help to reduce chronic inflammation in the body that can lead to a variety of health problems.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600"><i class="fas fa-check"></i><span class="font-weight-bold"> Enhanced cognitive function:<span> Some studies have suggested that the antioxidants in chocolate may help to improve cognitive function and memory, potentially reducing the risk of age-related cognitive decline.</li>
+									</ul>
+							</div>
+						</div>	
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!----End Product Modal delish liquid pepper--->
+
+		
+		<!---Product Modal delish Milkose---->
+		<div class="modal fade" id="largeModal4" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title font-weight-extra-bold" id="largeModalLabel">Delish Power Choco</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+					    <div class="row column-row">
+							<div class="col-md-6">
+							    <img src="img/projects/productslide 5.jpg" class="img-thumbnail d-block lightbox" alt="">
+							</div>
+							<div class="col-md-6">
+								<h5 class="font-weight-bold">Benefits</h5>
+									<ul class="list list-icons list-icons-style-3 list-quaternary">
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="0"><i class="fas fa-check"></i><span class="font-weight-bold">Improved heart health:<span> The antioxidants found in chocolate may help to reduce inflammation and improve blood flow, which can lower the risk of heart disease and stroke.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="300"><i class="fas fa-check"></i><span class="font-weight-bold">Reduced inflammation:<span> The flavonoids found in chocolate have been shown to have anti-inflammatory properties, which may help to reduce chronic inflammation in the body that can lead to a variety of health problems.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600"><i class="fas fa-check"></i><span class="font-weight-bold"> Enhanced cognitive function:<span> Some studies have suggested that the antioxidants in chocolate may help to improve cognitive function and memory, potentially reducing the risk of age-related cognitive decline.</li>
+									</ul>
+							</div>
+						</div>	
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!----End Product Modal delish Milkose--->
+
+		
+		<!---Product Modal delish diet---->
+		<div class="modal fade" id="largeModal5" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title font-weight-extra-bold" id="largeModalLabel">Delish Power Choco</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">
+					    <div class="row column-row">
+							<div class="col-md-6">
+							    <img src="img/projects/productslide 6.jpg" class="img-thumbnail d-block lightbox" alt="">
+							</div>
+							<div class="col-md-6">
+								<h5 class="font-weight-bold">Benefits</h5>
+									<ul class="list list-icons list-icons-style-3 list-quaternary">
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="0"><i class="fas fa-check"></i><span class="font-weight-bold">Improved heart health:<span> The antioxidants found in chocolate may help to reduce inflammation and improve blood flow, which can lower the risk of heart disease and stroke.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="300"><i class="fas fa-check"></i><span class="font-weight-bold">Reduced inflammation:<span> The flavonoids found in chocolate have been shown to have anti-inflammatory properties, which may help to reduce chronic inflammation in the body that can lead to a variety of health problems.</li>
+										<li class="appear-animation" data-appear-animation="fadeInUp" data-appear-animation-delay="600"><i class="fas fa-check"></i><span class="font-weight-bold"> Enhanced cognitive function:<span> Some studies have suggested that the antioxidants in chocolate may help to improve cognitive function and memory, potentially reducing the risk of age-related cognitive decline.</li>
+									</ul>
+							</div>
+						</div>	
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>	
+		<!----End Product Modal delish liquid pepper--->
+
+		
 
 		<div class="modal fade" id="notifyModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="padding-top:150px">
 			<div class="modal-dialog modal-lg">
