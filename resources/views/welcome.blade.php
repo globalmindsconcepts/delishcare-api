@@ -563,13 +563,13 @@
 										<a href="" data-toggle="modal" data-target="#largeModal1">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
-													<img src="img/projects/productslide 2.png" class="img-fluid border-radius-0" alt="">
+													<img src="img/projects/productslide 2.jpg" class="img-fluid border-radius-0" alt="">
 													<span class="thumb-info-title">
 														<span class="thumb-info-inner">Delish Power Choco</span>
-														<span class="thumb-info-type" >Deliscare</span>
+														<span class="thumb-info-type">Deliscare</span>
 													</span>
 													<span class="thumb-info-action">
-														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+														<span class="thumb-info-action-icon bg-dark opacity-8" ><i class="fas fa-plus"></i></span>
 													</span>
 												</span>
 											</span>
@@ -577,7 +577,7 @@
 									</div>
 
 									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal2">
+										<a href="" data-toggle="modal" data-target="#largeModal1">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
 													<img src="img/projects/productslide 3.png" class="img-fluid border-radius-0" alt="">
@@ -586,7 +586,25 @@
 														<span class="thumb-info-type">Deliscare</span>
 													</span>
 													<span class="thumb-info-action">
-														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+														<span class="thumb-info-action-icon bg-dark opacity-8" ><i class="fas fa-plus"></i></span>
+													</span>
+												</span>
+											</span>
+										</a>
+									</div>
+
+									
+									<div class="portfolio-item">
+										<a href="" data-toggle="modal" data-target="#largeModal1">
+											<span class="thumb-info thumb-info-lighten">
+												<span class="thumb-info-wrapper">
+													<img src="img/projects/productslide 4.jpg" class="img-fluid border-radius-0" alt="">
+													<span class="thumb-info-title">
+														<span class="thumb-info-inner">Delish Liquid Pepper</span>
+														<span class="thumb-info-type">Deliscare</span>
+													</span>
+													<span class="thumb-info-action">
+														<span class="thumb-info-action-icon bg-dark opacity-8" ><i class="fas fa-plus"></i></span>
 													</span>
 												</span>
 											</span>
@@ -594,88 +612,40 @@
 									</div>
 
 									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal">
+										<a href="" data-toggle="modal" data-target="#largeModal1">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
-													<img src="img/projects/slide 4.png" class="img-fluid border-radius-0" alt="">
+													<img src="img/projects/productslide 5.jpg" class="img-fluid border-radius-0" alt="">
 													<span class="thumb-info-title">
-														<span class="thumb-info-inner">Delish Jian Choco</span>
+														<span class="thumb-info-inner">Delish Milkose</span>
 														<span class="thumb-info-type">Deliscare</span>
 													</span>
 													<span class="thumb-info-action">
-														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+														<span class="thumb-info-action-icon bg-dark opacity-8" ><i class="fas fa-plus"></i></span>
 													</span>
 												</span>
 											</span>
 										</a>
 									</div>
+									
 									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal">
+										<a href="" data-toggle="modal" data-target="#largeModal1">
 											<span class="thumb-info thumb-info-lighten">
 												<span class="thumb-info-wrapper">
-													<img src="img/projects/slide 1.png" class="img-fluid border-radius-0" alt="">
+													<img src="img/projects/productslide 6.jpg" class="img-fluid border-radius-0" alt="">
 													<span class="thumb-info-title">
-														<span class="thumb-info-inner">Delish Power Choco</span>
+														<span class="thumb-info-inner">Delish Diet</span>
 														<span class="thumb-info-type">Deliscare</span>
 													</span>
 													<span class="thumb-info-action">
-														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
+														<span class="thumb-info-action-icon bg-dark opacity-8" ><i class="fas fa-plus"></i></span>
 													</span>
 												</span>
 											</span>
 										</a>
 									</div>
 
-									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal">
-											<span class="thumb-info thumb-info-lighten">
-												<span class="thumb-info-wrapper">
-													<img src="img/projects/slide 2.png" class="img-fluid border-radius-0" alt="">
-													<span class="thumb-info-title">
-														<span class="thumb-info-inner">Delish Choco Bar</span>
-														<span class="thumb-info-type">Deliscare</span>
-													</span>
-													<span class="thumb-info-action">
-														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-													</span>
-												</span>
-											</span>
-										</a>
-									</div>
 
-									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal">
-											<span class="thumb-info thumb-info-lighten">
-												<span class="thumb-info-wrapper">
-													<img src="img/projects/slide 3.png" class="img-fluid border-radius-0" alt="">
-													<span class="thumb-info-title">
-														<span class="thumb-info-inner">Oma Liquid Pepper</span>
-														<span class="thumb-info-type">Deliscare</span>
-													</span>
-													<span class="thumb-info-action">
-														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-													</span>
-												</span>
-											</span>
-										</a>
-									</div>
-
-									<div class="portfolio-item">
-										<a href="" data-toggle="modal" data-target="#largeModal">
-											<span class="thumb-info thumb-info-lighten">
-												<span class="thumb-info-wrapper">
-													<img src="img/projects/slide 4.png" class="img-fluid border-radius-0" alt="">
-													<span class="thumb-info-title">
-														<span class="thumb-info-inner">Delish Jian Choco</span>
-														<span class="thumb-info-type">Deliscare</span>
-													</span>
-													<span class="thumb-info-action">
-														<span class="thumb-info-action-icon bg-dark opacity-8"><i class="fas fa-plus"></i></span>
-													</span>
-												</span>
-											</span>
-										</a>
-									</div>
 
 				
 								</div>
